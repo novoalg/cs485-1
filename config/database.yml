@@ -20,6 +20,7 @@ default: &default
 development:
   <<: *default
   database: AgCart_development
+  password: <%= ENV['DEV_MYSQL_PASSWORD'] %>
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
