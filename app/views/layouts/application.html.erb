@@ -15,6 +15,11 @@
   <div id="container">
     <div class="row">
       <div class="small-12 columns">
+      
+        <% flash.each do |type, message| %>
+          <div class="alert-box <%= type %> round"><%= message %></div>
+          <a href="#" class="close">&times;</a>
+        <% end %>
 
         <%= yield %>
         <%= javascript_include_tag "application" %>
@@ -22,13 +27,6 @@
       </div>
     </div>
   </div>
-    <% flash.each do |type, message| %>
-        <div class="alert-box <%=type%> round"><%=message%></div>
-        <a href="#" class="close">&times;</a>
-    <% end %>
-    <%= yield %>
-    <%= javascript_include_tag "application" %>
-  </body>
 
   <script>$(document).foundation();</script>
 </html>
