@@ -18,6 +18,25 @@
         <br />
         <%= image_tag("http://placekitten.com/1000/250") %>
 
+        <div class="icon-bar four-up">
+          <a class="item">
+            <i class="fa fa-home"></i>
+            <label>Home</label>
+          </a>
+          <a class="item">
+            <i class="fa fa-question"></i>
+            <label>About Us</label>
+          </a> 
+          <a class="item">
+            <i class="fa fa-phone"></i>
+            <label>Contact Us</label>
+          </a> 
+          <a class="item">
+            <i class="fa fa-shopping-cart"></i>
+            <label>Shop</label>
+          </a> 
+        </div>
+
         <% flash.each do |type, message| %>
           <div class="alert-box <%= type %> round"><%= message %></div>
           <a href="#" class="close">&times;</a>
