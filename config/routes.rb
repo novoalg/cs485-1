@@ -11,6 +11,9 @@ Rails.application.routes.draw do
   resources :users
   resources :sessions, :only => [:new, :create, :destroy]
 
+  match '/about', to: 'static_pages#about', via: 'get'
+  match '/contact', to: 'static_pages#contact', via: 'get'
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
