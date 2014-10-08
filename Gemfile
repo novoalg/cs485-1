@@ -44,7 +44,7 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'foundation-rails', '5.4.3.0'
 
 # Font Awesome!
-gem 'font-awesome-sass', '~> 4.1.0'
+gem 'font-awesome-rails', '~> 4.2.0'
 
 # Helpful for attaching images
 gem "paperclip", "~> 4.2"
@@ -52,5 +52,3 @@ gem "paperclip", "~> 4.2"
 # Testing!
 gem "watir-webdriver"
 gem "cucumber"
-
-# Use 
