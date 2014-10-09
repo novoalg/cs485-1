@@ -1,4 +1,4 @@
-<div class="icon-bar four-up">
+<div class="icon-bar five-up">
   <%= link_to root_path, class: "item" do %>
     <i class="fa fa-home"></i>
     <label class="show-for-medium-up">Home</label>
@@ -14,5 +14,17 @@
   <%= link_to login_path, class: "item" do %>
     <i class="fa fa-shopping-cart"></i>
     <label class="show-for-medium-up">Shop</label>
+  <% end %>
+  <% if current_user.nil? %>
+     <%= link_to login_path, class: "item" do %>
+        <i class="fa fa-plus"></i>
+        <label class="show-for-medium-up">Login</label>
+      <% end %>
+
+  <% else %>
+      <%= link_to logout_path, :method => :delete, class: "item" do %>
+        <i class="fa fa-remove"></i>
+        <label class="show-for-medium-up">Logout</label>
+      <% end %>
   <% end %>
 </div>
