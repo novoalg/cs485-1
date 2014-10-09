@@ -1,0 +1,37 @@
+<div class="large-5 columns">
+    <%= form_for @user do |form| %>
+        <%= form.label :username %>
+        <%= form.text_field :username %>
+
+        <%= form.label :email %>
+        <%= form.text_field :email %>
+
+        <%= form.label :first_name %>
+        <%= form.text_field :first_name %>
+
+        <%= form.label :middle_name %>
+        <%= form.text_field :middle_name %>
+
+        <%= form.label :last_name %>
+        <%= form.text_field :last_name %>
+</div>
+<div class="large-5 columns">
+        <%= form.label :home_phone %>
+        <%= form.text_field :home_phone %>
+
+        <%= form.label :work_phone %>
+        <%= form.text_field :work_phone %>
+
+        <%= form.label :address %>
+        <%= form.text_field :address %>
+
+        <%= form.label :password %>
+        <%= form.password_field :password %>
+
+        <%= form.label :password_confirmation %>
+        <%= form.password_field :password_confirmation %>
+
+        <%= form.submit "Submit" %>
+</div>
+    <% end %>
+</div>
