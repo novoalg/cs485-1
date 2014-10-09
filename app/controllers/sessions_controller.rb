@@ -13,7 +13,7 @@ class SessionsController < ApplicationController
             current_user = user
             redirect_to root_path
         else
-            flash[:alert] = user.errors.full_messages.to_sentence
+            flash.now[:alert] = "Invalid password/username combination. Please try again."
             render 'new'
         end
     end
