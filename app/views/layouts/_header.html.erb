@@ -1,0 +1,19 @@
+<%= image_tag("http://placekitten.com/1000/200") %>
+<div class="icon-bar four-up">
+  <%= link_to root_path, class: "item" do %>
+    <i class="fa fa-home"></i>
+    <label class="show-for-medium-up">Home</label>
+  <% end %>
+  <%= link_to about_path, class: "item" do %>
+    <i class="fa fa-question"></i>
+    <label class="show-for-medium-up">About Us</label>
+  <% end %>
+  <%= link_to contact_path, class: "item" do %>
+    <i class="fa fa-phone"></i>
+    <label class="show-for-medium-up">Contact Us</label>
+  <% end %>
+  <%= link_to "http://froogle.com", class: "item" do %>
+    <i class="fa fa-shopping-cart"></i>
+    <label class="show-for-medium-up">Shop</label>
+  <% end %>
+</div>
