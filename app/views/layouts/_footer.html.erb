@@ -1,0 +1,15 @@
+<footer class="row text-center">
+  <div class="small-12 columns">
+    <small><i class="fa fa-copyright"></i><%= Time.now.year %> Silver and Stones Gallery</small>
+  </div>
+</footer>
+
+<% if Rails.env.development? %>
+<div class="row">
+  <div class="small-12 columns">
+    <div class="panel callout">
+      <%= debug(params) %>
+    </div>
+  </div>
+</div>
+<% end %>

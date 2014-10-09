@@ -16,6 +16,8 @@ gem 'coffee-rails', '~> 4.0.0'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
+# Use slick for image sliders
+gem 'slick_rails'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
@@ -42,7 +44,7 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'foundation-rails', '5.4.3.0'
 
 # Font Awesome!
-gem 'font-awesome-sass', '~> 4.1.0'
+gem 'font-awesome-rails', '~> 4.2.0'
 
 # Helpful for attaching images
 gem "paperclip", "~> 4.2"

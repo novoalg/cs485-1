@@ -19,15 +19,17 @@ default: &default
 
 development:
   <<: *default
-  database: AgCart_development
-  password: <%= ENV['DEV_MYSQL_PASSWORD'] %>
+  host: <%= Rails.application.secrets[:database][:host] %>
+  username: <%= Rails.application.secrets[:database][:username] %>
+  password: <%= Rails.application.secrets[:database][:password] %>
+  database: agcart_development
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: AgCart_test
+  database: agcart_test
 
 # As with config/secrets.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
@@ -50,6 +52,6 @@ test:
 #
 production:
   <<: *default
-  database: AgCart_production
-  username: AgCart
+  database: agcart_production
+  username: agcart
   password: <%= ENV['AGCART_DATABASE_PASSWORD'] %>
