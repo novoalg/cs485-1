@@ -11,10 +11,10 @@ class SessionsController < ApplicationController
     if user && user.authenticate(params[:session][:password])
       session[:user_id] = user.id
       current_user = user
-      flash[:success] = "Welcome, #{user.username}"
+      flash.now[:success] = "Welcome, #{user.username}"
       redirect_to root_path
     else
-      flash[:warning] = "Invalid username/password combination. Please try again."
+      flash.now[:warning] = "Invalid username/password combination. Please try again."
       render 'new'
     end
   end
@@ -22,7 +22,7 @@ class SessionsController < ApplicationController
   def destroy
     session[:user_id] = nil
     current_user = nil
-    flash[:notice] = "Goodbye!"
+    flash.now[:notice] = "Goodbye!"
     redirect_to root_path
   end
 
