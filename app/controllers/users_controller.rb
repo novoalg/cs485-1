@@ -1,9 +1,11 @@
 class UsersController < ApplicationController
+    before_filter :logged_in
 
   def index
   end
 
   def show
+    @user = User.find params[:id]
   end
 
   def new
@@ -29,11 +31,24 @@ class UsersController < ApplicationController
   end
 
   def update
+    @user = User.find params[:id]
+    if @user.update_attributes user_params
+        flash[:success] = "Profile updated successfuly"
+        redirect_to @user
+    else
+        flash[:notice] = @user.errors.full_messages.to_sentence
+        render 'edit'
+    end
   end
 
   private
     
     def user_params
         params.require(:user).permit!
+    end
+
+    def logged_in
+        flash[:notice] = "You don't have permission here"
+        redirect_to root_path unless (current_user.is_admin) || (current_user && current_user.id.to_i == params[:id].to_i)
     end
 end
