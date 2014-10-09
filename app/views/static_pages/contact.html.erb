@@ -1,63 +1,57 @@
 <div class="row"> 
-  <div class="large-9 columns">
-  <h3>Get in Touch!</h3>
-  <p>We'd love to hear from you. You can either reach out to us as a whole and one of our awesome team members will get back to you, or if you have a specific question reach out to one of our staff. We love getting email all day <em>all day</em>.</p>
+  <div class="large-7 columns">
+  <h3>Get In Touch!</h3>
+  <p>We would love to hear from you. You can reach out to us and one of our awesome team members will get back to you as soon as possible.</p>
   <div class="section-container tabs" data-section>
-    <section class="section">
-      <h5 class="title"><a href="#panel1">Contact Our Company</a></h5>
-      <div class="content" data-slug="panel1">
+    <section class="section panel">
+      <h4 class="title"><a href="#panel1"><i class="fa fa-phone"></i> Call Us</a></h4>
+      <h5>715-839-8197</h5>
+    </section>
+    <section class="section panel">
+      <h4 class="title"><a href="#panel2"><i class="fa fa-envelope"></i> Contact Us</a></h4>
+      <div class="content" data-slug="panel2">
         <form>
           <div class="row collapse">
             <div class="large-2 columns">
-              <label class="inline">Your Name</label>
+              <label class="inline">Your Name:</label>
             </div>
             <div class="large-10 columns">
-              <input type="text" id="yourName" placeholder="Jane Smith">
+              <input type="text" id="yourName" placeholder="John Smith">
             </div>
           </div>
           <div class="row collapse">
             <div class="large-2 columns">
-              <label class="inline"> Your Email</label>
+              <label class="inline"> Your Email:</label>
             </div>
             <div class="large-10 columns">
-              <input type="text" id="yourEmail" placeholder="jane@smithco.com">
+              <input type="text" id="yourEmail" placeholder="jsmith@example.com">
             </div>
           </div>
-          <label>What's up?</label>
+          <label>What's on your mind?</label>
           <textarea rows="4"></textarea>
           <button type="submit" class="radius button">Submit</button>
         </form>
-      </div>
-    </section>
-    <section class="section">
-      <h5 class="title"><a href="#panel2">Specific Person</a></h5>
-      <div class="content" data-slug="panel2">
-        <ul class="large-block-grid-5">
-          <li><a href="/cdn-cgi/l/email-protection#6b060a072b180e190e05021f1245090845190e09"><img src="http://placehold.it/200x200&amp;text=[person]">Mal Reynolds</a></li>
-          <li><a href="/cdn-cgi/l/email-protection#641e0b0124170116010a0d101d4a06074a160106"><img src="http://placehold.it/200x200&amp;text=[person]">Zoe Washburne</a></li>
-          <li><a href="/cdn-cgi/l/email-protection#68020911060d281b0d1a0d06011c11460a0b461a0d0a"><img src="http://placehold.it/200x200&amp;text=[person]">Jayne Cobb</a></li>
-          <li><a href="/cdn-cgi/l/email-protection#9afef5f9dae9ffe8fff4f3eee3b4f8f9b4e8fff8"><img src="http://placehold.it/200x200&amp;text=[person]">Simon Tam</a></li>
-          <li><a href="/cdn-cgi/l/email-protection#dcb7b5b0b0a5b3a9abb5a8b4b1a5b1b5b2b89cafb9aeb9b2b5a8a5f2bebff2aeb9be"><img src="http://placehold.it/200x200&amp;text=[person]">River Tam</a></li>
-          <li><a href="/cdn-cgi/l/email-protection#5a363f3b3c35342e323f2d33343e1a293f283f34332e2374383974283f38"><img src="http://placehold.it/200x200&amp;text=[person]">Hoban Washburne</a></li>
-          <li><a href="/cdn-cgi/l/email-protection#573538383c1724322532393e232e79353479253235"><img src="http://placehold.it/200x200&amp;text=[person]">Shepherd Book</a></li>
-          <li><a href="/cdn-cgi/l/email-protection#1a71767f7f5a697f687f74736e6334787934687f78"><img src="http://placehold.it/200x200&amp;text=[person]">Kaywinnet Lee Fry</a></li>
-          <li><a href="/cdn-cgi/l/email-protection#e78e89869586a780928e8b83c984888a97c9868b8b"><img src="http://placehold.it/200x200&amp;text=[person]">Inarra Serra</a></li>
-        </ul>
       </div>
     </section>
   </div>
 </div>
  
  
-<div class="large-3 columns">
+<div class="large-5 columns">
+  <p>
+    <b>Silver & Stones Gallery</b><br/>
+    3006 London Road<br/>
+    Eau Claire, WI 54701
+  </p>
   <h5>Map</h5>
   <p>
-    <a href="" data-reveal-id="mapModal"><img src="http://placehold.it/400x280"></a><br/>
-    <a href="" data-reveal-id="mapModal">View Map</a>
-  </p>
-  <p>
-    123 Awesome St.<br/>
-    Barsoom, MA 95155
+    <a href="" data-reveal-id="mapModal">
+        <div class="google-maps">
+          <iframe width="385" height="280" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?q=3006%20London%20Road%2C%20Eau%20Claire%2C%20WI%2C%20United%20States&key=AIzaSyDbWgQmC_4q4uArjq2Gsc5CLp6FxSj7iIQ"></iframe>
+        </div>
+    </a>
+    <br/>
+    <%= link_to "Get Directions",  "https://www.google.com/maps/dir//3006+London+Rd,+Eau+Claire,+WI+54701/@44.787724,-91.4632049,17z/data=!4m13!1m4!3m3!1s0x87f8bc41d0ef3e2d:0x9bcf24b5ca08aa7b!2s3006+London+Rd,+Eau+Claire,+WI+54701!3b1!4m7!1m0!1m5!1m1!1s0x87f8bc41d0ef3e2d:0x9bcf24b5ca08aa7b!2m2!1d-91.4632049!2d44.787724", :class => "button expand" %>
   </p>
   </div>
 </div>
