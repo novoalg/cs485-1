@@ -13,7 +13,7 @@ Rails.application.routes.draw do
 
   match '/login',   to: 'sessions#new',     via: 'get'
   match '/logout',  to: 'sessions#destroy', via: 'delete'
-  match '/about', to: 'static_pages#about', via: 'get'
+  match '/about',   to: 'static_pages#about', via: 'get'
   match '/contact', to: 'static_pages#contact', via: 'get'
 
   # Example of regular route:
