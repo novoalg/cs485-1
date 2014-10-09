@@ -13,6 +13,7 @@
  *= require_tree .
  *= require_self
  *= require font-awesome
+ *= require slick
  */
 
 /* Override the icon bar styles */
@@ -22,5 +23,4 @@ $icon-bar-image-width: 1.25rem;
 $icon-bar-image-height: 1.25rem;
  
 @import "foundation_and_overrides";
-@import "slick";
 @import url(http://fonts.googleapis.com/css?family=Roboto+Slab:400,700);
