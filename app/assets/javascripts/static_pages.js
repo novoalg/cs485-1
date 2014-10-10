@@ -1,9 +1,9 @@
 $('.welcome-slider').slick({
-  dots: true,
-  infinite: true,
-  slidesToShow: 1,
-  centerMode: true,
-  variableWidth: true,
-  autoplay: true,
-  autoplaySpeed: 5000,
+	dots: true,
+	infinite: true,
+	slidesToShow: 1,
+	centerMode: true,
+	variableWidth: true,
+	autoplay: true,
+	autoplaySpeed: 5000
 });
