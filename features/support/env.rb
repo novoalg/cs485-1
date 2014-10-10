@@ -8,8 +8,9 @@ end
 
 After do |scenario|
   if scenario.failed?
-    browser.screenshot.save 'screenshot.png'
-    embed 'screenshot.png', 'image/png'
+    img_name = "#{Time.now.getutc.to_i}_screenshot.png"
+    browser.screenshot.save "reports/#{img_name}"
+    embed "#{img_name}", 'image/png'
   end
 end
  
