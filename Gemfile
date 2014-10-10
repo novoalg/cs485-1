@@ -52,3 +52,4 @@ gem "paperclip", "~> 4.2"
 # Testing!
 gem "watir-webdriver"
 gem "cucumber"
+gem 'rspec'
