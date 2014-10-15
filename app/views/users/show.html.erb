@@ -1,7 +1,7 @@
 <div class="row">
+  <div class="large-5 columns">
     <h1><%= @user.username %></h1>
     <p><%= link_to "Edit Profile", edit_user_path(@user) %></p>
-    <div class="large-5 columns">
     <h2>Contact</h2>
     <table>
         <thead>
@@ -13,7 +13,7 @@
         <tbody>
             <tr>
                 <td><%= @user.email %></td>
-                <td><%= (@user.home_phone.empty? && @user.work_phone.empty?) ? "no information" :  "#{@user.home_phone} or #{@user.work_phone}" %></td>
+                <td><%= (@user.home_phone.empty? && @user.work_phone.empty?) ? "No Information" :  "#{@user.home_phone} (H) #{@user.work_phone} (W)" %></td>
             </tr>
         </tbody>
     </table>
@@ -29,10 +29,10 @@
         </thead>
         <tbody>
             <tr>
-                <td><%= (@user.last_name.empty? && @user.middle_name.empty? && @user.first_name.empty?) ? "no information" : "#{@user.last_name},#{@user.middle_name} #{@user.first_name}" %></td>
+                <td><%= (@user.last_name.empty? && @user.middle_name.empty? && @user.first_name.empty?) ? "No Information" : "#{@user.last_name},#{@user.middle_name} #{@user.first_name}" %></td>
                 <td><%= @user.address.empty? ? "no information" : @user.address  %></td>
             </tr>
         </tbody>
     </table>
-    </div>
+  </div>
 </div>
