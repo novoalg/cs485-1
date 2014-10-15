@@ -4,35 +4,35 @@
     <p><%= link_to "Edit Profile", edit_user_path(@user) %></p>
     <h2>Contact</h2>
     <table>
-        <thead>
-            <tr>
-                <th>Email</th>
-                <th>Phone</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td><%= @user.email %></td>
-                <td><%= (@user.home_phone.empty? && @user.work_phone.empty?) ? "No Information" :  "#{@user.home_phone} (H) #{@user.work_phone} (W)" %></td>
-            </tr>
-        </tbody>
+      <thead>
+        <tr>
+          <th>Email</th>
+          <th>Phone</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><%= @user.email %></td>
+          <td><%= (@user.home_phone.empty? && @user.work_phone.empty?) ? "No Information" :  "#{@user.home_phone} (H) #{@user.work_phone} (W)" %></td>
+        </tr>
+      </tbody>
     </table>
     </div>
     <div class="large-5 columns">
     <h2>Information</h2>
     <table>
-        <thead>
-            <tr>
-                <th>Name</th>
-                <th>Adress</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td><%= (@user.last_name.empty? && @user.middle_name.empty? && @user.first_name.empty?) ? "No Information" : "#{@user.last_name},#{@user.middle_name} #{@user.first_name}" %></td>
-                <td><%= @user.address.empty? ? "no information" : @user.address  %></td>
-            </tr>
-        </tbody>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Adress</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><%= (@user.last_name.empty? && @user.middle_name.empty? && @user.first_name.empty?) ? "No Information" : "#{@user.last_name},#{@user.middle_name} #{@user.first_name}" %></td>
+          <td><%= @user.address.empty? ? "no information" : @user.address  %></td>
+        </tr>
+      </tbody>
     </table>
   </div>
 </div>

@@ -27,6 +27,16 @@ $header-font-family: "Roboto Slab", "Helvetica", Helvetica, Arial, sans-serif;
 $header-font-weight: 700;
 $paragraph-font-family: "Lato";
 $paragraph-font-size: 1.1rem;
+$button-font-family: "Roboto Slab";
+$button-font-weight: bold;
  
 @import "foundation_and_overrides";
 @import url(http://fonts.googleapis.com/css?family=Roboto+Slab:400,700|Lato:400,700);
+
+.roboto-slab {
+	font-family: "Roboto Slab" !important;
+}
+
+.lato {
+	font-family: "Lato" !important;
+}
