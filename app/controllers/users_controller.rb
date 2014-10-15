@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-    before_filter :logged_in
+  before_filter :logged_in
 
   def index
   end
@@ -15,9 +15,9 @@ class UsersController < ApplicationController
   def create
     @user = User.create user_params
     if @user.save
-        flash.now[:success] = "Welcome #{@user.username}"
         session[:user_id] = @user.id
         current_user = @user
+        flash[:success] = "Welcome #{@user.username}"
         redirect_to root_path
     else
         flash.now[:notice] = @user.errors.full_messages.to_sentence
@@ -33,10 +33,10 @@ class UsersController < ApplicationController
   def update
     @user = User.find params[:id]
     if @user.update_attributes user_params
-        flash.now[:success] = "Profile updated successfuly"
+        flash[:success] = "Profile updated successfuly"
         redirect_to @user
     else
-        flash[:notice] = @user.errors.full_messages.to_sentence
+        flash.now[:notice] = @user.errors.full_messages.to_sentence
         render 'edit'
     end
   end
@@ -48,7 +48,7 @@ class UsersController < ApplicationController
     end
 
     def logged_in
-        flash.now[:notice] = "You don't have permission here"
+        # flash.now[:notice] = "You don't have permission here"
         redirect_to root_path unless (!current_user.nil?) && ((current_user.is_admin) || (current_user && current_user.id.to_i == params[:id].to_i))
     end
 end
