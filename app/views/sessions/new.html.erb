@@ -9,8 +9,8 @@
 <div class="row">
   <div class="small-12 medium-6 columns small-centered">
     <%= form_for(:session, url: sessions_path) do |f| %>
-      <%= f.text_field "username", id: "username", placeholder: "Username", class: "text-center roboto-slab", style: "font-size:1rem;" %>
-      <%= f.password_field "password", id: "password", placeholder: "Password", class: "text-center roboto-slab", style: "font-size:1rem;" %>
+      <%= f.text_field "username", id: "username", placeholder: "Username" %>
+      <%= f.password_field "password", id: "password", placeholder: "Password" %>
       <%= f.submit "Log In", class: "button expand", id: "login" %>
   <% end %>
   </div>
