@@ -1,9 +1,9 @@
 Feature: User Modification
 
 Scenario: Create User
-    Given I am on the new user page
-        And I am logged in
-    When I fill in user details
+    Given I am logged in 
+    When I go to the new user page
+        And I fill in user details
         And I click submit
     Then I should see a confirmation message
 

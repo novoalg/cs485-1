@@ -19,6 +19,8 @@ When(/^I go to the (.*?) page$/) do | page |
       @browser.goto "#{root}/contact"
     when /login/
       @browser.goto "#{root}/login"
+    when /new user/
+      @browser.goto "#{root}/users/new"
   end
 end
 

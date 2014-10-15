@@ -1,3 +1,14 @@
+Given(/^I am logged in$/) do
+  unless @browser.link(id: "logout").exists?
+    steps %Q{
+      Given I am on the login page
+      When I enter username admin
+      When I enter password admin
+      When I click the login link
+    }
+  end
+end
+
 Given(/^I am logged out$/) do
   if @browser.link(id: "logout").exists?
     @browser.link(id: "logout").click
