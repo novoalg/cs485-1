@@ -6,8 +6,11 @@
       <div class="row">
         <div class="small-6 columns">
           <%= form.label :username %>
-          <%= form.text_field :username %>
-          
+          <% if @change_username %>
+            <%= form.text_field :username %>
+          <% else %>
+            <%= form.text_field :username, disabled: "disabled" %>
+          <% end %>
           <%= form.label :password %>
           <%= form.password_field :password %>
         </div>
