@@ -21,8 +21,8 @@ Scenario: Edit User
     Then I should see the updated user details
 
 Scenario: Delete User
-    Given I am on the user page
-        And I am logged in
+    Given I am logged in
+        And I am on the user page
     When I click the delete profile button
     Then I should see the home page
         And The user should no longer exist

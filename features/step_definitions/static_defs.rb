@@ -47,6 +47,8 @@ When(/^I click the (.*?) button$/) do | button |
       @browser.button(id: "submit").click
     when /edit profile/
       @browser.link(id: "edit-profile").click
+    when /delete user/
+      @browser.link(id: "delete-user").click
   end
 end
 
