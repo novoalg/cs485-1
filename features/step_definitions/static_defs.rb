@@ -56,5 +56,7 @@ When(/^I click the (.*?) button$/) do | button |
       @browser.link(id: "get-directions").click
     when /login/
       @browser.button(id: "login").click
+    when /submit/
+      @browser.button(id: "submit").click
   end
 end

@@ -4,7 +4,7 @@ Scenario: Create User
     Given I am logged in 
     When I go to the new user page
         And I fill in user details
-        And I click submit
+        And I click the submit button
     Then I should see a confirmation message
 
 Scenario: View User
@@ -17,7 +17,7 @@ Scenario: Edit User
         And I am logged in
     When I click the edit profile button
         And I change my name
-        And I click submit
+        And I click the submit button
     Then I should see the updated user details
 
 Scenario: Delete User
