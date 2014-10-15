@@ -11,7 +11,7 @@ Scenario Outline: Login Success
     When I enter username <username>
         And I enter password <password>
         And I click the login button
-    Then I should see the welcome message
+    Then I should see a success message
     Examples: 
         | username | password |
         | admin    | admin    |
@@ -21,7 +21,7 @@ Scenario Outline: Login Failure
     When I enter username <username>
         And I enter password <password>
         And I click the login button
-    Then I should see the failure message
+    Then I should see a failure message
     Examples: 
         | username | password |
         | admin    | blahblah |

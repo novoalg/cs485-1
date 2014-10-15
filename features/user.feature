@@ -5,16 +5,16 @@ Scenario: Create User
     When I go to the new user page
         And I fill in user details
         And I click the submit button
-    Then I should see a confirmation message
+    Then I should see a success message
 
 Scenario: View User
-    Given I am on the user page
-        And I am logged in
+    Given I am logged in 
+        And I am on the user page
     Then I should see the user details
 
 Scenario: Edit User
-    Given I am on the user page
-        And I am logged in
+    Given I am logged in
+        And I am on the user page
     When I click the edit profile button
         And I change my name
         And I click the submit button
