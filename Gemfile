@@ -1,6 +1,5 @@
 source 'https://rubygems.org'
 
-
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.6'
 # Use mysql as the database for Active Record
@@ -50,6 +49,9 @@ gem 'font-awesome-rails', '~> 4.2.0'
 gem "paperclip", "~> 4.2"
 
 # Testing!
+group :test do
+  gem "watir-rails"
+end
 gem "watir-webdriver"
 gem "cucumber"
 gem 'rspec'
