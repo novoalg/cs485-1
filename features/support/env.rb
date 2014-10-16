@@ -1,5 +1,6 @@
 require 'watir-webdriver'
 require 'rspec'
+require 'securerandom'
 
 browser = Watir::Browser.new :firefox
 

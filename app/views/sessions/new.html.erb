@@ -1,11 +1,17 @@
-<div class="small-5 columns small-centered">
-  <%= form_for(:session, url: sessions_path) do |f| %>
-    <%= f.label "username" %>
-    <%= f.text_field "username", id: "username" %>
+<br />
 
-    <%= f.label "password"%>
-    <%= f.password_field "password", id: "password" %>
+<div class="row">
+  <div class="small-12 medium-6 columns small-centered text-center">
+    <h3>Please Log In</h3>
+  </div>
+</div>
 
-    <%= f.submit "Login", class: "button expand", id: "login" %>
-<% end %>
+<div class="row">
+  <div class="small-12 medium-6 columns small-centered">
+    <%= form_for(:session, url: sessions_path) do |f| %>
+      <%= f.text_field "username", id: "username", placeholder: "Username" %>
+      <%= f.password_field "password", id: "password", placeholder: "Password" %>
+      <%= f.submit "Log In", class: "button expand", id: "login" %>
+  <% end %>
+  </div>
 </div>

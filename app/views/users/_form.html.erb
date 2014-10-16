@@ -1,11 +1,38 @@
-<div class="large-5 columns">
-    <%= form_for @user do |form| %>
-        <%= form.label :username %>
-        <%= form.text_field :username %>
+<%= form_for @user do |form| %>
+<div class="row">
+  <div class="small-12 columns">
+    <fieldset>
+      <legend>Web Info</legend>
+      <div class="row">
+        <div class="small-6 columns">
+          <%= form.label :username %>
+          <% if @change_username %>
+            <%= form.text_field :username %>
+          <% else %>
+            <%= form.text_field :username, disabled: "disabled" %>
+          <% end %>
+        </div>
+        <div class="small-6 columns">
+          <%= form.label :email %>
+          <%= form.text_field :email %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="small-6 columns">
+          <%= form.label :password %>
+          <%= form.password_field :password %>
+        </div>
+        <div class="small-6 columns">
+          <%= form.label :password_confirmation %>
+          <%= form.password_field :password_confirmation %>
+        </div>
+      </div>
+    </fieldset>
 
-        <%= form.label :email %>
-        <%= form.text_field :email %>
-
+    <fieldset>
+      <legend>Contact Information</legend>
+      <div class="row">
+      <div class="small-6 columns">
         <%= form.label :first_name %>
         <%= form.text_field :first_name %>
 
@@ -14,8 +41,8 @@
 
         <%= form.label :last_name %>
         <%= form.text_field :last_name %>
-</div>
-<div class="large-5 columns">
+      </div>
+      <div class="small-6 columns">
         <%= form.label :home_phone %>
         <%= form.text_field :home_phone %>
 
@@ -24,14 +51,10 @@
 
         <%= form.label :address %>
         <%= form.text_field :address %>
+      </div>
+    </fieldset>
 
-        <%= form.label :password %>
-        <%= form.password_field :password %>
-
-        <%= form.label :password_confirmation %>
-        <%= form.password_field :password_confirmation %>
-
-        <%= form.submit "Submit" %>
+    <%= form.submit "Submit", class: "button expand", id: "submit" %>
+  </div>
 </div>
-    <% end %>
-</div>
+<% end %>

@@ -19,10 +19,10 @@ default: &default
 
 development:
   <<: *default
-  host: 104.131.126.124
-  username: agcart
-  password: BYaLKRm47yarA5w
   database: agcart_development
+  host: <%= Rails.application.secrets[:database][:host] %>
+  username: <%= Rails.application.secrets[:database][:username] %>
+  password: <%= Rails.application.secrets[:database][:password] %>
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -30,6 +30,9 @@ development:
 test:
   <<: *default
   database: agcart_test
+  host: <%= Rails.application.secrets[:database][:host] %>
+  username: <%= Rails.application.secrets[:database][:username] %>
+  password: <%= Rails.application.secrets[:database][:password] %>
 
 # As with config/secrets.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
