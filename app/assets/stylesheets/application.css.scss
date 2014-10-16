@@ -30,6 +30,7 @@ $paragraph-font-size: 1.1rem;
 $button-font-family: "Roboto Slab";
 $button-font-weight: bold;
 $input-font-family: "Roboto Slab";
+$body-bg: transparent;
  
 @import "foundation_and_overrides";
 @import url(http://fonts.googleapis.com/css?family=Roboto+Slab:400,700|Lato:400,700);
@@ -40,4 +41,15 @@ $input-font-family: "Roboto Slab";
 
 .lato {
 	font-family: "Lato" !important;
+}
+
+.soft {
+	background-color: rgba(255, 255, 255, 0.65) !important;
+}
+
+body {
+	background: url('http://portfolios.chuckhaney.com/data/photos/503_1tr_north_unit_053_copy.jpg');
+	background-attachment: fixed;
+	background-position: center; 
+	background-size: cover;
 }
