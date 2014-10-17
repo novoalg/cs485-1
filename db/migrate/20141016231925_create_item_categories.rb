@@ -6,8 +6,8 @@ class CreateItemCategories < ActiveRecord::Migration
 
       t.timestamps
     end
+
+    add_index :item_categories, :name, unique: true
+
   end
-
-  add_index :item_categories, :name, unique: true
-
 end
