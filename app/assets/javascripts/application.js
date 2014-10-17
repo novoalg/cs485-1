@@ -14,7 +14,7 @@
 //= require jquery_ujs
 //= require foundation
 //= require turbolinks
-//= require slick
+//= require slippry
 //= require_tree .
 
 $(function(){ $(document).foundation(); });

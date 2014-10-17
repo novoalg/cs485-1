@@ -1,9 +1,7 @@
-$('.welcome-slider').slick({
-	dots: true,
-	infinite: true,
-	slidesToShow: 1,
-	centerMode: true,
-	variableWidth: true,
-	autoplay: true,
-	autoplaySpeed: 5000
+jQuery('#welcome-slider').slippry({
+    slippryWrapper: '<div class="sy-box portfolio-slider" />', // wrapper to wrap everything, including pager
+    transition: 'horizontal', // fade, horizontal, kenburns, false
+    auto: true,
+    captions: false, 
+    pager: false
 });

@@ -13,7 +13,6 @@
  *= require_tree .
  *= require_self
  *= require font-awesome
- *= require slick
  */
 
 /* Override the icon bar styles */
@@ -25,15 +24,18 @@ $icon-bar-image-height: 1.25rem;
 /* Override fonts */
 $header-font-family: "Roboto Slab", "Helvetica", Helvetica, Arial, sans-serif;
 $header-font-weight: 700;
-$paragraph-font-family: "Lato";
+$paragraph-font-family: "Lato", "Helvetica", Helvetica, Arial, sans-serif;
 $paragraph-font-size: 1.1rem;
-$button-font-family: "Roboto Slab";
+$button-font-family: "Roboto Slab", "Helvetica", Helvetica, Arial, sans-serif;
 $button-font-weight: bold;
-$input-font-family: "Roboto Slab";
+$input-font-family: "Roboto Slab", "Helvetica", Helvetica, Arial, sans-serif;
 $body-bg: transparent;
  
 @import "foundation_and_overrides";
+@import "slippry";
 @import url(http://fonts.googleapis.com/css?family=Roboto+Slab:400,700|Lato:400,700);
+
+/* CSS Overrides */
 
 .roboto-slab {
 	font-family: "Roboto Slab" !important;
@@ -44,7 +46,7 @@ $body-bg: transparent;
 }
 
 .soft {
-	background-color: rgba(255, 255, 255, 0.65) !important;
+	background-color: rgba(255, 255, 255, 0.75);
 }
 
 body {
