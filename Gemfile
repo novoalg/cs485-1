@@ -54,5 +54,3 @@ end
 gem "watir-webdriver"
 gem "cucumber"
 gem 'rspec'
-
-# Extra comment in the gemfile
