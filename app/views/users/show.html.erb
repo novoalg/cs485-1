@@ -2,9 +2,7 @@
   <div class="large-5 columns">
     <h1><%= @user.username %></h1>
     <p><%= link_to "Edit Profile", edit_user_path(@user), class: "button expand", id: "edit-profile" %></p>
-    <% if @user.id != 1 %>
-      <p><%= link_to "Delete User", @user, method: :delete, data: { confirm: "You sure?" }, class: "button alert expand", id: "delete-user" %></p>
-    <% end %>
+    <p><%= link_to "Delete User", @user, method: :delete, data: { confirm: "You sure?" }, class: "button alert expand", id: "delete-user" %></p>
     <h2>Contact</h2>
     <table>
       <thead>
