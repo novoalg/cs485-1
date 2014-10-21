@@ -30,13 +30,17 @@ $button-font-family: "Roboto Slab", "Helvetica", Helvetica, Arial, sans-serif;
 $button-font-weight: bold;
 $input-font-family: "Roboto Slab", "Helvetica", Helvetica, Arial, sans-serif;
 $body-bg: transparent;
- 
+
+/* Center text in input forms */
+input{
+   text-align:center;
+}
+
 @import "foundation_and_overrides";
 @import "slippry";
 @import url(http://fonts.googleapis.com/css?family=Roboto+Slab:400,700|Lato:400,700);
 
-/* CSS Overrides */
-
+/* CSS */
 .roboto-slab {
 	font-family: "Roboto Slab" !important;
 }
