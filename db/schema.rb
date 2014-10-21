@@ -32,9 +32,9 @@ ActiveRecord::Schema.define(version: 20141021182743) do
   end
 
   create_table "users", force: true do |t|
-    t.string   "username",        null: false
-    t.string   "email",           null: false
-    t.string   "password_digest", null: false
+    t.string   "username",                        null: false
+    t.string   "email",                           null: false
+    t.string   "password_digest",                 null: false
     t.string   "first_name"
     t.string   "middle_name"
     t.string   "last_name"
@@ -44,7 +44,7 @@ ActiveRecord::Schema.define(version: 20141021182743) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "is_admin"
-    t.boolean  "can_send_emails"
+    t.boolean  "can_send_emails", default: false, null: false
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
