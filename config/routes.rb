@@ -17,10 +17,11 @@ Rails.application.routes.draw do
   resources :items
   resources :item_categories
 
-  match '/login',   to: 'sessions#new',     via: 'get'
-  match '/logout',  to: 'sessions#destroy', via: 'delete'
-  match '/about',   to: 'static_pages#about', via: 'get'
-  match '/contact', to: 'static_pages#contact', via: 'get'
+  match '/login',     to: 'sessions#new',     via: 'get'
+  match '/logout',    to: 'sessions#destroy', via: 'delete'
+  match '/about',     to: 'static_pages#about', via: 'get'
+  match '/contact',   to: 'static_pages#contact', via: 'get'
+  match '/inventory', to: 'inventory#index', via: 'get'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
