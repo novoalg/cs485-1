@@ -19,7 +19,7 @@
         <%= render "layouts/header" %>
 
         <% flash.each do |type, message| %>
-          <div class="alert-box <%= type %>"><%= message %></div>
+          <div class="alert-box <%= type %> text-center flash"><%= message %></div>
         <% end %>
 
         <%= yield %>
