@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   resources :users
   resources :sessions, :only => [:new, :create, :destroy]
   resources :items
+  match '/toggle_activeness/:id', to: 'items#toggle_activeness', via: 'get'
   resources :item_categories
 
   match '/login',     to: 'sessions#new',     via: 'get'

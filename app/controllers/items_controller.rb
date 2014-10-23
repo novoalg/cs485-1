@@ -3,7 +3,8 @@ class ItemsController < ApplicationController
 
   # GET /items
   def index
-    @items = Item.all
+    @active_items = Item.active
+    @inactive_items = Item.inactive
   end
 
   # GET /items/1
@@ -22,7 +23,8 @@ class ItemsController < ApplicationController
   # POST /items
   def create
     @item = Item.new(item_params)
-
+    @item.is_deleted = false
+    
     respond_to do |format|
       if @item.save
         format.html { redirect_to @item, notice: 'Item was successfully created.' }
@@ -37,7 +39,7 @@ class ItemsController < ApplicationController
   # PATCH/PUT /items/1
   def update
     respond_to do |format|
-      if @item.update(item_params)
+      if @item.update_attributes(item_params)
         format.html { redirect_to @item, notice: 'Item was successfully updated.' }
         format.json { render :show, status: :ok, location: @item }
       else
@@ -49,10 +51,31 @@ class ItemsController < ApplicationController
 
   # DELETE /items/1
   def destroy
-    @item.destroy
+    @item.destroy_item
+    @item.save(:validate => false)
     respond_to do |format|
       format.html { redirect_to items_url, notice: 'Item was successfully destroyed.' }
       format.json { head :no_content }
+    end
+  end
+
+  def toggle_activeness
+    item = Item.find(params[:id])
+    if item.active?
+        item.active = false
+    else
+        item.active = true
+    end
+    if item.save(:validate=>false)
+        respond_to do |format|
+            format.html { redirect_to items_path, :success => "Item was #{item.active? ? "activated" : "deactivated"}" }
+            format.json { head :no_content }
+        end
+    else
+        respond_to do |format|
+            format.html { redirect_to items_path, :error => "An error has occured." }
+            format.json { head :no_content }
+        end
     end
   end
 
@@ -64,6 +87,6 @@ class ItemsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def item_params
-      params[:item]
+      params.require(:item).permit!
     end
 end
