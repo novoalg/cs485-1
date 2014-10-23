@@ -1,0 +1,13 @@
+<%= form_for(@item_category) do |f| %>
+  <div class="row">
+    <div class="small-12 medium-6 small-centered columns ">
+      <%= f.label :name %>
+      <%= f.text_field :name, id: "name" %>
+
+      <%= f.label :description %>
+      <%= f.text_area :description, id: "description", rows: 5 %>
+
+      <%= f.submit "Submit", class: "button expand" %>
+    </div>
+  </div>
+<% end %>

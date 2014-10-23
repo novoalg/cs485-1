@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  resources :item_categories
+
+  resources :items
+
   get 'static_pages/index'
 
   # The priority is based upon order of creation: first created -> highest priority.
@@ -10,11 +14,14 @@ Rails.application.routes.draw do
 
   resources :users
   resources :sessions, :only => [:new, :create, :destroy]
+  resources :items
+  resources :item_categories
 
-  match '/login',   to: 'sessions#new',     via: 'get'
-  match '/logout',  to: 'sessions#destroy', via: 'delete'
-  match '/about',   to: 'static_pages#about', via: 'get'
-  match '/contact', to: 'static_pages#contact', via: 'get'
+  match '/login',     to: 'sessions#new',     via: 'get'
+  match '/logout',    to: 'sessions#destroy', via: 'delete'
+  match '/about',     to: 'static_pages#about', via: 'get'
+  match '/contact',   to: 'static_pages#contact', via: 'get'
+  match '/inventory', to: 'inventory#index', via: 'get'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

@@ -11,12 +11,30 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141009223636) do
+ActiveRecord::Schema.define(version: 20141021182743) do
+
+  create_table "item_categories", force: true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "item_categories", ["name"], name: "index_item_categories_on_name", unique: true, using: :btree
+
+  create_table "items", force: true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.decimal  "price",       precision: 8, scale: 2
+    t.integer  "in_stock"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", force: true do |t|
-    t.string   "username",        null: false
-    t.string   "email",           null: false
-    t.string   "password_digest", null: false
+    t.string   "username",                        null: false
+    t.string   "email",                           null: false
+    t.string   "password_digest",                 null: false
     t.string   "first_name"
     t.string   "middle_name"
     t.string   "last_name"
@@ -26,6 +44,7 @@ ActiveRecord::Schema.define(version: 20141009223636) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "is_admin"
+    t.boolean  "can_send_emails", default: false, null: false
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

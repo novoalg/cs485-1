@@ -1,0 +1,11 @@
+<div class="row text-center">
+  <div class="small-12 columns">
+    <h1>Editing Item Category</h1>
+    <h4 class="subheader"><%= @item_category.name %></h4>
+  </div>
+</div>
+
+<%= render 'form' %>
+
+<%= link_to 'Show', @item_category %> |
+<%= link_to 'Back', item_categories_path %>
