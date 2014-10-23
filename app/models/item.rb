@@ -15,4 +15,10 @@ class Item < ActiveRecord::Base
     validates_presence_of :is_deleted
     validates_presence_of :active
 
+    scope :active, -> { where(:active => true, :is_deleted => false) }
+    scope :inactive, -> { where(:active => false, :is_deleted => false) }
+
+    def destroy_item
+        self.is_deleted = true
+    end
 end

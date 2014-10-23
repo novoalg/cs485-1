@@ -3,7 +3,8 @@ class ItemsController < ApplicationController
 
   # GET /items
   def index
-    @items = Item.all
+    @active_items = Item.active
+    @inactive_items = Item.inactive
   end
 
   # GET /items/1
@@ -50,10 +51,31 @@ class ItemsController < ApplicationController
 
   # DELETE /items/1
   def destroy
-    @item.destroy
+    @item.destroy_item
+    @item.save(:validate => false)
     respond_to do |format|
       format.html { redirect_to items_url, notice: 'Item was successfully destroyed.' }
       format.json { head :no_content }
+    end
+  end
+
+  def toggle_activeness
+    item = Item.find(params[:id])
+    if item.active?
+        item.active = false
+    else
+        item.active = true
+    end
+    if item.save(:validate=>false)
+        respond_to do |format|
+            format.html { redirect_to items_path, :success => "Item was #{item.active? ? "activated" : "deactivated"}" }
+            format.json { head :no_content }
+        end
+    else
+        respond_to do |format|
+            format.html { redirect_to items_path, :error => "An error has occured." }
+            format.json { head :no_content }
+        end
     end
   end
 

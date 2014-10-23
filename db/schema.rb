@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141023212934) do
+ActiveRecord::Schema.define(version: 20141023220918) do
 
   create_table "item_categories", force: true do |t|
     t.string   "name"
@@ -48,6 +48,7 @@ ActiveRecord::Schema.define(version: 20141023212934) do
     t.datetime "updated_at"
     t.boolean  "is_admin"
     t.boolean  "can_send_emails", default: false, null: false
+    t.integer  "role_id"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

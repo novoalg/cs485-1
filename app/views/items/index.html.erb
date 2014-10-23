@@ -1,4 +1,4 @@
-<h1>Item List</h1>
+<h1>Active Item List</h1>
 
 <table>
   <thead>
@@ -13,7 +13,7 @@
   </thead>
 
   <tbody>
-    <% @items.each do |item| %>
+    <% @active_items.each do |item| %>
       <tr>
         <td><%= item.name %></td>
         <td><%= item.description %></td>
@@ -21,7 +21,39 @@
         <td><%= item.in_stock %></td>
         <td><%= link_to 'Show', item %></td>
         <td><%= link_to 'Edit', edit_item_path(item) %></td>
-        <td><%= link_to 'Destroy', item, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Deactivate', controller: "items", :action => "toggle_activeness", :id => item  %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<h1>Inactive Item List</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th >Name</th>
+      <th >Description</th>
+      <th >Price</th>
+      <th >Stock</th>
+      <th colspan="4">Actions</th>
+
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @inactive_items.each do |item| %>
+      <tr>
+        <td><%= item.name %></td>
+        <td><%= item.description %></td>
+        <td><%= item.price %></td>
+        <td><%= item.in_stock %></td>
+        <td><%= link_to 'Show', item %></td>
+        <td><%= link_to 'Edit', edit_item_path(item) %></td>
+        <td><%= link_to 'Activate', controller: "items", :action => "toggle_activeness", :id => item  %></td>
+        <td><b><%= link_to 'Destroy', item, method: :delete, data: { confirm: 'Are you sure?' } %></b></td>
       </tr>
     <% end %>
   </tbody>
