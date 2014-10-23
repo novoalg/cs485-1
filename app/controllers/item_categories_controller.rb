@@ -8,6 +8,7 @@ class ItemCategoriesController < ApplicationController
 
   # GET /item_categories/1
   def show
+    @item_category = ItemCategory.find(params[:id])
   end
 
   # GET /item_categories/new
