@@ -44,9 +44,14 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    User.find(params[:id]).destroy
-    flash[:success] = "User was successfully destroyed."
-    redirect_to root_path
+    unless params[:id] == '1'
+      User.find(params[:id]).destroy
+      flash[:success] = "User was successfully destroyed."
+      redirect_to root_path
+    else 
+      flash[:alert] = "Unable to delete sysadmin user."
+      redirect_to User.find(params[:id])
+    end
   end
 
   private

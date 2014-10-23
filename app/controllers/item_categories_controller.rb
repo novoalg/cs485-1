@@ -2,14 +2,13 @@ class ItemCategoriesController < ApplicationController
   before_action :set_item_category, only: [:show, :edit, :update, :destroy]
 
   # GET /item_categories
-  # GET /item_categories.json
   def index
     @item_categories = ItemCategory.all
   end
 
   # GET /item_categories/1
-  # GET /item_categories/1.json
   def show
+    @item_category = ItemCategory.find(params[:id])
   end
 
   # GET /item_categories/new
@@ -22,7 +21,6 @@ class ItemCategoriesController < ApplicationController
   end
 
   # POST /item_categories
-  # POST /item_categories.json
   def create
     @item_category = ItemCategory.new(item_category_params)
 
@@ -38,7 +36,6 @@ class ItemCategoriesController < ApplicationController
   end
 
   # PATCH/PUT /item_categories/1
-  # PATCH/PUT /item_categories/1.json
   def update
     respond_to do |format|
       if @item_category.update(item_category_params)
@@ -52,7 +49,6 @@ class ItemCategoriesController < ApplicationController
   end
 
   # DELETE /item_categories/1
-  # DELETE /item_categories/1.json
   def destroy
     @item_category.destroy
     respond_to do |format|
@@ -69,6 +65,6 @@ class ItemCategoriesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def item_category_params
-      params[:item_category]
+      params.require(:item_category).permit(:name, :description)
     end
 end
