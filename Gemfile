@@ -52,5 +52,5 @@ group :test do
   gem "watir-rails"
 end
 gem "watir-webdriver"
-gem "cucumber"
 gem 'rspec'
+gem 'capybara'
