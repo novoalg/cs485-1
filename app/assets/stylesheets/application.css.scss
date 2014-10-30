@@ -30,13 +30,20 @@ $button-font-family: "Roboto Slab", "Helvetica", Helvetica, Arial, sans-serif;
 $button-font-weight: bold;
 $input-font-family: "Roboto Slab", "Helvetica", Helvetica, Arial, sans-serif;
 $body-bg: transparent;
- 
+
+/* Override default foundation colors */
+$primary-color: #336699; /* Darker Blue */
+$secondary-color: #e7e7e7; /* Lilac White */
+$alert-color: #b22222; /* Brick Red */
+$success-color: #006400; /* Vibrant Green */
+$warning-color: #dd7500; /* Orange */
+$info-color: #a0d3e8; /* Teal */
+
 @import "foundation_and_overrides";
 @import "slippry";
 @import url(http://fonts.googleapis.com/css?family=Roboto+Slab:400,700|Lato:400,700);
 
-/* CSS Overrides */
-
+/* CSS */
 .roboto-slab {
 	font-family: "Roboto Slab" !important;
 }
@@ -47,6 +54,12 @@ $body-bg: transparent;
 
 .soft {
 	background-color: rgba(255, 255, 255, 0.75);
+}
+
+.flash {
+	font-family: "Roboto Slab";
+	font-size: 1.2em;
+	font-weight: normal;
 }
 
 body {
