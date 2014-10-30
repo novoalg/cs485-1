@@ -21,7 +21,7 @@ module SessionsHelper
   end
   
   def employee?
-      current_user.role_id > 1
+      current_user.role_id > 0
   end
 
 
