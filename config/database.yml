@@ -19,20 +19,24 @@ default: &default
 
 development:
   <<: *default
+  <% if Rails.env.development? %>
   database: agcart_development
-  host: <%= Rails.application.secrets[:database][:host] %>
-  username: <%= Rails.application.secrets[:database][:username] %>
-  password: <%= Rails.application.secrets[:database][:password] %>
+  host: <%= Rails.application.secrets.database[:host] %>
+  username: <%= Rails.application.secrets.database[:username] %>
+  password: <%= Rails.application.secrets.database[:password] %>
+  <% end %>
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
 test:
   <<: *default
+  <% if Rails.env.test? %>
   database: agcart_test
-  host: <%= Rails.application.secrets[:database][:host] %>
-  username: <%= Rails.application.secrets[:database][:username] %>
-  password: <%= Rails.application.secrets[:database][:password] %>
+  host: <%= Rails.application.secrets.database[:host] %>
+  username: <%= Rails.application.secrets.database[:username] %>
+  password: <%= Rails.application.secrets.database[:password] %>
+  <% end %>
 
 # As with config/secrets.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
@@ -55,6 +59,8 @@ test:
 #
 production:
   <<: *default
+  <% if Rails.env.production? %>
   database: agcart_production
   username: agcart
   password: <%= ENV['AGCART_DATABASE_PASSWORD'] %>
+  <% end %>
