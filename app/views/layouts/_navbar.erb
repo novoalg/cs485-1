@@ -1,0 +1,45 @@
+<nav class="top-bar" data-topbar role="navigation">
+
+  <ul class="title-area">
+    <li class="name">
+      <h1><%= link_to "Silver & Stones", root_path %></h1>
+    </li>
+    <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
+  </ul>
+
+  <section class="top-bar-section">
+    <!-- Right Nav Section -->
+    <ul class="right">
+      <li class="has-dropdown">
+        <%= link_to item_categories_path do %>
+          <i class="fa fa-folder-open"></i>&emsp;Item Categories
+        <% end %>
+        <ul class="dropdown">
+          <li>
+            <%= link_to new_item_category_path do %>
+              <i class="fa fa-plus"></i>&emsp;New Item Category
+            <% end %>
+          </li>
+        </ul>
+      </li>
+      <li class="has-dropdown">
+        <%= link_to items_path do %>
+          <i class="fa fa-gift"></i>&emsp;Items
+        <% end %>
+        <ul class="dropdown">
+          <li>
+            <%= link_to new_item_path do %>
+              <i class="fa fa-plus"></i>&emsp;New Item
+            <% end %>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <%= link_to users_path do %>
+          <i class="fa fa-group"></i>&emsp;Users
+        <% end %>
+      </li>
+    </ul>
+  </section>
+
+</nav>

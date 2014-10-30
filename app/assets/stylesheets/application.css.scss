@@ -22,15 +22,18 @@ $icon-bar-image-width: 1.25rem;
 $icon-bar-image-height: 1.25rem;
 
 /* Override fonts */
-$header-font-family: "Rochester", "Helvetica", Helvetica, Arial, sans-serif;
-$header-font-weight: 700;
+$header-font-family: "Lobster", "Helvetica", Helvetica, Arial, sans-serif;
+$header-font-weight: 500;
 $paragraph-font-family: "Quicksand", "Helvetica", Helvetica, Arial, sans-serif;
 $paragraph-font-size: 1.1rem;
 $button-font-family: "Quicksand", "Helvetica", Helvetica, Arial, sans-serif;
 $button-font-weight: bold;
 $input-font-size: 1.2rem;
 $input-font-family: "Quicksand", "Helvetica", Helvetica, Arial, sans-serif;
+
 $body-bg: transparent;
+$body-font-family: "Quicksand";
+
 
 /* Override default foundation colors */
 $primary-color: #336699; /* Darker Blue */
@@ -42,13 +45,9 @@ $info-color: #a0d3e8; /* Teal */
 
 @import "foundation_and_overrides";
 @import "slippry";
-@import url(http://fonts.googleapis.com/css?family=Rochester|Quicksand);
+@import url(http://fonts.googleapis.com/css?family=Lobster|Quicksand);
 
 /* CSS */
-
-* {
-	font-family: "Quicksand", "Helvetica", Arial, sans-serif;
-}
 
 .soft {
 	background-color: rgba(255, 255, 255, 0.75);
