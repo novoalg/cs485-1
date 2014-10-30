@@ -21,7 +21,19 @@ module SessionsHelper
   end
   
   def employee?
-      current_user.role_id > 0
+    current_user.role_id > 0
+  end
+
+  def edit? 
+    current_user.role_id > 1
+  end
+
+  def add?
+    current_user.role_id > 2
+  end
+
+  def delete?
+    current_user.role_id > 3
   end
 
 
