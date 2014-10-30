@@ -26,9 +26,10 @@ $header-font-family: "Rochester", "Helvetica", Helvetica, Arial, sans-serif;
 $header-font-weight: 700;
 $paragraph-font-family: "Quicksand", "Helvetica", Helvetica, Arial, sans-serif;
 $paragraph-font-size: 1.1rem;
-$button-font-family: "Rochester", "Helvetica", Helvetica, Arial, sans-serif;
+$button-font-family: "Quicksand", "Helvetica", Helvetica, Arial, sans-serif;
 $button-font-weight: bold;
-$input-font-family: "Rochester", "Helvetica", Helvetica, Arial, sans-serif;
+$input-font-size: 1.2rem;
+$input-font-family: "Quicksand", "Helvetica", Helvetica, Arial, sans-serif;
 $body-bg: transparent;
 
 /* Override default foundation colors */
@@ -44,6 +45,11 @@ $info-color: #a0d3e8; /* Teal */
 @import url(http://fonts.googleapis.com/css?family=Rochester|Quicksand);
 
 /* CSS */
+
+* {
+	font-family: "Quicksand", "Helvetica", Arial, sans-serif;
+}
+
 .soft {
 	background-color: rgba(255, 255, 255, 0.75);
 }
