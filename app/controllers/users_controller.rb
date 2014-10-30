@@ -1,8 +1,7 @@
 class UsersController < ApplicationController
   before_filter :logged_in, :except => [:new, :create]
-  before_filter :role_one, :only => [:show]
-  before_filter :role_two, :only => [:index]
-  before_filter :role_three, :only => [:edit, :update]
+  before_filter :role_zero, :only => [:show]
+  before_filter :role_one, :only => [:index]
   before_filter :role_four, :only => [:destroy]
 
   def index
@@ -21,7 +20,7 @@ class UsersController < ApplicationController
 
   def create
     @user = User.create user_params
-    @user.role_id = 1
+    @user.role_id = 0
     if @user.save
       session[:user_id] = @user.id
       current_user = @user
@@ -68,7 +67,7 @@ class UsersController < ApplicationController
     end
 
     def logged_in
-      unless (!current_user.nil?) && ((current_user.is_admin) || (current_user && current_user.id.to_i == params[:id].to_i))
+      unless current_user && (current_user.id.to_i == params[:id].to_i || current_user.role_id > 1)
         flash[:notice] = "You don't have permission to the page you tried to access."
         redirect_to root_path
       end 
