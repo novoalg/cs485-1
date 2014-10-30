@@ -11,8 +11,8 @@ class SessionsController < ApplicationController
       flash[:success] = "Welcome, #{user.username}"
       redirect_to root_path
     else
-      flash.now[:warning] = "Invalid username/password combination. Please try again."
-      render 'new'
+      flash[:warning] = "Invalid username/password combination. Please try again."
+      redirect_to root_path
     end
   end
 
