@@ -25,7 +25,7 @@ class ApplicationController < ActionController::Base
     end
 
     def role_three
-        unless (current_user && current_user.role_id >= 3) || (current_user.id.to_i == params[:id].to_i)
+        unless (current_user && current_user.role_id >= 3) 
             flash[:notice] = "You don't have permission to the page you tried to access."
             redirect_to root_path
         end
