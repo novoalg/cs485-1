@@ -1,7 +1,13 @@
 class UsersController < ApplicationController
-  before_filter :logged_in
+  before_filter :logged_in, :except => [:new, :create]
+  before_filter :role_one, :only => [:show]
+  before_filter :role_two, :only => [:index]
+  before_filter :role_three, :only => [:edit, :update]
+  before_filter :role_four, :only => [:destroy]
 
   def index
+    @users = User.all
+    @roles = Role.all
   end
 
   def show
@@ -15,6 +21,7 @@ class UsersController < ApplicationController
 
   def create
     @user = User.create user_params
+    @user.role_id = 1
     if @user.save
       session[:user_id] = @user.id
       current_user = @user

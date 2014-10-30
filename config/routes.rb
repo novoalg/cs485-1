@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   root 'static_pages#index'
 
   resources :users
+  put '/set_role/:id', to: 'users#set_role', as: 'set_role'
   resources :sessions, :only => [:new, :create, :destroy]
   resources :items
   match '/toggle_activeness/:id', to: 'items#toggle_activeness', via: 'get'
