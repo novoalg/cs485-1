@@ -32,5 +32,9 @@
     </div>
   </div>
 
+  <% unless logged_in? %>
+    <%= render 'sessions/login' %>
+  <% end %>
+
   <script>$(document).foundation();</script>
 </html>
