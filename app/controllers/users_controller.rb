@@ -5,7 +5,7 @@ class UsersController < ApplicationController
   before_filter :role_four, :only => [:destroy]
 
   def index
-    @users = User.all
+    @users = User.all.order("role_id desc")
     @roles = Role.all
   end
 

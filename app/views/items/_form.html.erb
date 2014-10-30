@@ -14,7 +14,7 @@
 
 
     <%= f.label "Category" %>
-    <%= f.collection_select :item_category_id, ItemCategory.all, :id, :name %>
+    <%= f.collection_select :item_category_id, ItemCategory.active, :id, :name %>
 
     <%= f.label :name %>
     <%= f.text_field :name %>
