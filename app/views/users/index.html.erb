@@ -3,7 +3,6 @@
     <table>
         <thead>
             <tr>
-                <th>Username</th>
                 <th>Email</th>
                 <th colspan="2">Role</th>
             </tr>
@@ -11,7 +10,6 @@
         <tbody>
                 <% @users.each do |user| %>
                     <tr>
-                        <td><%=user.username%></td>
                         <td><%=user.email%></td>
                         <%= form_for user do |form| %>
                             <td><%= form.select "role_id", options_from_collection_for_select(@roles, "id", "name", :selected => user.role_id) %></td>
