@@ -3,7 +3,7 @@
 </div>
 
 <%= form_for @user do |form| %>
-<div class="row">
+<div class="row text-center">
   <div class="small-12 columns">
     <div class="row">
       <div class="small-12 columns">
@@ -11,6 +11,10 @@
         <%= form.text_field :email %>
       </div>
     </div>
+
+    <%= link_to edit_user_registration_path, class: "button" do %>
+      <i class="fa fa-lock"></i>&emsp;Change Password
+    <% end %>
 
     <fieldset>
       <legend>Contact Information</legend>
