@@ -5,15 +5,12 @@
 <%= form_for @user do |form| %>
 <div class="row">
   <div class="small-12 columns">
-    <fieldset>
-      <legend>Web Info</legend>
-      <div class="row">
-        <div class="small-12 columns">
-          <%= form.label :email %>
-          <%= form.text_field :email %>
-        </div>
+    <div class="row">
+      <div class="small-12 columns">
+        <%= form.label :email %>
+        <%= form.text_field :email %>
       </div>
-    </fieldset>
+    </div>
 
     <fieldset>
       <legend>Contact Information</legend>
