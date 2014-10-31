@@ -33,7 +33,7 @@
           <tr>
             <td><strong>Home Phone</strong></td>
             <td>
-              <% unless @user.home_phone.empty? %>
+              <% unless @user.home_phone.nil? %>
                 <%= @user.home_phone %>
               <% else %>
                 <em>Not provided</em>
@@ -43,7 +43,7 @@
           <tr>
             <td><strong>Work Phone</strong></td>
             <td>
-              <% unless @user.work_phone.empty? %>
+              <% unless @user.work_phone.nil? %>
                 <%= @user.work_phone %>
               <% else %>
                 <em>Not provided</em>
