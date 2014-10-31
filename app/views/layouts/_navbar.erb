@@ -13,12 +13,11 @@
 
       <% if role_read? %>
         <li>
-          <%= link_to users_path do %>
-            <i class="fa fa-group"></i>&emsp;Users
+          <%= link_to inventory_path do %>
+            <i class="fa fa-check"></i>&emsp;Inventory
           <% end %>
         </li>
       <% end %>
-
 
       <% if role_add? %>
         <li class="has-dropdown">
@@ -58,6 +57,14 @@
         <li>
           <%= link_to items_path do %>
             <i class="fa fa-gift"></i>&emsp;Items
+          <% end %>
+        </li>
+      <% end %>
+
+      <% if role_read? %>
+        <li>
+          <%= link_to users_path do %>
+            <i class="fa fa-group"></i>&emsp;Users
           <% end %>
         </li>
       <% end %>
