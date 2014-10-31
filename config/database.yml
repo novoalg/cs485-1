@@ -21,9 +21,9 @@ development:
   <<: *default
   <% if Rails.env.development? %>
   database: agcart_development
-  host: localhost
-  username: root
-  password: ninjasocks
+  host: <%= Rails.application.secrets.database[:host] %>
+  username: <%= Rails.application.secrets.database[:username] %>
+  password: <%= Rails.application.secrets.database[:password] %>
   <% end %>
 
 # Warning: The database defined as "test" will be erased and
