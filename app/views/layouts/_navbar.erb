@@ -10,53 +10,6 @@
   <section class="top-bar-section">
     <!-- Right Nav Section -->
     <ul class="right">
-      <% if add? %>
-        <li class="has-dropdown">
-          <%= link_to item_categories_path do %>
-            <i class="fa fa-folder-open"></i>&emsp;Item Categories
-          <% end %>
-          <ul class="dropdown">
-            <li>
-              <%= link_to new_item_category_path do %>
-                <i class="fa fa-plus"></i>&emsp;New Item Category
-              <% end %>
-            </li>
-          </ul>
-        </li>
-      <% elsif employee? %>
-        <li>
-          <%= link_to item_categories_path do %>
-            <i class="fa fa-folder-open"></i>&emsp;Item Categories
-          <% end %>
-        </li>
-      <% end %>
-      <% if add? %>
-        <li class="has-dropdown">
-          <%= link_to items_path do %>
-            <i class="fa fa-gift"></i>&emsp;Items
-          <% end %>
-          <ul class="dropdown">
-            <li>
-              <%= link_to new_item_path do %>
-                <i class="fa fa-plus"></i>&emsp;New Item
-              <% end %>
-            </li>
-          </ul>
-        </li>
-      <% elsif employee? %>
-        <li>
-          <%= link_to items_path do %>
-            <i class="fa fa-gift"></i>&emsp;Items
-          <% end %>
-        </li>
-      <% end %>
-      <% if employee? %>
-        <li>
-          <%= link_to users_path do %>
-            <i class="fa fa-group"></i>&emsp;Users
-          <% end %>
-        </li>
-      <% end %>
       <li>
         <%= link_to edit_user_path current_user do %>
           <i class="fa fa-gear"></i>&emsp;Edit Profile

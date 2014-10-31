@@ -19,14 +19,16 @@
     <i class="fa fa-shopping-cart"></i>
     <label class="show-for-medium-up">Shop</label>
   <% end %>
-  <% unless logged_in? %>
-    <a href="#" data-reveal-id="login-modal" id="login" class="item">
+
+  <% unless user_signed_in? %>
+    <%= link_to new_user_session_path, class: "item", id: "login" do %>
       <i class="fa fa-plus"></i><label class="show-for-medium-up">Login</label>
-    </a>
+    <% end %>
   <% else %>
-      <%= link_to logout_path, :method => :delete, class: "item", id: "logout" do %>
+      <%= link_to destroy_user_session_path, :method => :delete, class: "item", id: "logout" do %>
         <i class="fa fa-remove"></i>
         <label class="show-for-medium-up">Logout</label>
       <% end %>
   <% end %>
+
 </div>
