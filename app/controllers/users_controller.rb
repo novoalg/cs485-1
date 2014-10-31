@@ -1,5 +1,10 @@
 class UsersController < ApplicationController
 
+  before_filter :logged_in, :except => [:new, :create]
+  before_filter :role_zero, :only => [:show]
+  before_filter :role_one, :only => [:index]
+  before_filter :role_four, :only => [:destroy]  
+
   def index
     @users = User.all.order("role_id desc")
     @roles = Role.all
@@ -57,9 +62,16 @@ class UsersController < ApplicationController
   end
 
   private
-    
+
     def user_params
       params.require(:user).permit!
+    end
+
+    def logged_in
+      unless current_user && (current_user.id.to_i == params[:id].to_i || current_user.role_id > 1)
+        flash[:notice] = "You don't have permission to the page you tried to access."
+        redirect_to root_path
+      end
     end
 
 end

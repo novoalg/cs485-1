@@ -6,35 +6,35 @@ class ApplicationController < ActionController::Base
 
   def role_zero
     unless (user_signed_in? && current_user.role_id >= 0)
-      flash[:notice] = "You don't have permission to the page you tried to access."
+      flash[:alert] = "You don't have permission to the page you tried to access."
       redirect_to root_path
     end
   end
 
   def role_one
     unless (user_signed_in? && current_user.role_id >= 1)
-      flash[:notice] = "You don't have permission to the page you tried to access."
+      flash[:alert] = "You don't have permission to the page you tried to access."
       redirect_to root_path
     end
   end
 
   def role_two
     unless (user_signed_in? && current_user.role_id >= 2)
-      flash[:notice] = "You don't have permission to the page you tried to access."
+      flash[:alert] = "You don't have permission to the page you tried to access."
       redirect_to root_path
     end
   end
 
   def role_three
     unless (user_signed_in? && current_user.role_id >= 3) 
-      flash[:notice] = "You don't have permission to the page you tried to access."
+      flash[:alert] = "You don't have permission to the page you tried to access."
       redirect_to root_path
     end
   end
 
   def role_four
     unless (user_signed_in? && current_user.role_id == 4)
-      flash[:notice] = "You don't have permission to the page you tried to access."
+      flash[:alert] = "You don't have permission to the page you tried to access."
       redirect_to root_path
     end
   end

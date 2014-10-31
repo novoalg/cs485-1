@@ -20,7 +20,7 @@ module ApplicationHelper
       current_user.role_id >= 3
     end
 
-    def role_add?
+    def role_delete?
       current_user.role_id >= 4
     end
   
