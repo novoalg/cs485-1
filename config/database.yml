@@ -31,8 +31,9 @@ production:
   <<: *default
   database: rails
 <% if Rails.env.production? %>
-  host: <%= Rails.application.secrets.database[:host] %>
-  username: <%= Rails.application.secrets.database[:username] %>
-  password: <%= Rails.application.secrets.database[:password] %>
+  host: <%= Rails.application.secrets[:database][:host] %>
+  username: <%= Rails.application.secrets[:database][:username] %>
+  password: <%= Rails.application.secrets[:database][:password] %>
 <% end %>
   port: 3306
+
