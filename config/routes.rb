@@ -18,7 +18,7 @@ Rails.application.routes.draw do
   resources :items
   match '/toggle_activeness/:id', to: 'items#toggle_activeness', via: 'get'
   resources :item_categories
-
+  resources :email_templates, :only => [:index, :edit, :update]
   match '/about',     to: 'static_pages#about', via: 'get'
   match '/contact',   to: 'static_pages#contact', via: 'get'
   match '/inventory', to: 'inventory#index', via: 'get'
