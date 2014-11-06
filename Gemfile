@@ -52,8 +52,8 @@ gem 'devise'
 
 # Testing!
 group :test do
-  gem "watir-rails"
+  gem "cucumber-rails", :require => false 
+  gem "watir-webdriver"
+  gem 'rspec'
+  gem 'database_cleaner'
 end
-gem "watir-webdriver"
-gem 'rspec'
-gem 'capybara'
