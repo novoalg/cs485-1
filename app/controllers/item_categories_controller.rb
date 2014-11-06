@@ -1,8 +1,9 @@
 class ItemCategoriesController < ApplicationController
   before_action :set_item_category, only: [:show, :edit, :update, :destroy]
-  before_filter :role_one, :only => [:show]
-  before_filter :role_two, :only => [:index]
-  before_filter :role_three, :only => [:edit, :update]
+  before_filter :role_zero, :only => [:show]
+  before_filter :role_one, :only => [:index]
+  before_filter :role_two, :only => [:edit, :update]
+  before_filter :role_three, :only => [:new, :create]
   before_filter :role_four, :only => [:destroy]
 
 

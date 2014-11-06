@@ -4,39 +4,24 @@ module ApplicationHelper
         content_for :title, page_title.to_s
     end
 
-    def role_zero
-        unless (current_user && current_user.role_id >= 0)
-            flash[:notice] = "You don't have permission to the page you tried to access."
-            redirect_to root_path
-        end
+    def role_none?
+      current_user.role_id == 0
     end
 
-    def role_one
-        unless (current_user && current_user.role_id >= 1)
-            flash[:notice] = "You don't have permission to the page you tried to access."
-            redirect_to root_path
-        end
+    def role_read?
+      current_user.role_id >= 1
     end
 
-    def role_two
-        unless (current_user && current_user.role_id >= 2)
-            flash[:notice] = "You don't have permission to the page you tried to access."
-            redirect_to root_path
-        end
+    def role_edit?
+      current_user.role_id >= 2
     end
 
-    def role_three
-        unless (current_user && current_user.role_id >= 3) || (current_user.id.to_i == params[:id].to_i)
-            flash[:notice] = "You don't have permission to the page you tried to access."
-            redirect_to root_path
-        end
+    def role_add?
+      current_user.role_id >= 3
     end
 
-    def role_four
-        unless (current_user && current_user.role_id == 4)
-            flash[:notice] = "You don't have permission to the page you tried to access."
-            redirect_to root_path
-        end
+    def role_delete?
+      current_user.role_id >= 4
     end
   
 end
