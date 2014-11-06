@@ -1,5 +1,10 @@
 class ItemsController < ApplicationController
   before_action :set_item, only: [:show, :edit, :update, :destroy]
+  before_filter :role_zero, :only => [:show]
+  before_filter :role_one, :only => [:index]
+  before_filter :role_two, :only => [:edit, :update]
+  before_filter :role_three, :only => [:new, :create, :toggle_activeness]
+  before_filter :role_four, :only => [:destroy]
 
   # GET /items
   def index
@@ -18,12 +23,14 @@ class ItemsController < ApplicationController
 
   # GET /items/1/edit
   def edit
+    @item = Item.find params[:id]
   end
 
   # POST /items
   def create
     @item = Item.new(item_params)
     @item.is_deleted = false
+    logger.info " ****** #{@item.inspect}"
     
     respond_to do |format|
       if @item.save

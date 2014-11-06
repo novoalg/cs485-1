@@ -1,5 +1,5 @@
 <div class="text-center">
-  <h1>Silver &amp; Stones Gallery</h1>
+  <%= image_tag "logo.png", id: "logo" %>
 </div>
 
 <div class="icon-bar five-up">
@@ -15,20 +15,20 @@
     <i class="fa fa-phone"></i>
     <label class="show-for-medium-up">Contact Us</label>
   <% end %>
-  <%= link_to login_path, class: "item", id: "shop" do %>
+  <%= link_to "http://google.com", class: "item", id: "shop" do %>
     <i class="fa fa-shopping-cart"></i>
     <label class="show-for-medium-up">Shop</label>
   <% end %>
-  <% if current_user.nil? %>
-     <%= link_to login_path, class: "item", id: "login" do %>
-        <i class="fa fa-plus"></i>
-        <label class="show-for-medium-up">Login</label>
-      <% end %>
 
+  <% unless user_signed_in? %>
+    <%= link_to new_user_session_path, class: "item", id: "login" do %>
+      <i class="fa fa-sign-in"></i><label class="show-for-medium-up">Login</label>
+    <% end %>
   <% else %>
-      <%= link_to logout_path, :method => :delete, class: "item", id: "logout" do %>
-        <i class="fa fa-remove"></i>
+      <%= link_to destroy_user_session_path, :method => :delete, class: "item", id: "logout" do %>
+        <i class="fa fa-sign-out"></i>
         <label class="show-for-medium-up">Logout</label>
       <% end %>
   <% end %>
+
 </div>

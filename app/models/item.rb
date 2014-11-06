@@ -12,8 +12,8 @@ class Item < ActiveRecord::Base
 
     validates_presence_of :item_category_id
 
-    validates_presence_of :is_deleted
-    validates_presence_of :active
+    has_attached_file :picture, :styles => { :medium => "500x500>", :small => "300x300>", :thumb => "100x100>" }, :default_url => "missing/missing_:style.jpg"
+    validates_attachment_content_type :picture, :content_type => /\Aimage\/.*\Z/
 
     scope :active, -> { where(:active => true, :is_deleted => false) }
     scope :inactive, -> { where(:active => false, :is_deleted => false) }

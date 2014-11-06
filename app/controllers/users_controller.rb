@@ -1,7 +1,13 @@
 class UsersController < ApplicationController
-  before_filter :logged_in
+
+  before_filter :logged_in, :except => [:new, :create]
+  before_filter :role_zero, :only => [:show]
+  before_filter :role_one, :only => [:index]
+  before_filter :role_four, :only => [:destroy]  
 
   def index
+    @users = User.all.order("role_id desc")
+    @roles = Role.all
   end
 
   def show
@@ -15,6 +21,7 @@ class UsersController < ApplicationController
 
   def create
     @user = User.create user_params
+    @user.role_id = 0
     if @user.save
       session[:user_id] = @user.id
       current_user = @user
@@ -29,7 +36,6 @@ class UsersController < ApplicationController
 
   def edit
     @user = User.find params[:id]
-    @change_username = false;
   end
 
   def update
@@ -49,21 +55,22 @@ class UsersController < ApplicationController
       flash[:success] = "User was successfully destroyed."
       redirect_to root_path
     else 
-      flash[:alert] = "Unable to delete sysadmin user."
+      flash[:alert] = "Unable to delete admin user."
       redirect_to User.find(params[:id])
     end
   end
 
   private
-    
+
     def user_params
       params.require(:user).permit!
     end
 
     def logged_in
-      unless (!current_user.nil?) && ((current_user.is_admin) || (current_user && current_user.id.to_i == params[:id].to_i))
+      unless current_user && (current_user.id.to_i == params[:id].to_i || current_user.role_id > 1)
         flash[:notice] = "You don't have permission to the page you tried to access."
         redirect_to root_path
-      end 
+      end
     end
+
 end

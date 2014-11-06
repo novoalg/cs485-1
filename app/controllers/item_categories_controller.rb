@@ -1,9 +1,16 @@
 class ItemCategoriesController < ApplicationController
   before_action :set_item_category, only: [:show, :edit, :update, :destroy]
+  before_filter :role_zero, :only => [:show]
+  before_filter :role_one, :only => [:index]
+  before_filter :role_two, :only => [:edit, :update]
+  before_filter :role_three, :only => [:new, :create]
+  before_filter :role_four, :only => [:destroy]
+
 
   # GET /item_categories
   def index
-    @item_categories = ItemCategory.all
+    @active_item_categories = ItemCategory.active
+    @inactive_item_categories = ItemCategory.inactive
   end
 
   # GET /item_categories/1
@@ -23,6 +30,9 @@ class ItemCategoriesController < ApplicationController
   # POST /item_categories
   def create
     @item_category = ItemCategory.new(item_category_params)
+    @item_category.active = true
+    @item_category.is_deleted = false
+
 
     respond_to do |format|
       if @item_category.save
@@ -50,7 +60,8 @@ class ItemCategoriesController < ApplicationController
 
   # DELETE /item_categories/1
   def destroy
-    @item_category.destroy
+    @item_category.delete_category = true
+    @item_category.save(:validate => false)
     respond_to do |format|
       format.html { redirect_to item_categories_url, notice: 'Item category was successfully destroyed.' }
       format.json { head :no_content }
