@@ -6,7 +6,7 @@
   <thead>
     <tr>
       <th>Name</th>
-      <th>Description</th>
+        <th class="show-for-medium-up">Description</th>
       <th colspan="2">Actions</th>
     </tr>
   </thead>
@@ -15,9 +15,21 @@
     <% @active_item_categories.each do |item_category| %>
       <tr>
         <td><%= item_category.name %></td>
-        <td><%= item_category.description %></td>
-        <td><%= link_to 'Show', item_category %></td>
-        <td><%= link_to 'Edit', edit_item_category_path(item_category) %></td>
+        <label class="show-for-medium-up">
+          <td class="show-for-medium-up"><%= item_category.description %></td>
+        </label>
+        <td>
+          <%= link_to item_category do %>
+            <i class="fa fa-image"></i> 
+            <label class="show-for-medium-up">Show</label>
+          <% end %>
+        </td>
+        <td>
+          <%= link_to edit_item_category_path(item_category) do %>
+            <i class="fa fa-edit"></i> 
+            <label class="show-for-medium-up">Edit</label>
+          <% end %>
+        </td>
       </tr>
     <% end %>
   </tbody>
@@ -41,13 +53,24 @@
       <tr>
         <td><%= item_category.name %></td>
         <td><%= item_category.description %></td>
-        <td><%= link_to 'Show', item_category %></td>
-        <td><%= link_to 'Edit', edit_item_category_path(item_category) %></td>
-<<<<<<< HEAD
-        <td><i class="fa fa-trash"></i><%= link_to 'Destroy', item_category, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-=======
-        <td><b><%= link_to 'Destroy', item_category, method: :delete, data: { confirm: 'Are you sure?' } %></b></td>
->>>>>>> b08696ba2b0f0e11f237b5b72983bea9498f333b
+        <td>
+          <%= link_to, item_category do %>
+            <i class="fa fa-image"></i> 
+            <label class="show-for-medium-up">Show</label>
+          <% end %>
+        </td>
+        <td>
+          <%= link_to edit_item_category_path(item_category) do %>
+            <i class="fa fa-edit"></i> 
+            <label class="show-for-medium-up">Edit</label>
+          <% end %>
+        </td>
+        <td>
+          <%= link_to item_category, method: :delete, data: { confirm: 'Are you sure?' } do %>
+            <i class="fa fa-trash"></i>
+            <label class="show-for-medium-up">Edit</label>
+          <% end %>
+       </td>
       </tr>
     <% end %>
   </tbody>

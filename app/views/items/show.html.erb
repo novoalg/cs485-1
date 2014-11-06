@@ -9,21 +9,11 @@
     <div class="panel">
       <h2>$<%= @item.price %></h2>
       <h6 class="subheader">Currently in stock: <%= @item.in_stock %></h6>
-      <a href="#" class="small button">Add to Cart</a>
+      <a href="#" class="small button">Reserve</a>
     </div>
   </div>
 </div>
-<div class="row">
-  <hr/>
-  <div class="small-12 medium-6 columns">
-    <h4>Any more information we want?</h4>
-    <p>Stuff here</p>
-  </div>
-  <div class="small-12 medium-6 columns">
-    <h4>Even MORE stuff?</h4>
-    <p>maybe!</p>
-  </div>
-</div>
+
 
 <%= link_to 'Edit', edit_item_path(@item) %> |
 <%= link_to 'Back', items_path %>
