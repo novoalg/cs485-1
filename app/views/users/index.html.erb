@@ -1,24 +1,22 @@
-<div class="large-8 columns">
+<div class="small-12 columns">
 <h1>Users</h1>
     <table>
         <thead>
             <tr>
-                <th>Username</th>
                 <th>Email</th>
                 <th colspan="2">Role</th>
             </tr>
         </thead>
         <tbody>
-                <% @users.each do |user| %>
-                    <tr>
-                        <td><%=user.username%></td>
-                        <td><%=user.email%></td>
-                        <%= form_for user do |form| %>
-                            <td><%= form.select "role_id", options_from_collection_for_select(@roles, "id", "name", :selected => user.role_id) %></td>
-                            <td><%= form.submit "Update" %></td>
-                        <% end %>
-                    </tr>
-                <% end %>
+            <% @users.each do |user| %>
+                <tr>
+                    <td><%=user.email%></td>
+                    <%= form_for user do |form| %>
+                        <td><%= form.select "role_id", options_from_collection_for_select(@roles, "id", "name", :selected => user.role_id) %></td>
+                        <td><%= form.submit "Update" %></td>
+                    <% end %>
+                </tr>
+            <% end %>
         </tbody>
     </table>
 </div>

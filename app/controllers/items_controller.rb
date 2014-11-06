@@ -6,8 +6,6 @@ class ItemsController < ApplicationController
   before_filter :role_three, :only => [:new, :create, :toggle_activeness]
   before_filter :role_four, :only => [:destroy]
 
-
-
   # GET /items
   def index
     @active_items = Item.active

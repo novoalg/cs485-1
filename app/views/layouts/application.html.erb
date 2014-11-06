@@ -13,9 +13,11 @@
 
   <body>
   <div id="container">
-    <% if logged_in? && employee? %>
+
+    <% if user_signed_in? %>
       <%= render "layouts/navbar" %>
     <% end %>
+    
     <div class="row">
       <div class="small-12 columns soft">
         <%= render "layouts/header" %>
@@ -31,10 +33,6 @@
       </div>
     </div>
   </div>
-
-  <% unless logged_in? %>
-    <%= render 'sessions/login' %>
-  <% end %>
 
   <script>$(document).foundation();</script>
 </html>
