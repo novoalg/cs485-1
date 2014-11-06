@@ -3,9 +3,7 @@
   <div class="small-9 columns">
     <div class="row">
       <div class="small-12 columns text-center">
-        <h1><%= @user.username %></h1>
-        <span class="lato">
-        </span>
+        <h1><%= @user.email %></h1>
       </div>
     </div>
 
@@ -35,7 +33,7 @@
           <tr>
             <td><strong>Home Phone</strong></td>
             <td>
-              <% unless @user.home_phone.empty? %>
+              <% unless @user.home_phone.nil? %>
                 <%= @user.home_phone %>
               <% else %>
                 <em>Not provided</em>
@@ -45,7 +43,7 @@
           <tr>
             <td><strong>Work Phone</strong></td>
             <td>
-              <% unless @user.work_phone.empty? %>
+              <% unless @user.work_phone.nil? %>
                 <%= @user.work_phone %>
               <% else %>
                 <em>Not provided</em>

@@ -47,6 +47,9 @@ gem 'font-awesome-rails', '~> 4.2.0'
 # Helpful for attaching images
 gem "paperclip", "~> 4.2"
 
+# Authenticate with Devise
+gem 'devise'
+
 # Testing!
 group :test do
   gem "watir-rails"
