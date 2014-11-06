@@ -57,3 +57,4 @@ end
 gem "watir-webdriver"
 gem 'rspec'
 gem 'capybara'
+gem 'ckeditor'

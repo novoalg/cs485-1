@@ -3,6 +3,7 @@ class UserMailer < ActionMailer::Base
 
   def welcome_email(user)
     @user = user
+    @template = EmailTemplate.first
     mail(to: @user, subject: "Welcome to Silver & Stones")
   end
 end

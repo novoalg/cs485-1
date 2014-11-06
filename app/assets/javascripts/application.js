@@ -16,5 +16,6 @@
 // require turbolinks
 //= require slippry
 //= require_tree .
+//= require ckeditor/init
 
 $(function(){ $(document).foundation(); });
