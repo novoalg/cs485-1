@@ -3,6 +3,7 @@ class UserMailer < ActionMailer::Base
 
   def welcome_email(user)
     @user = user
-    mail(to: @user, subject: "Welcome to Silver & Stones")
+    @template = EmailTemplate.find(1)
+    mail(to: @user, subject: @template.subject)
   end
 end
