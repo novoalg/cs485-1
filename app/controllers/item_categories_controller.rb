@@ -25,6 +25,7 @@ class ItemCategoriesController < ApplicationController
 
   # GET /item_categories/1/edit
   def edit
+    @item_category = ItemCategory.find(params[:id])
   end
 
   # POST /item_categories

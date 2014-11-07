@@ -1,9 +1,12 @@
 Rails.application.routes.draw do
 
+  mount Ckeditor::Engine => '/ckeditor'
   devise_for :users
+
   resources :item_categories
 
   resources :items
+  match '/toggle_activeness/:id', to: 'items#toggle_activeness', via: 'get'
 
   get 'static_pages/index'
 
@@ -11,17 +14,17 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'static_pages#index'
 
   resources :users
   put '/set_role/:id', to: 'users#set_role', as: 'set_role'
-  resources :items
-  match '/toggle_activeness/:id', to: 'items#toggle_activeness', via: 'get'
-  resources :item_categories
   resources :email_templates, :only => [:index, :edit, :update]
+  get '/mass_email', to: 'email_templates#new_mass_email', as: 'new_mass_email'
+  put '/mass_email', to: 'email_templates#mass_email', as: 'mass_email'
   match '/about',     to: 'static_pages#about', via: 'get'
   match '/contact',   to: 'static_pages#contact', via: 'get'
   match '/inventory', to: 'inventory#index', via: 'get'
+  root 'static_pages#index'
+
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

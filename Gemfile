@@ -50,6 +50,9 @@ gem "paperclip", "~> 4.2"
 # Authenticate with Devise
 gem 'devise'
 
+gem 'ckeditor'
+
+
 # Testing!
 group :test do
   gem "cucumber-rails", :require => false 
