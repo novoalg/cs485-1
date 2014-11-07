@@ -29,6 +29,14 @@
   font-style: normal;
 }
 
+.template_box {
+    width: auto;
+    padding: 10px;
+    border: 1px solid black;
+    margin: auto;
+    background: rgba(204, 204, 204, 0.6);
+}
+
 /* Override the icon bar styles */
 $icon-bar-item-padding: 0.5rem;
 $icon-bar-icon-size: 1.25rem;

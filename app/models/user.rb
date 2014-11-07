@@ -3,6 +3,7 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
+  after_create :send_email
 
   VALID_USERNAME_REGEX = /\A[a-z0-9\-]*\z/i
   belongs_to :role
@@ -11,6 +12,10 @@ class User < ActiveRecord::Base
   
   before_save do
     self.email = email.downcase
+  end
+
+  def send_email
+    UserMailer.welcome_email(self).deliver
   end
 
 end

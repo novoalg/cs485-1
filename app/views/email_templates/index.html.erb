@@ -1,5 +1,9 @@
+<h3>Mass Email: <%= link_to "Send email to array of users", new_mass_email_path %></h3>
 <% @templates.each do |template| %>
-    <h1>Template for <%= template.email_type %></h1>
-    <%= link_to "Edit", edit_email_template_path(template.id) %>
-    <%= template.content %>
+    <h1>Template <%= template.email_type %></h1>
+    <h2><%= link_to "Edit", edit_email_template_path(template.id) %></h2>
+    <div class="template_box">
+        <b>Subject:</b><p><%= template.subject %></p>
+        <b>Body:</b><p><%= raw template.content %></p>
+    </div>
 <% end %>

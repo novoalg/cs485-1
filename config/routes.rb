@@ -2,7 +2,6 @@ Rails.application.routes.draw do
 
   mount Ckeditor::Engine => '/ckeditor'
   devise_for :users
-  put '/set_role/:id', to: 'users#set_role', as: 'set_role'
 
   resources :item_categories
 
@@ -16,7 +15,11 @@ Rails.application.routes.draw do
 
   # You can have the root of your site routed with "root"
 
+  resources :users
+  put '/set_role/:id', to: 'users#set_role', as: 'set_role'
   resources :email_templates, :only => [:index, :edit, :update]
+  get '/mass_email', to: 'email_templates#new_mass_email', as: 'new_mass_email'
+  put '/mass_email', to: 'email_templates#mass_email', as: 'mass_email'
   match '/about',     to: 'static_pages#about', via: 'get'
   match '/contact',   to: 'static_pages#contact', via: 'get'
   match '/inventory', to: 'inventory#index', via: 'get'
