@@ -29,7 +29,7 @@ class UsersController < ApplicationController
       flash[:success] = "Welcome #{@user.username}"
       redirect_to root_path
     else
-      flash.now[:notice] = @user.errors.full_messages.to_sentence
+      flash.now[:alert] = @user.errors.full_messages.to_sentence
       render 'new'
       @user.destroy
     end
@@ -45,7 +45,7 @@ class UsersController < ApplicationController
       flash[:success] = "Profile updated successfuly"
       redirect_to @user
     else
-      flash.now[:notice] = @user.errors.full_messages.to_sentence
+      flash.now[:alert] = @user.errors.full_messages.to_sentence
       render 'edit'
     end
   end
@@ -69,7 +69,7 @@ class UsersController < ApplicationController
 
     def logged_in
       unless current_user && (current_user.id.to_i == params[:id].to_i || current_user.role_id > 1)
-        flash[:notice] = "You don't have permission to the page you tried to access."
+        flash[:alert] = "You don't have permission to the page you tried to access."
         redirect_to root_path
       end
     end
