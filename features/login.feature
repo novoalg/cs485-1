@@ -8,20 +8,20 @@ Scenario: View Login
 
 Scenario Outline: Login Success
     Given I am on the login page
-    When I enter username <username>
+    When I enter email <email>
         And I enter password <password>
         And I click the login button
-    Then I should see a success message
+    Then I should see a flash message
     Examples: 
-        | username | password |
-        | admin    | admin    |
+        | email                         | password      |
+        | admin@silverandstones.gallery | administrator |
 
 Scenario Outline: Login Failure
     Given I am on the login page
-    When I enter username <username>
+    When I enter email <email>
         And I enter password <password>
         And I click the login button
     Then I should see a failure message
     Examples: 
-        | username | password |
-        | admin    | blahblah |
+        | email             | password |
+        | admin@example.com | blahblah |
