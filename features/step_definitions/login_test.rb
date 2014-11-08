@@ -1,8 +1,5 @@
 Given(/^I am logged in as an admin$/) do
-  unless current_user.is_admin
-    visit new_user_session_path
-    fill_in "Email", :with => Rails.application.secrets.admin_email
-  end
+  pending
 end
 
 Given(/^I am logged out$/) do
