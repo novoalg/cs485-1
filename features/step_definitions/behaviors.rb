@@ -27,9 +27,9 @@ When(/^I click the create button$/) do
 end
 
 Then(/^I should see an error message$/) do
-  pending # express the regexp above with the code you wish you had
+  expect(page).to have_css 'alert-box.alert'
 end
 
 Then(/^I should see a success message$/) do
-  pending # express the regexp above with the code you wish you had
+  expect(page).to have_css 'alert-box.success'
 end
