@@ -36,7 +36,7 @@ Scenario Outline: Create an Invalid Item
 
 Scenario: View An Item
     Given I am logged in
-        And I click on the shop button
+        And I click on the items link
     When I click on an item
     Then I should see the item details
 

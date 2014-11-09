@@ -1,45 +1,31 @@
 Given(/^I am on the item creation page$/) do
-  pending # express the regexp above with the code you wish you had
+  unless current_path == new_item_path
+    visit new_item_path
+  end
 end
 
-When(/^I enter name TestItem (\d+)$/) do |arg1|
-  pending # express the regexp above with the code you wish you had
+When(/^I enter name (.*?)$/) do |arg1|
+  fill_in "Name", :with => arg1
 end
 
-When(/^I enter description A test$/) do
-  pending # express the regexp above with the code you wish you had
+When(/^I enter description (.*?)$/) do |arg1|
+  fill_in "Description", :with => arg1
 end
 
-When(/^I enter price (\d+)\.(\d+)$/) do |arg1, arg2|
-  pending # express the regexp above with the code you wish you had
+When(/^I enter price (.*?)$/) do |price|
+  fill_in "Price", :with => price
 end
 
-When(/^I enter stock (\d+)$/) do |arg1|
-  pending # express the regexp above with the code you wish you had
+When(/^I enter stock (.*?)$/) do |arg1|
+  fill_in "Stock", :with => arg1
 end
 
-When(/^I enter category (\d+)$/) do |arg1|
-  pending # express the regexp above with the code you wish you had
+When(/^I enter category (.*?)$/) do |arg1|
+  pending
 end
 
-When(/^I enter description A test two$/) do
-  pending # express the regexp above with the code you wish you had
-end
-
-When(/^I enter price \-(\d+)\.(\d+)$/) do |arg1, arg2|
-  pending # express the regexp above with the code you wish you had
-end
-
-When(/^I enter stock \-(\d+)$/) do |arg1|
-  pending # express the regexp above with the code you wish you had
-end
-
-When(/^I enter category \-(\d+)$/) do |arg1|
-  pending # express the regexp above with the code you wish you had
-end
-
-Given(/^I click on the shop button$/) do
-  pending # express the regexp above with the code you wish you had
+Given(/^I click on the items link$/) do
+  click_link "Items"
 end
 
 When(/^I click on an item$/) do

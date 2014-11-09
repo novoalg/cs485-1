@@ -1,16 +1,12 @@
 Given(/^I am logged in as an admin$/) do
-  if $current_user.nil?
-    visit login_path
-    $current_user = User.find_by_email(Rails.application.secrets.admin_email)
-    fill_in "Email", :with => Rails.application.secrets.admin_email
-    fill_in "Password", :with => Rails.application.secrets.admin_pass
-  end
-  User.find($current_user.id).update(role_id: 4)
+  puts current_user
+  step "I am logged in"
+  User.find(current_user.id).update(role_id: 4)
 end
 
 Given(/^I am logged out$/) do
-  unless $current_user.nil?
-    visit "/users/sign_out"
+  if signed_in?
+    sign_out
   end
 end
 
