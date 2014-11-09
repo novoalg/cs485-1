@@ -21,4 +21,10 @@ EmailTemplate.create(
   :subject => "My custom subject"
 )
 
+EmailTemplate.create(
+  :content => "<p><span style=\"color:#FF0000\">Welcome to Silver and Stones!</span></p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p><font color=\"#006400\">Happy shopping!</font></p>\r\n",
+  :email_type => "when Users sign up to the website",
+  :subject => "My custom subject"
+)
+
 User.create(email: "admin@silverandstones.gallery", password: "administrator", password_confirmation: "administrator", role_id: 4)

@@ -4,10 +4,8 @@ Given(/^I am on the item category page$/) do
   end
 end
 
-Given(/^I click on an item category$/) do
-  
-end
-
-Then(/^I should see the items in that category$/) do
-  pending # express the regexp above with the code you wish you had
+Given(/^I am on the new item category page$/) do
+  unless current_path == new_item_category_path
+    visit new_item_category_path
+  end
 end

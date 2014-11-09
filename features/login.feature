@@ -6,22 +6,16 @@ Scenario: View Login
     When I click the login link
     Then I should see the login page
 
-Scenario Outline: Login Success
+Scenario: Login Success
     Given I am on the login page
-    When I enter email <email>
-        And I enter password <password>
+    When I enter email admin@silverandstones.gallery
+        And I enter password administrator
         And I click the login button
     Then I should see a flash message
-    Examples: 
-        | email                         | password      |
-        | admin@silverandstones.gallery | administrator |
 
-Scenario Outline: Login Failure
+Scenario: Login Failure
     Given I am on the login page
-    When I enter email <email>
-        And I enter password <password>
+    When I enter email admin@example.com
+        And I enter password blahblah
         And I click the login button
     Then I should see a failure message
-    Examples: 
-        | email             | password |
-        | admin@example.com | blahblah |

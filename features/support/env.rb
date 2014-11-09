@@ -62,5 +62,4 @@ Cucumber::Rails::Database.javascript_strategy = :truncation
 
 Before do 
   User.create(email: Rails.application.secrets.admin_email, password: Rails.application.secrets.admin_pass, password_confirmation: Rails.application.secrets.admin_pass, role_id: 4)
-  $current_user = nil
 end
