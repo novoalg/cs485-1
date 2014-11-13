@@ -14,12 +14,16 @@
 
     <div class="row text-center">
       <div class="small-12 columns">
-        <em>Manage your account to change your password or close your account.</em>
+        <hr />
+        <em>Need to change your password or close your account?</em>
+        <br />
+        <br />
+        <%= link_to edit_user_registration_path, class: "button" do %>
+          <i class="fa fa-lock"></i>&emsp;Manage Account
+        <% end %>
+        <hr />
       </div>
     </div>
-    <%= link_to edit_user_registration_path, class: "button" do %>
-      <i class="fa fa-lock"></i>&emsp;Manage Account
-    <% end %>
 
     <fieldset>
       <legend>Contact Information</legend>

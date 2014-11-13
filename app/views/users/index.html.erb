@@ -10,7 +10,7 @@
         <tbody>
             <% @users.each do |user| %>
                 <tr>
-                    <td><%=user.email%></td>
+                    <td><%= link_to user.email, user %></td>
                     <%= form_for user do |form| %>
                         <td><%= form.select "role_id", options_from_collection_for_select(@roles, "id", "name", :selected => user.role_id) %></td>
                         <td><%= form.submit "Update" %></td>
