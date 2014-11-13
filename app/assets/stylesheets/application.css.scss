@@ -37,24 +37,6 @@
     background: rgba(204, 204, 204, 0.6);
 }
 
-/* Override the icon bar styles */
-$icon-bar-item-padding: 0.5rem;
-$icon-bar-icon-size: 1.25rem;
-$icon-bar-image-width: 1.25rem;
-$icon-bar-image-height: 1.25rem;
-
-/* Override fonts */
-$header-font-family: "Lobster", "Helvetica", Helvetica, Arial, sans-serif;
-$header-font-weight: 500;
-$paragraph-font-family: "Quicksand", "Helvetica", Helvetica, Arial, sans-serif;
-$paragraph-font-size: 1.1rem;
-$button-font-family: "Quicksand", "Helvetica", Helvetica, Arial, sans-serif;
-$button-font-weight: bold;
-
-$body-bg: transparent;
-$body-font-family: "Quicksand";
-
-
 /* Override default foundation colors */
 $primary-color: #336699; /* Darker Blue */
 $secondary-color: #e7e7e7; /* Lilac White */
@@ -62,6 +44,23 @@ $alert-color: #b22222; /* Brick Red */
 $success-color: #006400; /* Vibrant Green */
 $warning-color: #dd7500; /* Orange */
 $info-color: #a0d3e8; /* Teal */
+
+/* Override the icon bar styles */
+$icon-bar-item-padding: 0.5rem;
+$icon-bar-icon-size: 1.25rem;
+$icon-bar-image-width: 1.25rem;
+$icon-bar-image-height: 1.25rem;
+$icon-bar-hover-color: $warning-color;
+
+/* Override fonts */
+$header-font-family: "Lobster", "Helvetica", Helvetica, Arial, sans-serif;
+$header-font-weight: 500;
+$paragraph-font-family: "Quicksand", "Helvetica", Helvetica, Arial, sans-serif;
+$paragraph-font-size: 1.2rem;
+
+
+$body-bg: transparent;
+$body-font-family: "Quicksand";
 
 @import "foundation_and_overrides";
 @import "slippry";
