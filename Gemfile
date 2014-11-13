@@ -32,6 +32,7 @@ gem "paperclip", "~> 4.2"
 # Authenticate with Devise
 gem 'devise'
 gem 'ckeditor'
+gem 'jquery-datatables-rails', '~> 2.2.3'
 
 # Testing!
 group :test do
