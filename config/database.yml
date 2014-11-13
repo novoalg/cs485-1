@@ -18,7 +18,7 @@ development:
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
-test:
+test: &test
   <<: *default
   <% if Rails.env.test? %>
   database: agcart_test
@@ -37,3 +37,6 @@ production:
 <% end %>
   port: 3306
 
+
+cucumber:
+  <<: *test

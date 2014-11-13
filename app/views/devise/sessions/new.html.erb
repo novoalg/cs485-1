@@ -15,7 +15,7 @@
         <div class="switch"><%= f.check_box :remember_me %><%= f.label :remember_me, "Remember Me" %></div>
       <% end -%>
 
-      <%= f.submit "Log In", class: "button expand" %>
+      <%= f.submit "Log In", class: "button expand", id: "login" %>
 
       <%= render "devise/shared/links" %>
     </div>
