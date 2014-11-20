@@ -4,6 +4,6 @@ class UserMailer < ActionMailer::Base
   def welcome_email(user)
     @user = user
     @template = EmailTemplate.find(1)
-    mail(to: @user, subject: @template.subject)
+    mail(to: @user.email, subject: @template.subject)
   end
 end
