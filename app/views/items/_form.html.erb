@@ -29,7 +29,7 @@
       <%= f.label :price %>
       <%= f.number_field :price, :in => 0.00..100000000.0, :step => 0.01 %>
 
-      <%= f.label "Stock" %>
+      <%= f.label :in_stock, "Stock" %>
       <%= f.number_field :in_stock, :in => 0..100000000, :step => 1 %>
 
       <label>Active</label>

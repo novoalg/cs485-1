@@ -15,6 +15,8 @@
 //= require foundation
 // require turbolinks
 //= require slippry
+//= require dataTables/jquery.dataTables
+//= require dataTables/jquery.dataTables.foundation
 //= require_tree .
 //= require ckeditor/init
 

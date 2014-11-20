@@ -4,35 +4,38 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title><%= yield(:title) %></title>
-    <% title "Silver & Stones" %>
+    <title><%= content_for?(:title) ? "#{yield(:title)} | Silver & Stones Gallery" : "Silver & Stones Gallery" %></title>
+    <% title "Silver & Stones Gallery" %>
+    <% keywords 'silver, stones, jewelry, art, decor, searchable, shopping, clothes, apparel, snacks, treats, gifts, local, eau claire, london road, silver and stones, gallery, crafts, artisan' %>
     <%= stylesheet_link_tag    "application" %>
+    <%= display_meta_tags :site => 'Silver & Stones Gallery' %>
     <%= javascript_include_tag "vendor/modernizr" %>
     <%= csrf_meta_tags %>
   </head>
 
   <body>
-  <div id="container">
+    <div id="container">
 
-    <% if user_signed_in? %>
-      <%= render "layouts/navbar" %>
-    <% end %>
-    
-    <div class="row">
-      <div class="small-12 columns soft">
-        <%= render "layouts/header" %>
+      <% if user_signed_in? %>
+        <%= render "layouts/navbar" %>
+      <% end %>
+      
+      <div class="row">
+        <div class="small-12 columns soft">
+          <%= render "layouts/header" %>
 
-        <% flash.each do |type, message| %>
-          <div class="alert-box <%= type %> text-center flash"><%= message %></div>
-        <% end %>
+          <% flash.each do |type, message| %>
+            <div class="alert-box <%= type %> text-center flash"><%= message %></div>
+          <% end %>
 
-        <%= yield %>
-        <%= render "layouts/footer" %>
-        
-        <%= javascript_include_tag "application" %>
+          <%= yield %>
+          <%= render "layouts/footer" %>
+          
+          <%= javascript_include_tag "application" %>
+        </div>
       </div>
     </div>
-  </div>
 
-  <script>$(document).foundation();</script>
+    <script>$(document).foundation();</script>
+  </body>
 </html>
