@@ -5,11 +5,15 @@
 # files.
 
 require 'cucumber/rails'
+require 'securerandom'
 
 # Capybara defaults to CSS3 selectors rather than XPath.
 # If you'd prefer to use XPath, just uncomment this line and adjust any
 # selectors in your step definitions to use the XPath syntax.
 # Capybara.default_selector = :xpath
+Before do
+  Capybara.current_driver = :selenium
+end
 
 # By default, any exception happening in your Rails application will bubble up
 # to Cucumber so that your scenario will fail. This is a different from how
@@ -56,3 +60,6 @@ end
 # See https://github.com/cucumber/cucumber-rails/blob/master/features/choose_javascript_database_strategy.feature
 Cucumber::Rails::Database.javascript_strategy = :truncation
 
+Before do 
+  User.create(email: Rails.application.secrets.admin_email, password: Rails.application.secrets.admin_pass, password_confirmation: Rails.application.secrets.admin_pass, role_id: 4)
+end

@@ -40,7 +40,7 @@ class ApplicationController < ActionController::Base
   end
 
   def can_send_email
-    unless (user_signed_in? && current_user.can_send_emails?)
+    unless (user_signed_in? && current_user.can_send_emails)
       flash[:alert] = "You don't have permission to the page you tried to access."
       redirect_to root_path
     end

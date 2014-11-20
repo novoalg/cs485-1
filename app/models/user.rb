@@ -3,7 +3,7 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
-  after_create :send_email
+  # after_create :send_email
 
   VALID_USERNAME_REGEX = /\A[a-z0-9\-]*\z/i
   belongs_to :role

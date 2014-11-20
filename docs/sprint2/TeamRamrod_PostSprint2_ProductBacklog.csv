@@ -1,0 +1,12 @@
+Level,Number,Description,Tags,Owner,Status,Estimate,Remaining,Wiki,Watchers,Related,Duplicate,Version 1
+1,21,Add Shopping Cart Functionality,Feature,,Not Started,30,30,,,,,
+1,22,Allow Credit Card Payment,Feature,,Not Started,10,10,,,,,
+1,61,Acquire SSL Certificate for Digital Ocean box,"Knowledge Acquisition,Usability",,Not Started,4,4,,,,,
+1,60,Post-sprint 2 Usability Study with Client,"Knowledge Acquisition,Usability",,Not Started,5,5,,,,,
+1,97,Search Engine Optimization,,,Not Started,10,10,,,,,
+1,106,"Add ""wares gallery""",,,Not Started,15,15,,,,,
+1,109,Configure mailer for production server,,,Not Started,15,15,,,,,
+1,110,Social media integration,,,Not Started,10,10,,,,,
+1,111,Make site text editable,,,Not Started,15,15,,,,,
+1,112,Mailing list manager,,,Not Started,30,30,,,,,
+1,113,Create user resource binder,,,Not Started,15,15,,,,,

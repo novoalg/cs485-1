@@ -1,56 +1,25 @@
-Feature: Items
+Feature: More Items
 
-Scenario Outline: Create an Item
-    Given I am logged in as an admin
-        And I am on the item creation page
-    When I enter name <name>
-        And I enter description <description>
-        And I enter price <price>
-        And I enter stock <stock>
-        And I enter category <category>
-        And I enter active <active>
-        And I enter deleted <deleted>
-        And I click the create button
-    Then I should see a success message
-    Examples: 
-        | name       | description | price    | stock  | category | active | deleted |
-        | TestItem 1 | A test      | 1.00     | 10     | 1        | true   | false   |
-        | TestItem 2 | A test two  | 10000.00 | 100000 | 2        | true   | false   |
+Scenario: Create an Item
+	Given I am logged in as an admin
+	When I go to the new item page
+		And I fill in some details
+		And I click Create Item
+	Then the item should show up on the items page
 
-Scenario Outline: Create an Invalid Item
-    Given I am logged in as an admin
-        And I am on the item creation page
-    When I enter name <name>
-        And I enter description <description>
-        And I enter price <price>
-        And I enter stock <stock>
-        And I enter category <category>
-        And I enter active <active>
-        And I enter deleted <deleted>
-        And I click the create button
-    Then I should see an error message
-    Examples: 
-        | name       | description | price        | stock     | category | active | deleted |
-        | TestItem 1 | A test      | -1.00        | -300      | -1       | true   | false   |
-        | TestItem 2 | A test two  | 100000001.00 | 100000001 | 2346436  | true   | false   |
+Scenario: Create an Invalid Item
+	Given I am logged in as an admin
+	When I go to the new item page
+		And I click Create Item
+	Then I should see a descriptive error message
 
 Scenario: View An Item
-    Given I am logged in
-        And I click on the shop button
-    When I click on an item
-    Then I should see the item details
+	Given I am logged in as an admin
+	When I view the item that was created
+	Then I should see the name of that item
 
 Scenario: Modify An Item
-    Given I am logged in as an admin
-        And I am on the item page
-    When I click the edit button
-        And I modify the name field
-        And I modify the price field
-        And I click the save button
-    Then I should see a success message
-
-Scenario: Delete An Item
-    Given I am logged in as an admin
-        And I am on the item page
-    When I click the delete button
-    Then I should see a success message
+	Given I am logged in as an admin
+	When I edit the item that was created
+		And I save the changes
+	Then I should see the changes 
