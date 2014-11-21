@@ -1,0 +1,2 @@
+class GalleryItemsController < ApplicationController
+end
