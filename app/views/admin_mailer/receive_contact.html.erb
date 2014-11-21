@@ -5,9 +5,9 @@
     </head>
     <body>
       <% unless @name.empty? %>
-        A message from <%= @name %>
+        You have received a message from <%= @name %>!
       <% else %>
-        The visitor that sent this message did not include his or her name. 
+        The visitor that sent this message did not include his or her name.  
       <% end %>
       <hr />
       <%= @content %>
