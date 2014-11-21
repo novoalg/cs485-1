@@ -9,55 +9,57 @@
 
   <section class="top-bar-section">
     <!-- Right Nav Section -->
-    <ul class="right">
+    <ul class="left">
 
       <% if role_read? %>
-        <li>
+        <li class="has-dropdown">
           <%= link_to inventory_path do %>
             <i class="fa fa-check"></i>&emsp;Inventory
           <% end %>
-        </li>
-      <% end %>
-
-      <% if role_add? %>
-        <li class="has-dropdown">
-          <%= link_to items_path do %>
-            <i class="fa fa-gift"></i>&emsp;Items
-          <% end %>
           <ul class="dropdown">
-            <li>
-              <%= link_to new_item_path do %>
-                <i class="fa fa-plus"></i>&emsp;Add Item
-              <% end %>
-            </li>
-          </ul>
-        </li>
-      <% elsif role_read? %>
-        <li>
-          <%= link_to items_path do %>
-            <i class="fa fa-gift"></i>&emsp;Items
-          <% end %>
-        </li>
-      <% end %>
+            <% if role_add? %>
+              <li class="has-dropdown">
+                <%= link_to items_path do %>
+                  <i class="fa fa-gift"></i>&emsp;Items
+                <% end %>
+                <ul class="dropdown">
+                  <li>
+                    <%= link_to new_item_path do %>
+                      <i class="fa fa-plus"></i>&emsp;Add Item
+                    <% end %>
+                  </li>
+                </ul>
+              </li>
+            <% else %>
+              <li>
+                <%= link_to items_path do %>
+                  <i class="fa fa-gift"></i>&emsp;Items
+                <% end %>
+              </li>
+            <% end %>
 
-      <% if role_add? %>
-        <li class="has-dropdown">
-          <%= link_to item_categories_path do %>
-            <i class="fa fa-folder-open"></i>&emsp;Item Categories
-          <% end %>
-          <ul class="dropdown">
-            <li>
-              <%= link_to new_item_category_path do %>
-                <i class="fa fa-plus"></i>&emsp;Add Item Category
-              <% end %>
-            </li>
+            <% if role_add? %>
+              <li class="has-dropdown">
+                <%= link_to item_categories_path do %>
+                  <i class="fa fa-folder-open"></i>&emsp;Categories
+                <% end %>
+                <ul class="dropdown">
+                  <li>
+                    <%= link_to new_item_category_path do %>
+                      <i class="fa fa-plus"></i>&emsp;Add Category
+                    <% end %>
+                  </li>
+                </ul>
+              </li>
+            <% elsif role_read? %>
+              <li>
+                <%= link_to item_categories_path do %>
+                  <i class="fa fa-folder-open"></i>&emsp;Categories
+                <% end %>
+              </li>
+            <% end %>
+
           </ul>
-        </li>
-      <% elsif role_read? %>
-        <li>
-          <%= link_to item_categories_path do %>
-            <i class="fa fa-folder-open"></i>&emsp;Item Categories
-          <% end %>
         </li>
       <% end %>
 
