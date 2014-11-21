@@ -22,6 +22,7 @@ Rails.application.routes.draw do
   put '/mass_email', to: 'email_templates#mass_email', as: 'mass_email'
   match '/about',     to: 'static_pages#about', via: 'get'
   match '/contact',   to: 'static_pages#contact', via: 'get'
+  match '/contact_us',  to: 'static_pages#contact_us', via: 'post'
   match '/inventory', to: 'inventory#index', via: 'get'
   root 'static_pages#index'
 

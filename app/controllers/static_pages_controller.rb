@@ -7,4 +7,9 @@ class StaticPagesController < ApplicationController
 
   def contact
   end
+
+  def contact_us
+    AdminMailer.receive_contact
+    redirect_to contact_path
+  end
 end
