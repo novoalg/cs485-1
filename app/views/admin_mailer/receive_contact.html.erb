@@ -1,3 +1,16 @@
-<div>
-  <%= @content %>
-</div>
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+    </head>
+    <body>
+      <% unless @name.empty? %>
+        A message from <%= @name %>
+      <% else %>
+        The visitor that sent this message did not include his or her name. 
+      <% end %>
+      <hr />
+      <%= @content %>
+    </body>
+
+</html>
