@@ -10,7 +10,7 @@ class AdminMailer < ActionMailer::Base
   def receive_contact(params)
     @name = params[:name]
     @content = params[:message]
-    mail(to: "admin@silverandstones.gallery", subject: "[Contact Us] #{params[:subject]}")
+    mail(to: "support@silverandstones.gallery", subject: "[Contact Us] #{params[:subject]}")
   end
 
 end

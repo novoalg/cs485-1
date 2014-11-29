@@ -27,4 +27,4 @@ EmailTemplate.create(
   :subject => "My custom subject"
 )
 
-User.create(email: "admin@silverandstones.gallery", password: "administrator", password_confirmation: "administrator", role_id: 4, can_send_emails: true)
+User.create(email: "support@silverandstones.gallery", password: "administrator", password_confirmation: "administrator", role_id: 4, can_send_emails: true)
