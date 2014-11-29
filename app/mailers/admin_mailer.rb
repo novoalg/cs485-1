@@ -1,5 +1,5 @@
 class AdminMailer < ActionMailer::Base
-  default from: "from@example.com"
+  default from: "support@silverandstones.gallery"
 
   def send_user_email(user)
     @user = user
