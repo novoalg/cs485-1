@@ -22,6 +22,6 @@ Rails.application.routes.draw do
   match '/contact_us',  to: 'static_pages#contact_us', via: 'post'
   match '/inventory', to: 'inventory#index', via: 'get'
 
-  resource :gallery
+  resources :galleries
 
 end
