@@ -14,6 +14,7 @@ class StaticPagesController < ApplicationController
       render 'contact'
     else
       AdminMailer.receive_contact(params.permit(:name, :subject, :email, :message)).deliver
+      flash[:success] = "Your email has been sent!"
       redirect_to contact_path
     end
   end
