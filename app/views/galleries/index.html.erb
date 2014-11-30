@@ -1,12 +1,54 @@
-<% @galleries.each do | gallery | %>
-  <div class="row">
+<% if role_add? %>
+  <div class="row text-center">
+    <div class="small-12 columns">
+      <%= link_to new_gallery_path, class: "button large" do %>
+        <i class="fa fa-plus"></i>&emsp;New Gallery Entry
+      <% end %>
+    </div>
+  </div>
+<% end %>
+
+<% unless @galleries.empty? %>
+  <% @galleries.each do | gallery | %>
+    <div class="row">
+      <div class="small-12 columns">
+        <div class="panel">
+          <% if role_delete? %>
+            <div class="row">
+              <div class="small-6 columns">
+                <%= link_to edit_gallery_path(gallery), class: "button expand" do %>
+                  <i class="fa fa-edit"></i>&emsp;Edit
+                <% end %>
+              </div>
+              <div class="small-6 columns">
+                <%= link_to gallery, method: :delete, data: { confirm: 'Are you sure you want to delete this gallery entry?' }, class: "button expand alert" do %>
+                  <i class="fa fa-times"></i>&emsp;Delete
+                <% end %>
+              </div>
+            </div>
+          <% elsif role_edit? %>
+            <div class="row">
+              <div class="small-12 columns">
+                <%= link_to edit_gallery_path(gallery), class: "button expand" do %>
+                  <i class="fa fa-edit"></i>&emsp;Edit
+                <% end %>
+              </div>
+            </div>
+          <% end %>
+          <%= link_to "#" do %>
+            <%= image_tag gallery.picture.url(:medium) %>
+          <% end %>
+          <hr />
+          <%= raw gallery.text %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+<% else %>
+  <div class="row text-center">
     <div class="small-12 columns">
       <div class="panel">
-        <%= link_to "#" do %>
-          <%= image_tag gallery.picture.url(:medium) %>
-        <% end %>
-        <hr />
-        <%= raw gallery.text %>
+        <h3>There are no gallery entries at this time.</h3>
       </div>
     </div>
   </div>

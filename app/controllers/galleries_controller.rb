@@ -40,6 +40,9 @@ class GalleriesController < ApplicationController
   end
 
   def destroy
+    @gallery.destroy
+    flash[:success] = "Gallery entry destroyed." 
+    redirect_to galleries_path
   end
 
   private
