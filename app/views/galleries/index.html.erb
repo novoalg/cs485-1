@@ -35,7 +35,7 @@
               </div>
             </div>
           <% end %>
-          <%= link_to "#" do %>
+          <%= link_to gallery.picture.url(:original), :target => "_blank" do %>
             <%= image_tag gallery.picture.url(:medium) %>
           <% end %>
           <hr />
