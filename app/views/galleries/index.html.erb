@@ -1,3 +1,13 @@
 <% @galleries.each do | gallery | %>
-  HELLO <br />
+  <div class="row">
+    <div class="small-12 columns">
+      <div class="panel">
+        <%= link_to "#" do %>
+          <%= image_tag gallery.picture.url(:medium) %>
+        <% end %>
+        <hr />
+        <%= raw gallery.text %>
+      </div>
+    </div>
+  </div>
 <% end %>
