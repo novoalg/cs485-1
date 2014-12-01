@@ -35,9 +35,13 @@
               </div>
             </div>
           <% end %>
-          <%= link_to gallery.picture.url(:original), :target => "_blank" do %>
-            <%= image_tag gallery.picture.url(:medium) %>
-          <% end %>
+          <div class="row text-center">
+            <div class="small-12 columns">
+              <%= link_to gallery.picture.url(:original), :target => "_blank" do %>
+                <%= image_tag gallery.picture.url(:medium) %>
+              <% end %>
+            </div>
+          </div>
           <hr />
           <%= raw gallery.text %>
         </div>
