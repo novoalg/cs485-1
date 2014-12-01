@@ -3,12 +3,16 @@
     <hr />
     <div class="row text-center">
       <div class="small-6 small-centered columns">
-        <i class="fa fa-copyright"></i>&nbsp;Silver &amp; Stones Gallery 
+        <i class="fa fa-copyright"></i>&nbsp;Silver &amp; Stones Gallery
         <%if Time.now.year == 2014 %> 
           2014
         <% else %>
           <%= "2014 - #{Time.now.year}" %>
         <% end %> 
+        &emsp;
+        <%= link_to "https://www.facebook.com/pages/Silver-and-Stones/736466763108245" do %>
+          <i class="fa fa-facebook-square"></i>
+        <% end %>
       </div>
     </div>
   </div>
