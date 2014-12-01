@@ -17,14 +17,16 @@ end
 
 EmailTemplate.create(
   :content => "<p><span style=\"color:#FF0000\">Welcome to Silver and Stones!</span></p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p><font color=\"#006400\">Happy shopping!</font></p>\r\n",
-  :email_type => "when Users sign up to the website",
-  :subject => "My custom subject"
+  :email_type => "Welcome Email",
+  :subject => "Welcome to Silver & Stones Gallery!"
 )
 
 EmailTemplate.create(
   :content => "<p><span style=\"color:#FF0000\">Welcome to Silver and Stones!</span></p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p><font color=\"#006400\">Happy shopping!</font></p>\r\n",
-  :email_type => "when Users sign up to the website",
-  :subject => "My custom subject"
+  :email_type => "Mass Email",
+  :subject => "A Message From Silver & Stones Gallery"
 )
 
 User.create(email: "support@silverandstones.gallery", password: "administrator", password_confirmation: "administrator", role_id: 4, can_send_emails: true)
+
+Headline.create(text: "This is a breaking news headline.", active: false);

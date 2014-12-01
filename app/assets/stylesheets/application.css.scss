@@ -58,7 +58,6 @@ $header-font-weight: 500;
 $paragraph-font-family: "Quicksand", "Helvetica", Helvetica, Arial, sans-serif;
 $paragraph-font-size: 1.2rem;
 
-
 $body-bg: transparent;
 $body-font-family: "Quicksand";
 
@@ -86,4 +85,13 @@ body {
 
 #logo {
 	max-width: 50%;
+}
+
+.breaking {
+  background-color: rgba(51, 102, 153, 0.90);
+  border: 2px solid black;
+}
+
+.breaking-text {
+  color: #FFFFFF;
 }

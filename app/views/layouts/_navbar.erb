@@ -1,96 +1,98 @@
-<nav class="top-bar" data-topbar role="navigation">
+<div class="sticky">
+  <nav class="top-bar" data-topbar role="navigation">
 
-  <ul class="title-area">
-    <li class="name">
-      <h1 class="show-for-medium-up"><%= link_to "Silver & Stones", root_path %></h1>
-    </li>
-    <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
-  </ul>
+    <ul class="title-area">
+      <li class="name">
+        <h1 class="show-for-medium-up"><%= link_to "Silver & Stones", root_path %></h1>
+      </li>
+      <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
+    </ul>
 
-  <section class="top-bar-section">
-    <!-- Right Nav Section -->
-    <ul class="left">
+    <section class="top-bar-section">
+      <!-- Right Nav Section -->
+      <ul class="left">
 
-      <% if role_read? %>
+        <% if role_read? %>
+          <li class="has-dropdown">
+            <%= link_to inventory_path do %>
+              <i class="fa fa-check"></i>&emsp;Inventory
+            <% end %>
+            <ul class="dropdown">
+
+              <% if role_add? %>
+                <li class="has-dropdown">
+                  <%= link_to item_categories_path do %>
+                    <i class="fa fa-folder-open"></i>&emsp;Categories
+                  <% end %>
+                  <ul class="dropdown">
+                    <li>
+                      <%= link_to new_item_category_path do %>
+                        <i class="fa fa-plus"></i>&emsp;Add Category
+                      <% end %>
+                    </li>
+                  </ul>
+                </li>
+              <% elsif role_read? %>
+                <li>
+                  <%= link_to item_categories_path do %>
+                    <i class="fa fa-folder-open"></i>&emsp;Categories
+                  <% end %>
+                </li>
+              <% end %>
+
+              <% if role_add? %>
+                <li class="has-dropdown">
+                  <%= link_to items_path do %>
+                    <i class="fa fa-gift"></i>&emsp;Items
+                  <% end %>
+                  <ul class="dropdown">
+                    <li>
+                      <%= link_to new_item_path do %>
+                        <i class="fa fa-plus"></i>&emsp;Add Item
+                      <% end %>
+                    </li>
+                  </ul>
+                </li>
+              <% else %>
+                <li>
+                  <%= link_to items_path do %>
+                    <i class="fa fa-gift"></i>&emsp;Items
+                  <% end %>
+                </li>
+              <% end %>
+
+            </ul>
+          </li>
+        <% end %>
+
+        <% if role_read? %>
+          <li>
+            <%= link_to users_path do %>
+              <i class="fa fa-group"></i>&emsp;Users
+            <% end %>
+          </li>
+
+          <li>
+              <%= link_to email_templates_path do %>
+                  <i class="fa fa-envelope-o"></i>&emsp;Emails
+              <% end %>
+          </li>
+        <% end %>
+
         <li class="has-dropdown">
-          <%= link_to inventory_path do %>
-            <i class="fa fa-check"></i>&emsp;Inventory
+          <%= link_to edit_user_path current_user do %>
+            <i class="fa fa-gear"></i>&emsp;Edit Profile
           <% end %>
           <ul class="dropdown">
-
-            <% if role_add? %>
-              <li class="has-dropdown">
-                <%= link_to item_categories_path do %>
-                  <i class="fa fa-folder-open"></i>&emsp;Categories
-                <% end %>
-                <ul class="dropdown">
-                  <li>
-                    <%= link_to new_item_category_path do %>
-                      <i class="fa fa-plus"></i>&emsp;Add Category
-                    <% end %>
-                  </li>
-                </ul>
-              </li>
-            <% elsif role_read? %>
-              <li>
-                <%= link_to item_categories_path do %>
-                  <i class="fa fa-folder-open"></i>&emsp;Categories
-                <% end %>
-              </li>
+            <li>
+            <%= link_to edit_user_registration_path do %>
+              <i class="fa fa-lock"></i>&emsp;Edit Password
             <% end %>
-
-            <% if role_add? %>
-              <li class="has-dropdown">
-                <%= link_to items_path do %>
-                  <i class="fa fa-gift"></i>&emsp;Items
-                <% end %>
-                <ul class="dropdown">
-                  <li>
-                    <%= link_to new_item_path do %>
-                      <i class="fa fa-plus"></i>&emsp;Add Item
-                    <% end %>
-                  </li>
-                </ul>
-              </li>
-            <% else %>
-              <li>
-                <%= link_to items_path do %>
-                  <i class="fa fa-gift"></i>&emsp;Items
-                <% end %>
-              </li>
-            <% end %>
-
+            </li>
           </ul>
         </li>
-      <% end %>
+      </ul>
+    </section>
 
-      <% if role_read? %>
-        <li>
-          <%= link_to users_path do %>
-            <i class="fa fa-group"></i>&emsp;Users
-          <% end %>
-        </li>
-
-        <li>
-            <%= link_to email_templates_path do %>
-                <i class="fa fa-envelope-o"></i>&emsp;Emails
-            <% end %>
-        </li>
-      <% end %>
-
-      <li class="has-dropdown">
-        <%= link_to edit_user_path current_user do %>
-          <i class="fa fa-gear"></i>&emsp;Edit Profile
-        <% end %>
-        <ul class="dropdown">
-          <li>
-          <%= link_to edit_user_registration_path do %>
-            <i class="fa fa-lock"></i>&emsp;Edit Password
-          <% end %>
-          </li>
-        </ul>
-      </li>
-    </ul>
-  </section>
-
-</nav>
+  </nav>
+</div>

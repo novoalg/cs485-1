@@ -1,5 +1,6 @@
 class StaticPagesController < ApplicationController
   def index
+    @headline = Headline.where(:id => 1, :active => true)
   end
 
   def about
