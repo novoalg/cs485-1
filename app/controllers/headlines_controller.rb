@@ -1,7 +1,7 @@
 class HeadlinesController < ApplicationController
 
   before_action :set_headline
-  before_filter :role_edit
+  before_filter :role_three
 
   def edit
   end
