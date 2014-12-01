@@ -9,7 +9,9 @@
 <% end %>
 
 <% unless @galleries.empty? %>
+  <ul class="small-block-grid-1 medium-block-grid-2 large-block-grid-3">
   <% @galleries.each do | gallery | %>
+    <li>
     <div class="row">
       <div class="small-12 columns">
         <div class="panel">
@@ -47,7 +49,9 @@
         </div>
       </div>
     </div>
+    </li>
   <% end %>
+  </ul>
 <% else %>
   <div class="row text-center">
     <div class="small-12 columns">
