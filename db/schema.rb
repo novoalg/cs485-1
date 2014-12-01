@@ -49,7 +49,7 @@ ActiveRecord::Schema.define(version: 20141201052930) do
 
   create_table "headlines", force: true do |t|
     t.text     "text"
-    t.boolean  "active"
+    t.boolean  "active",     default: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
