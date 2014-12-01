@@ -79,6 +79,14 @@
           </li>
         <% end %>
 
+        <% if role_edit? %>
+          <li>
+            <%= link_to edit_headline_path do %>
+              <i class="fa fa-info-circle"></i>&emsp;Headline
+            <% end %>
+          </li>
+        <% end %>
+
         <li class="has-dropdown">
           <%= link_to edit_user_path current_user do %>
             <i class="fa fa-gear"></i>&emsp;Edit Profile

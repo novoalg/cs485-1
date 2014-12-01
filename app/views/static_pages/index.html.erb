@@ -1,11 +1,11 @@
 <% content_for :title, "Home" %>
 <% description "Silver & Stones Gallery is a perfect place to shop for special gifts or treasures from your home." %>
 
-<% unless @headline.empty? %>
+<% if @headline.active %>
 <div class="row text-center">
   <div class="small-12 columns">
     <div data-alert class="alert-box breaking">
-      <h2 class="breaking-text"><%= @headline.text %></h2>
+      <%= raw @headline.text %>
     </div>
   </div>
 </div>

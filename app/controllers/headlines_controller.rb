@@ -1,13 +1,28 @@
 class HeadlinesController < ApplicationController
 
+  before_action :set_headline
+
   def edit
-    @headline = Headline.find(1)
   end
 
   def update
+    if @headline.update_attributes(headline_params)
+      flash[:success] = "Updated headline successfully."
+      redirect_to root_path
+    else
+      flash.now[:alert] = "Could not update headline."
+      render 'edit'
+    end
   end
 
-  def toggle_active
-  end
+  private
+
+    def set_headline
+      @headline = Headline.first
+    end
+
+    def headline_params
+      params.require(:headline).permit(:text, :active)
+    end
 
 end
