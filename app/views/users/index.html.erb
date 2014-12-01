@@ -4,7 +4,8 @@
     <thead>
       <tr>
         <th>Email</th>
-        <th colspan="2">Role</th>
+        <th>Role</th>
+        <th width="130">Update</th>
       </tr>
     </thead>
     <tbody>
@@ -20,7 +21,7 @@
                 <%= form.hidden_field :role_id %>
               </div>
             </td>
-            <td><%= form.submit "Update" %></td>
+            <td><%= form.submit "Update Role" %></td>
           <% end %>
         <% else %>
           <td>
@@ -30,6 +31,7 @@
               <input type="hidden">
             </div>
           </td>
+          <td></td>
         <% end %>
       </tr>
       <% end %>
