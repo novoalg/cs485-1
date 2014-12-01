@@ -39,13 +39,13 @@
           <% end %>
           <div class="row text-center">
             <div class="small-12 columns">
-              <%= link_to gallery.picture.url(:original), :target => "_blank" do %>
+              <a href="#" data-reveal-id="gallery-<%= gallery.id %>-modal">
                 <%= image_tag gallery.picture.url(:medium) %>
-              <% end %>
+              </a>
             </div>
           </div>
           <hr />
-          <%= raw gallery.text %>
+          <%= gallery.text %>
         </div>
       </div>
     </div>
@@ -60,4 +60,17 @@
       </div>
     </div>
   </div>
+<% end %>
+
+<% unless @galleries.empty? %>
+  <% @galleries.each do | gallery | %>
+    <div id="gallery-<%= gallery.id %>-modal" class="reveal-modal" data-reveal>
+      <%= link_to gallery.picture.url(:original), :target => "_blank" do %>
+        <div class="text-center">
+        <%= image_tag gallery.picture.url(:large) %>
+        </div>
+      <% end %>
+      <a class="close-reveal-modal">&#215;</a>
+    </div>
+  <% end %>
 <% end %>
