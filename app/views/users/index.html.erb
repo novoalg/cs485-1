@@ -11,9 +11,24 @@
       <% @users.each do |user| %>
       <tr>
         <td><%= link_to user.email, user %></td>
-        <%= form_for user do |form| %>
-          <td><%= form.select "role_id", options_from_collection_for_select(@roles, "id", "name", :selected => user.role_id) %></td>
-          <td><%= form.submit "Update" %></td>
+        <% unless user.role_id > current_user.role_id %>
+          <%= form_for user do |form| %>
+            <td>
+              <div class="range-slider" data-slider data-options="start: 1; end: <%= current_user.role_id + 1 %>; initial: <%= user.role_id + 1 %>">
+                <span class="range-slider-handle" role="slider" tabindex="0"></span>
+                <span class="range-slider-active-segment"></span> 
+                <%= form.hidden_field :role_id %>
+              </div>
+            </td>
+            <td><%= form.submit "Update" %></td>
+          <% end %>
+        <% else %>
+          <td>
+            <div class="range-slider disabled" data-slider data-options="start: 1; end: <%= current_user.role_id + 1 %>; initial: <%= user.role_id + 1 %>">
+              <span class="range-slider-handle" role="slider" tabindex="0"></span>
+              <span class="range-slider-active-segment"></span> 
+            </div>
+          </td>
         <% end %>
       </tr>
       <% end %>
