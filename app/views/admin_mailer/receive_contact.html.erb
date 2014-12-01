@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+    </head>
+    <body>
+      <% unless @name.empty? %>
+        <h2>You have received a message from <%= @name %>!</h2>
+      <% else %>
+        <h2>The visitor that sent this message did not include his or her name.</h2>
+      <% end %>
+      <hr />
+      <h3>Message from <%= @email %>:</h3>
+      <%= @content %>
+    </body>
+
+</html>

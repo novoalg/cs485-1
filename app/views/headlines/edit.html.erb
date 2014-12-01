@@ -1,0 +1,30 @@
+<div class="row text-center">
+  <div class="small-12 columns">
+
+    <% if @headline.errors.any? %>
+      <div id="error_explanation">
+        <h2>Please fix <%= pluralize(@headline.errors.count, "error") %>:</h2>
+        <ul>
+        <% @headline.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <%= form_for @headline do | f | %>
+      <%= f.label :text %>
+      <%= f.cktext_area :text %>
+
+      Active?
+      <div class="switch large">
+        <%= f.check_box :active %>
+        <%= f.label :active, "Remember Me" %>
+      </div>
+
+      <hr />
+
+      <%= f.submit class: "button expand" %>
+    <% end %>
+  </div>
+</div>

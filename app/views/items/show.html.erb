@@ -1,15 +1,26 @@
 <div class="row">
   <hr>
   <div class="small-12 medium-6 columns">
-    <%= image_tag @item.picture.url(:medium) %>
+    <a href="#" data-reveal-id="picture-modal">
+      <%= image_tag @item.picture.url(:original) %>
+    </a>
   </div>
   <div class="small-12 medium-6 columns">
     <h1><%= @item.name %></h1>
     <p><%= @item.description %></p>
     <div class="panel">
-      <h2>$<%= @item.price %></h2>
+      <h2><%= number_to_currency(@item.price) %></h2>
       <h6 class="subheader">Currently in stock: <%= @item.in_stock %></h6>
       <a href="#" class="small button">Reserve</a>
     </div>
   </div>
+</div>
+
+<div id="picture-modal" class="reveal-modal" data-reveal>
+  <%= link_to @item.picture.url(:original), :target => "_blank" do %>
+    <div class="text-center">
+    <%= image_tag @item.picture.url(:original) %>
+    </div>
+  <% end %>
+  <a class="close-reveal-modal">&#215;</a>
 </div>

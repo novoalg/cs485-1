@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141120231126) do
+ActiveRecord::Schema.define(version: 20141201052930) do
 
   create_table "ckeditor_assets", force: true do |t|
     t.string   "data_file_name",               null: false
@@ -35,6 +35,23 @@ ActiveRecord::Schema.define(version: 20141120231126) do
     t.string   "content"
     t.string   "email_type"
     t.string   "subject"
+  end
+
+  create_table "galleries", force: true do |t|
+    t.text     "text"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "picture_file_name"
+    t.string   "picture_content_type"
+    t.integer  "picture_file_size"
+    t.datetime "picture_updated_at"
+  end
+
+  create_table "headlines", force: true do |t|
+    t.text     "text"
+    t.boolean  "active"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "item_categories", force: true do |t|

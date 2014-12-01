@@ -1,5 +1,16 @@
 <% content_for :title, "Home" %>
 <% description "Silver & Stones Gallery is a perfect place to shop for special gifts or treasures from your home." %>
+
+<% if @headline.active %>
+<div class="row text-center">
+  <div class="small-12 columns">
+    <div data-alert class="alert-box breaking">
+      <%= raw @headline.text %>
+    </div>
+  </div>
+</div>
+<% end %>
+
 <div class="row">
   <div class="small-12 columns">
     <ul id="welcome-slider">

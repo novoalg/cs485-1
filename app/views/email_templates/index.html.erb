@@ -1,9 +1,24 @@
 <h3>Mass Email: <%= link_to "Send email to array of users", new_mass_email_path %></h3>
+
 <% @templates.each do |template| %>
-    <h1>Template <%= template.email_type %></h1>
-    <h2><%= link_to "Edit", edit_email_template_path(template.id) %></h2>
-    <div class="template_box">
-        <b>Subject:</b><p><%= template.subject %></p>
-        <b>Body:</b><p><%= raw template.content %></p>
+  <div class="row">
+    <div class="small-12 columns">
+      <div class="panel">
+        <div class="row">
+          <div class="small-6 columns text-left">
+            <h2>Template: <%= template.email_type %></h2>
+          </div>
+          <div class="small-6 columns text-right">
+            <%= link_to edit_email_template_path(template.id), class: "button small" do %>
+              <i class="fa fa-edit"></i>&emsp;Edit
+            <% end %>
+          </div>
+        </div>
+        <div class="template_box">
+            <b>Subject:</b><p><%= template.subject %></p>
+            <b>Body:</b><p><%= raw template.content %></p>
+        </div>
+      </div>
     </div>
+  </div>
 <% end %>

@@ -2,45 +2,56 @@
 <% description 'Get in touch with Silver & Stones Gallery!' %>
 
 <div class="row"> 
-  <div class="large-7 columns">
+  <div class="small-12 large-7 columns">
   <h3>Get In Touch!</h3>
   <p>We would love to hear from you. You can reach out to us and one of our team members will get back to you as soon as possible. Otherwise, you're welcome to call or stop in - we'd be more than happy to help you in person!</p>
+
   <div class="section-container tabs" data-section>
-    <section class="section panel" id="phone-number">
-      <h4 class="title"><a><i class="fa fa-phone"></i> Call Us</a></h4>
-      <h4 style="font-family:Quicksand">(715) 839-8197</h4>
-    </section>
-    <section class="section panel">
-      <h4 class="title"><a><i class="fa fa-envelope"></i> Contact Us</a></h4>
-      <div class="content" data-slug="panel2">
-        <form>
-          <div class="row collapse">
-            <div class="large-2 columns">
-              <label class="inline">Your Name:</label>
+    <%= form_tag contact_us_path do %> 
+      <section class="section panel">
+        <h4 class="title"><a><i class="fa fa-envelope"></i> Email Us</a></h4>
+        <div class="content" data-slug="panel2">
+          <form>
+            <div class="row collapse">
+              <div class="large-2 columns">
+                <label class="inline"> Your Name:</label>
+              </div>
+              <div class="large-10 columns">
+                <input type="text" id="yourName" placeholder="John Smith (optional)" name="name">
+              </div>
             </div>
-            <div class="large-10 columns">
-              <input type="text" id="yourName" placeholder="John Smith">
+            <div class="row collapse">
+              <div class="large-2 columns">
+                <label class="inline"> Your Email:</label>
+              </div>
+              <div class="large-10 columns">
+                <input type="email" id="yourEmail" placeholder="jsmith@example.com" name="email">
+              </div>
             </div>
-          </div>
-          <div class="row collapse">
-            <div class="large-2 columns">
-              <label class="inline"> Your Email:</label>
+            <div class="row collapse">
+              <div class="large-2 columns">
+                <label class="inline"> Subject:</label>
+              </div>
+              <div class="large-10 columns">
+                <input type="text" id="yourName" placeholder="Neat website!" name="subject">
+              </div>
             </div>
-            <div class="large-10 columns">
-              <input type="text" id="yourEmail" placeholder="jsmith@example.com">
-            </div>
-          </div>
-          <label>What's on your mind?</label>
-          <textarea rows="4"></textarea>
-          <button type="submit" class="button expand">Submit</button>
-        </form>
-      </div>
-    </section>
+            <label>What's on your mind?</label>
+            <textarea rows="8" name="message"></textarea>
+            <button type="submit" class="button expand"><i class="fa fa-send"></i>&emsp;Send</button>
+          </form>
+        </div>
+      </section>
+    <% end %>
   </div>
 </div>
  
-<div class="large-5 columns">
+<div class="small-12 large-5 columns">
   <br />
+  <section class="section panel" id="phone-number">
+    <h4 class="title"><a><i class="fa fa-phone"></i> Call Us</a></h4>
+    <h4 style="font-family:Quicksand">(715) 839-8197</h4>
+  </section>
   <div class="panel">
     <h4 class="title"><a><i class="fa fa-location-arrow"></i> Stop In</a></h4>
     <p>
@@ -55,7 +66,9 @@
           </div>
       </a>
       <br/>
-      <%= link_to "Get Directions", "https://www.google.com/maps/dir//3006+London+Rd,+Eau+Claire,+WI+54701/@44.787724,-91.4632049,17z/data=!4m13!1m4!3m3!1s0x87f8bc41d0ef3e2d:0x9bcf24b5ca08aa7b!2s3006+London+Rd,+Eau+Claire,+WI+54701!3b1!4m7!1m0!1m5!1m1!1s0x87f8bc41d0ef3e2d:0x9bcf24b5ca08aa7b!2m2!1d-91.4632049!2d44.787724", :class => "button expand", :id => "get-directions" %>
+      <%= link_to "https://www.google.com/maps/dir//3006+London+Rd,+Eau+Claire,+WI+54701/@44.787724,-91.4632049,17z/data=!4m13!1m4!3m3!1s0x87f8bc41d0ef3e2d:0x9bcf24b5ca08aa7b!2s3006+London+Rd,+Eau+Claire,+WI+54701!3b1!4m7!1m0!1m5!1m1!1s0x87f8bc41d0ef3e2d:0x9bcf24b5ca08aa7b!2m2!1d-91.4632049!2d44.787724", :class => "button expand", :id => "get-directions" do %>
+         <i class="fa fa-map-marker"></i>&emsp;Get Directions
+      <% end %>
     </p>
     </div>
   </div>

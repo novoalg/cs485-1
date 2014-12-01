@@ -9,6 +9,7 @@
     <% keywords 'silver, stones, jewelry, art, decor, searchable, shopping, clothes, apparel, snacks, treats, gifts, local, eau claire, london road, silver and stones, gallery, crafts, artisan' %>
     <%= stylesheet_link_tag    "application" %>
     <%= display_meta_tags :site => 'Silver & Stones Gallery' %>
+    <%= favicon_link_tag 'favicon.ico' %>
     <%= javascript_include_tag "vendor/modernizr" %>
     <%= csrf_meta_tags %>
   </head>
@@ -31,6 +32,8 @@
           <%= yield %>
           <%= render "layouts/footer" %>
           
+          <br />
+
           <%= javascript_include_tag "application" %>
         </div>
       </div>
