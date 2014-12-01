@@ -14,7 +14,7 @@
         <% unless user.role_id > current_user.role_id %>
           <%= form_for user do |form| %>
             <td>
-              <div class="range-slider" data-slider data-options="start: 1; end: <%= current_user.role_id + 1 %>; initial: <%= user.role_id + 1 %>">
+              <div class="range-slider" data-slider data-options="start: 1; end: <%= current_user.role_id %>; initial: <%= user.role_id %>">
                 <span class="range-slider-handle" role="slider" tabindex="0"></span>
                 <span class="range-slider-active-segment"></span> 
                 <%= form.hidden_field :role_id %>
@@ -24,9 +24,10 @@
           <% end %>
         <% else %>
           <td>
-            <div class="range-slider disabled" data-slider data-options="start: 1; end: <%= current_user.role_id + 1 %>; initial: <%= user.role_id + 1 %>">
+            <div class="range-slider disabled" data-slider data-options="start: 1; end: <%= current_user.role_id %>; initial: <%= user.role_id %>">
               <span class="range-slider-handle" role="slider" tabindex="0"></span>
               <span class="range-slider-active-segment"></span> 
+              <input type="hidden">
             </div>
           </td>
         <% end %>
