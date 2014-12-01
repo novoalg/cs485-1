@@ -1,0 +1,38 @@
+ <% if @gallery.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@gallery.errors.count, "error") %> prohibited this gallery entry from being saved:</h2>
+
+    <ul>
+    <% @gallery.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<%= form_for @gallery do | f | %>
+
+  <div class="row text-center">
+    <div class="small-12 columns">
+      <%= f.label :text, "Description" %>
+      <%= f.text_area :text, rows: 8 %>
+    </div>
+  </div>
+
+  <div class="row text-center">
+    <div class="small-12 columns">
+      <hr />
+      <%= f.label :picture, "Picture" %>
+      <%= f.file_field :picture, class: "button expand" %>
+      <%= image_tag @gallery.picture.url(:small) %>
+    </div>
+  </div>
+
+  <div class="row text-center">
+    <div class="small-12 columns">
+      <hr />
+      <%= f.submit class: "button expand" %>
+    </div>
+  </div>
+  
+<% end %>

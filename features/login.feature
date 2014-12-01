@@ -8,7 +8,7 @@ Scenario: View Login
 
 Scenario: Login Success
     Given I am on the login page
-    When I enter email admin@silverandstones.gallery
+    When I enter email support@silverandstones.gallery
         And I enter password administrator
         And I click the login button
     Then I should see a flash message

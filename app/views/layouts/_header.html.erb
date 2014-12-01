@@ -1,5 +1,7 @@
 <div class="text-center">
-  <%= image_tag "logo.png", id: "logo" %>
+  <%= link_to root_path do %>
+    <%= image_tag "logo.png", id: "logo" %>
+  <% end %>
 </div>
 
 <div class="icon-bar six-up">
@@ -15,7 +17,7 @@
     <i class="fa fa-phone"></i>
     <label class="show-for-medium-up">Contact Us</label>
   <% end %>
-  <%= link_to "http://google.com", class: "item", id: "shop" do %>
+  <%= link_to galleries_path, class: "item", id: "shop" do %>
     <i class="fa fa-image"></i>
     <label class="show-for-medium-up">Gallery</label>
   <% end %>
