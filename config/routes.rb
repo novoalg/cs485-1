@@ -23,5 +23,5 @@ Rails.application.routes.draw do
   match '/inventory', to: 'inventory#index', via: 'get'
 
   resources :galleries
-  resource :headline
+  resource :headline, only: [:edit, :update]
 end
