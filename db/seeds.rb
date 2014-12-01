@@ -29,4 +29,4 @@ EmailTemplate.create(
 
 User.create(email: "support@silverandstones.gallery", password: "administrator", password_confirmation: "administrator", role_id: 4, can_send_emails: true)
 
-Headline.create(text: "This is a breaking news headline.", active: false);
+Headline.create(text: "This is a breaking news headline!")
