@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141201052930) do
+ActiveRecord::Schema.define(version: 20141201071133) do
 
   create_table "ckeditor_assets", force: true do |t|
     t.string   "data_file_name",               null: false
@@ -108,7 +108,7 @@ ActiveRecord::Schema.define(version: 20141201052930) do
     t.datetime "updated_at"
     t.boolean  "is_admin"
     t.boolean  "can_send_emails",        default: false, null: false
-    t.integer  "role_id",                default: 0
+    t.integer  "role_id",                default: 1
     t.string   "encrypted_password",     default: "",    null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
