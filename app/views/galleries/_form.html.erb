@@ -15,16 +15,16 @@
   <div class="row text-center">
     <div class="small-12 columns">
       <%= f.label :text, "Description" %>
-      <%= f.text_area :text %>
+      <%= f.text_area :text, rows: 8 %>
     </div>
   </div>
 
   <div class="row text-center">
     <div class="small-12 columns">
       <hr />
-      <%= image_tag @gallery.picture.url(:medium) %>
       <%= f.label :picture, "Picture" %>
       <%= f.file_field :picture, class: "button expand" %>
+      <%= image_tag @gallery.picture.url(:small) %>
     </div>
   </div>
 
