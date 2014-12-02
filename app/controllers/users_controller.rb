@@ -1,9 +1,9 @@
 class UsersController < ApplicationController
 
   before_filter :logged_in, :except => [:new, :create]
-  before_filter :role_zero, :only => [:show]
-  before_filter :role_one, :only => [:index]
-  before_filter :role_four, :only => [:destroy]  
+  before_filter :role_one, :only => [:show]
+  before_filter :role_two, :only => [:index]
+  before_filter :role_five, :only => [:destroy]  
 
   def index
     @users = User.all.order("role_id desc")

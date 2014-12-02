@@ -2,10 +2,10 @@ class GalleriesController < ApplicationController
 
   before_action :set_gallery, only: [:edit, :update, :destroy]
 
-  before_filter :role_one, except: [:index]
-  before_filter :role_two, only: [:edit, :update]
-  before_filter :role_three, only: [:new, :create]
-  before_filter :role_four, only: [:destroy]
+  before_filter :role_two, except: [:index]
+  before_filter :role_three, only: [:edit, :update]
+  before_filter :role_four, only: [:new, :create]
+  before_filter :role_five, only: [:destroy]
 
   def index
     @galleries = Gallery.all 
