@@ -1,7 +1,17 @@
-<div class="text-center">
-  <%= link_to root_path do %>
-    <%= image_tag "logo.png", id: "logo" %>
-  <% end %>
+<div class="row text-center">
+  <div class="small-12 columns">
+      <%= link_to root_path do %>
+        <%= image_tag "logo.png", id: "logo" %>
+      <% end %>
+  </div>
+</div>
+
+<div class="row text-right">
+  <div class="small-12 columns">
+    <%= link_to "https://www.facebook.com/pages/Silver-and-Stones/736466763108245" do %>
+      <i class="fa fa-facebook-square"></i>&nbsp;Like Us
+    <% end %>
+  </div>
 </div>
 
 <div class="icon-bar six-up">
@@ -36,5 +46,4 @@
         <label class="show-for-medium-up">Logout</label>
       <% end %>
   <% end %>
-
 </div>

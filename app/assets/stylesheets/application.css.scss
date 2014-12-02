@@ -77,10 +77,26 @@ $body-font-family: "Quicksand";
 }
 
 body {
-	background: image-url("seasons/autumn.jpg");
-	background-attachment: fixed;
-	background-position: center; 
-	background-size: cover;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+body.winter {
+  background: image-url("seasons/winter.jpg") no-repeat center center fixed;
+}
+
+body.spring {
+  background: image-url("seasons/spring.jpg") no-repeat center center fixed;
+}
+
+body.summer {
+  background: image-url("seasons/summer.jpg") no-repeat center center fixed;
+}
+
+body.autumn {
+  background: image-url("seasons/autumn.jpg") no-repeat center center fixed;
 }
 
 #logo {
