@@ -23,5 +23,29 @@ module ApplicationHelper
     def role_delete?
       user_signed_in? && current_user.role_id >= 5
     end
+
+    def current_season
+      now = Time.now
+      month = now.month
+      day = now.day
+
+      winter = (month == 12 && day >= 21) || month == 1 || month == 2 || (month == 3 && day < 21)
+      spring = (month == 3 && day >= 21) || month == 4 || month == 5 || (month == 6 && day < 21)
+      summer = (month == 6 && day >= 21) || month == 7 || month == 8 || (month == 9 && day < 21)
+      autumn = (month == 9 && day >= 21) || month == 10 || month == 11 || (month == 12 && day < 21)
+
+      if winter
+        "winter"
+      elsif spring
+        "spring"
+      elsif summer
+        "summer"
+      elsif autumn
+        "autumn"
+      else 
+        "autumn"
+      end
+
+    end
   
 end
