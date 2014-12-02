@@ -11,9 +11,6 @@ Role.create(name: "Read", description: "Read-only access to information")
 Role.create(name: "Edit", description: "Allowed to edit existing information")
 Role.create(name: "Add", description: "Allowed to create new items, categories, etc.")
 Role.create(name: "Delete", description: "Allowed to remove information from the application.")
-Role.all.each do | role | 
-  role.update(id: role.id - 1)
-end
 
 EmailTemplate.create(
   :content => "<p><span style=\"color:#FF0000\">Welcome to Silver and Stones!</span></p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p><font color=\"#006400\">Happy shopping!</font></p>\r\n",
@@ -27,6 +24,6 @@ EmailTemplate.create(
   :subject => "A Message From Silver & Stones Gallery"
 )
 
-User.create(email: "support@silverandstones.gallery", password: "administrator", password_confirmation: "administrator", role_id: 4, can_send_emails: true)
+User.create(email: "support@silverandstones.gallery", password: "administrator", password_confirmation: "administrator", role_id: 5, can_send_emails: true)
 
 Headline.create(text: "This is a breaking news headline!")
