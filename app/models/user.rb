@@ -14,8 +14,35 @@ class User < ActiveRecord::Base
     self.email = email.downcase
   end
 
+  def can_send_emails
+    self.role_id > 3
+  end
+
   def send_email
     UserMailer.welcome_email(self).deliver
+  end
+
+  # Access token for a user
+  def access_token
+    User.create_access_token(self)
+  end
+
+  # Verifier based on our application secret
+  def self.verifier
+    ActiveSupport::MessageVerifier.new(Rails.application.secrets.secret_key_base)
+  end
+
+  # Get a user from a token
+  def self.read_access_token(signature)
+    id = verifier.verify(signature)
+    User.find_by_id id
+  rescue ActiveSupport::MessageVerifier::InvalidSignature
+    nil
+  end
+
+  # Class method for token generation
+  def self.create_access_token(user)
+    verifier.generate(user.id)
   end
 
 end

@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 
-  before_filter :logged_in, :except => [:new, :create]
+  before_filter :logged_in, :except => [:new, :create, :unsubscribe]
   before_filter :role_one, :only => [:show]
   before_filter :role_two, :only => [:index]
   before_filter :role_five, :only => [:destroy]  
@@ -15,24 +15,9 @@ class UsersController < ApplicationController
   end
 
   def new
-    @user = User.new
-    @change_username = true;
   end
 
   def create
-    @user = User.create user_params
-    @user.role_id = 0
-    if @user.save
-      session[:user_id] = @user.id
-      current_user = @user
-      UserMailer.welcome_email(@user).deliver
-      flash[:success] = "Welcome #{@user.username}"
-      redirect_to root_path
-    else
-      flash.now[:alert] = @user.errors.full_messages.to_sentence
-      render 'new'
-      @user.destroy
-    end
   end
 
   def edit
@@ -58,6 +43,15 @@ class UsersController < ApplicationController
     else 
       flash[:alert] = "Unable to delete admin user."
       redirect_to User.find(params[:id])
+    end
+  end
+
+  def unsubscribe
+    if user = User.read_access_token(params[:signature])
+      user.update_attribute :receive_emails, false
+      render text: "You have been unsubscribed."
+    else
+      render text: "Invalid Link"
     end
   end
 

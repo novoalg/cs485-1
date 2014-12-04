@@ -4,7 +4,9 @@
         <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
     </head>
     <body>
-        <%= raw @template.content %>
-    </body>
+        <%= raw @content %>
 
+        <hr />
+        <small>Don't want to receive more emails from us? <%= link_to "Unsubscribe.", unsubscribe_url(@user.access_token) %></small>
+    </body>
 </html>
