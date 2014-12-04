@@ -1,7 +1,8 @@
 class StaticPagesController < ApplicationController
   def index
     @headline = Headline.first
-    @texts = StaticText.all
+    @description = StaticText.first
+    @entries = StaticText.find([2, 3, 4, 5, 6, 7])
   end
 
   def about

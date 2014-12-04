@@ -28,41 +28,18 @@
 
 <div class="row">
   <div class="small-12 columns">
-    <p><%= @texts[0].text %></p>
+    <p><%= @description.text %></p>
   </div>
 </div>
 
 <hr />
- 
-<div class="row">
-  <div class="small-12 medium-4 columns">
-    <%= image_tag "static_pages/panel1.jpg" %>
-    <h4 class="text-center">Home Accents</h4>
-    <p><%= @texts[1].text %></p>
-  </div>
-  <div class="small-12 medium-4 columns">
-    <%= image_tag "static_pages/panel2.jpg" %>
-    <h4 class="text-center">Handmade Jewelry</h4>
-    <p><%= @texts[2].text %></p>
-  </div>
-  <div class="small-12 medium-4 columns">
-    <%= image_tag "static_pages/panel3.jpg" %>
-    <h4 class="text-center">Unique Apparel</h4>
-    <p><%= @texts[3].text %></p>
-  </div>
-  <div class="small-12 medium-4 columns">
-    <%= image_tag "static_pages/panel4.jpg" %>
-    <h4 class="text-center">Consumables</h4>
-    <p><%= @texts[4].text %></p>
-  </div>
-  <div class="small-12 medium-4 columns">
-    <%= image_tag "static_pages/panel5.jpg" %>
-    <h4 class="text-center">Fantastic Gifts</h4>
-    <p><%= @texts[5].text %></p>
-  </div>
-  <div class="small-12 medium-4 columns">
-    <%= image_tag "static_pages/panel6.jpg" %>
-    <h4 class="text-center">Beautiful Art</h4>
-    <p><%= @texts[6].text %></p>
-  </div>
-</div>
+
+<ul class="small-block-grid-1 medium-block-grid-2 large-block-grid-3">
+  <% @entries.each_with_index do | entry, i | %>
+  <li>
+    <div class="text-center"><%= image_tag "static_pages/panel#{i + 1}.jpg" %></div>
+    <h4 class="text-center"><%= entry.title %></h4>
+    <p><%= entry.text %></p>
+  </li>
+  <% end %>
+</ul>
