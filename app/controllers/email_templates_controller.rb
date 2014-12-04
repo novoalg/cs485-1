@@ -2,7 +2,7 @@ class EmailTemplatesController < ApplicationController
     before_filter :can_send_email
 
     def index
-        @templates = EmailTemplate.all
+        @welcome = EmailTemplate.find(1)
     end
 
     def edit
@@ -10,16 +10,22 @@ class EmailTemplatesController < ApplicationController
     end
 
     def new_mass_email
+        @mass_email = EmailTemplate.new
         @users = User.where(:role_id => 0)
         @template = EmailTemplate.find(2)
     end
 
     def mass_email
-        @users = params[:mass_email]
-        @users.each do |form_id, user_id|
-            AdminMailer.send_user_email(User.find(user_id)).deliver
+        @subject = params[:email_template][:subject]
+        @content = params[:email_template][:content]
+        @users = User.where(receive_emails: true)
+
+        @users.each do | user | 
+            AdminMailer.send_user_email(user, @subject, @content)
         end
-        flash[:success] = "Sent #{@users.count} users email"
+
+        flash[:success] = "Sent email to #{@users.size} users."
+
         redirect_to email_templates_path
     end
 

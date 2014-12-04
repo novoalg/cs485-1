@@ -1,10 +1,9 @@
 class AdminMailer < ActionMailer::Base
   default from: "support@silverandstones.gallery"
 
-  def send_user_email(user)
-    @user = user
-    @template = EmailTemplate.find(2)
-    mail(to: user.email, subject: @template.subject)
+  def send_user_email(user, subject, content)
+    @content = content
+    mail(to: user.email, subject: subject)
   end
 
   def receive_contact(params)
