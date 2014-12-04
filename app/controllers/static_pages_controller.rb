@@ -1,12 +1,16 @@
 class StaticPagesController < ApplicationController
   def index
     @headline = Headline.first
+    @texts = StaticText.all
   end
 
   def about
+    @first = StaticText.find(8)
+    @second = StaticText.find(9)
   end
 
   def contact
+    @blurb = StaticText.find(10)
   end
 
   def contact_us
