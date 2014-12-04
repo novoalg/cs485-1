@@ -15,11 +15,9 @@
   <div class="small-12 columns">
     <ul id="welcome-slider">
       <li><%= image_tag "static_pages/storefront.jpg" %></li>
-      <li><%= image_tag "static_pages/store1.jpg" %></li>
-      <li><%= image_tag "static_pages/store2.jpg" %></li>
-      <li><%= image_tag "static_pages/store3.jpg" %></li>
-      <li><%= image_tag "static_pages/store4.jpg" %></li>
-      <li><%= image_tag "static_pages/store5.jpg" %></li>
+      <% for i in 1..6 do %>
+        <li><%= image_tag "static_pages/store#{i}.jpg" %></li>
+      <% end %>
     </ul>
   </div>
 </div>
