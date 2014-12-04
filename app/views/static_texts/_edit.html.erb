@@ -1,6 +1,6 @@
-<div class="reveal-modal small" id="static-<%= entry.id %>-modal" data-reveal>
+<div class="reveal-modal" id="static-<%= entry.id %>-modal" data-reveal>
   <%= form_for entry do | f | %>
     <%= f.text_area :text %>
-    <%= f.submit "Update", class: "text-center button" %>
+    <%= f.submit "Update", class: "text-center button", rows: 4 %>
   <% end %>
 </div>
