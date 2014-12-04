@@ -94,10 +94,6 @@ ActiveRecord::Schema.define(version: 20141204185734) do
     t.text     "text"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "picture_file_name"
-    t.string   "picture_content_type"
-    t.integer  "picture_file_size"
-    t.datetime "picture_updated_at"
     t.text     "title"
   end
 
