@@ -11,22 +11,27 @@ class EmailTemplatesController < ApplicationController
 
     def new_mass_email
         @mass_email = EmailTemplate.new
-        @users = User.where(:role_id => 0)
-        @template = EmailTemplate.find(2)
     end
 
     def mass_email
         @subject = params[:email_template][:subject]
         @content = params[:email_template][:content]
         @users = User.where(receive_emails: true)
+        unless @subject.empty? || @content.empty? 
+            @users.each do | user | 
+                AdminMailer.send_user_email(user, @subject, @content)
+            end
 
-        @users.each do | user | 
-            AdminMailer.send_user_email(user, @subject, @content)
+            flash[:success] = "Sent email to #{@users.size} users."
+            redirect_to email_templates_path
+        else
+            flash.now[:alert] = "Please ensure that you have entered a subject and a body."
+            @mass_email = EmailTemplate.new
+            @mass_email.subject = @subject
+            @mass_email.content = @content
+
+            render 'new_mass_email'
         end
-
-        flash[:success] = "Sent email to #{@users.size} users."
-
-        redirect_to email_templates_path
     end
 
     def update
