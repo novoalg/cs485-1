@@ -41,3 +41,7 @@
   </li>
   <% end %>
 </ul>
+
+<% @entries.each do | entry | %>
+  <%= render 'static_texts/edit' %>
+<% end %>
