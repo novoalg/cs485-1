@@ -15,24 +15,9 @@ class UsersController < ApplicationController
   end
 
   def new
-    @user = User.new
-    @change_username = true;
   end
 
   def create
-    @user = User.create user_params
-    @user.role_id = 0
-    if @user.save
-      session[:user_id] = @user.id
-      current_user = @user
-      UserMailer.welcome_email(@user).deliver
-      flash[:success] = "Welcome #{@user.username}"
-      redirect_to root_path
-    else
-      flash.now[:alert] = @user.errors.full_messages.to_sentence
-      render 'new'
-      @user.destroy
-    end
   end
 
   def edit

@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   root 'static_pages#index'
 
   mount Ckeditor::Engine => '/ckeditor'
-  devise_for :users
+  devise_for :users, :controllers => { registrations: 'registrations' }
   resources :item_categories
   resources :items
   match '/toggle_activeness/:id', to: 'items#toggle_activeness', via: 'get'
