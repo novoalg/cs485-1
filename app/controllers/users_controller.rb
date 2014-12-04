@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 
-  before_filter :logged_in, :except => [:new, :create]
+  before_filter :logged_in, :except => [:new, :create, :unsubscribe]
   before_filter :role_one, :only => [:show]
   before_filter :role_two, :only => [:index]
   before_filter :role_five, :only => [:destroy]  
