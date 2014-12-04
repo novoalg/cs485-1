@@ -22,7 +22,7 @@ class StaticTextsController < ApplicationController
     end
 
     def st_params
-      params.require(:static_text).permit(:text)
+      params.require(:static_text).permit(:text, :title)
     end
 
 end
