@@ -3,6 +3,7 @@ class AdminMailer < ActionMailer::Base
 
   def send_user_email(user, subject, content)
     @content = content
+    @user = user
     mail(to: user.email, subject: subject)
   end
 

@@ -5,5 +5,8 @@
     </head>
     <body>
         <%= raw @content %>
+
+        <hr />
+        <small>Don't want to receive more emails from us? <%= link_to "Unsubscribe.", unsubscribe_url(@user.access_token) %></small>
     </body>
 </html>
