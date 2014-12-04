@@ -73,12 +73,15 @@
           </li>
         <% end %>
 
-        <% if role_edit? %>
+        <% if role_add? %>
           <li>
               <%= link_to email_templates_path do %>
                   <i class="fa fa-envelope-o"></i>&emsp;Emails
               <% end %>
           </li>
+        <% end %>
+
+        <% if role_edit? %>
           <li>
             <%= link_to edit_headline_path do %>
               <i class="fa fa-info-circle"></i>&emsp;Headline

@@ -15,7 +15,7 @@ class User < ActiveRecord::Base
   end
 
   def can_send_emails
-    self.role_id > 3
+    self.role_id >= 4
   end
 
   def send_email
