@@ -18,6 +18,6 @@ EmailTemplate.create(
   :subject => "Welcome to Silver & Stones Gallery!"
 )
 
-User.create(email: "support@silverandstones.gallery", password: "administrator", password_confirmation: "administrator", role_id: 5, can_send_emails: true, receive_emails: true)
+User.create(email: "support@silverandstones.gallery", password: "administrator", password_confirmation: "administrator", role_id: 5, receive_emails: true)
 
 Headline.create(text: "This is a breaking news headline!")

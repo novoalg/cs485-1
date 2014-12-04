@@ -14,6 +14,10 @@ class User < ActiveRecord::Base
     self.email = email.downcase
   end
 
+  def can_send_emails
+    self.role_id >= 3
+  end
+
   def send_email
     UserMailer.welcome_email(self).deliver
   end
