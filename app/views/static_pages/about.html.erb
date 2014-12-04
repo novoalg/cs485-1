@@ -7,15 +7,22 @@
   </div>
 </div>
  
-<div class="row">
-  <div class="large-4 columns">
+<div class="row" data-equalizer>
+  <div class="large-4 columns" data-equalizer-watch>
     <%= image_tag "static_pages/logo_instore.jpg" %>
   </div>
-  <div class="large-8 columns">
-    <h4>Local and proud</h4>
-    <div class="row">
-      <div class="small-12 columns" id="history">
-        <p><%= @first.text %></p>
+  <div class="large-8 columns" >
+    <div class="panel" data-equalizer-watch>
+      <% if role_edit? %>
+        <a href="#" data-reveal-id="static-<%= @first.id %>-modal" class="button expand tiny">
+          <i class="fa fa-edit"></i>&emsp;Edit Text
+        </a>
+      <% end %>
+      <h4><%= @first.title %></h4>
+      <div class="row">
+        <div class="small-12 columns" id="history">
+          <p><%= @first.text %></p>
+        </div>
       </div>
     </div>
   </div>
@@ -27,12 +34,24 @@
   </div>
 </div>
  
-<div class="row">
-  <div class="large-8 columns">
-    <h4>Our Passion</h4>
-    <p><%= @second.text %></p>
+<div class="row" data-equalizer>
+  <div class="large-8 columns" >
+    <div class="panel" data-equalizer-watch>
+      <% if role_edit? %>
+        <a href="#" data-reveal-id="static-<%= @second.id %>-modal" class="button expand tiny">
+          <i class="fa fa-edit"></i>&emsp;Edit Text
+        </a>
+      <% end %>
+      <h4><%= @second.title %></h4>
+      <p><%= @second.text %></p>
+    </div>
   </div>
-  <div class="large-4 columns">
+  <div class="large-4 columns" data-equalizer-watch>
     <%= image_tag "static_pages/about_us.jpg" %>
   </div>
 </div>
+
+<% if role_edit? %>
+  <%= render :partial => 'static_texts/edit', :locals => { :entry => @first } %>
+  <%= render :partial => 'static_texts/edit', :locals => { :entry => @second } %>
+<% end %>
