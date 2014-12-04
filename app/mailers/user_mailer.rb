@@ -1,5 +1,5 @@
 class UserMailer < ActionMailer::Base
-  default from: "support@silverandstones.gallery"
+  default from: "Silver & Stones Gallery <support@silverandstones.gallery>"
 
   def welcome_email(user)
     @user = user

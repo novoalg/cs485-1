@@ -1,24 +1,36 @@
-<h3>Mass Email: <%= link_to "Send email to array of users", new_mass_email_path %></h3>
+<div class="row text-center">
+  <div class="small-12 columns">
+    <h1>Manage Email</h1>
+    <%= link_to new_mass_email_path, class: "button large" do %>
+      <i class="fa fa-envelope"></i>&emsp;Send a new email
+    <% end %>
+    <br />
+    <%= link_to "http://mail.silverandstones.gallery", class: "button primary large" do %>
+      <i class="fa fa-inbox"></i>&emsp;Check email
+    <% end %>
+  </div>
+</div>
 
-<% @templates.each do |template| %>
+<div class="row text-center">
+  <div class="small-12 columns">
+    <hr />
+    <h1>Templates</h1>
+  </div>
+</div>
+
+<div class="panel">
   <div class="row">
-    <div class="small-12 columns">
-      <div class="panel">
-        <div class="row">
-          <div class="small-6 columns text-left">
-            <h2>Template: <%= template.email_type %></h2>
-          </div>
-          <div class="small-6 columns text-right">
-            <%= link_to edit_email_template_path(template.id), class: "button small" do %>
-              <i class="fa fa-edit"></i>&emsp;Edit
-            <% end %>
-          </div>
-        </div>
-        <div class="template_box">
-            <b>Subject:</b><p><%= template.subject %></p>
-            <b>Body:</b><p><%= raw template.content %></p>
-        </div>
-      </div>
+    <div class="small-6 columns text-left">
+      <h2>Template: <%= @welcome.email_type %></h2>
+    </div>
+    <div class="small-6 columns text-right">
+      <%= link_to edit_email_template_path(@welcome.id), class: "button small" do %>
+        <i class="fa fa-edit"></i>&emsp;Edit
+      <% end %>
     </div>
   </div>
-<% end %>
+  <div class="template_box">
+      <b>Subject:</b><p><%= @welcome.subject %></p>
+      <b>Body:</b><p><%= raw @welcome.content %></p>
+  </div>
+</div>

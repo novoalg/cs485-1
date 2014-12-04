@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141201071133) do
+ActiveRecord::Schema.define(version: 20141204035352) do
 
   create_table "ckeditor_assets", force: true do |t|
     t.string   "data_file_name",               null: false
@@ -32,7 +32,7 @@ ActiveRecord::Schema.define(version: 20141201071133) do
   create_table "email_templates", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "content"
+    t.text     "content"
     t.string   "email_type"
     t.string   "subject"
   end
@@ -107,7 +107,6 @@ ActiveRecord::Schema.define(version: 20141201071133) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "is_admin"
-    t.boolean  "can_send_emails",        default: false, null: false
     t.integer  "role_id",                default: 1
     t.string   "encrypted_password",     default: "",    null: false
     t.string   "reset_password_token"
@@ -118,6 +117,7 @@ ActiveRecord::Schema.define(version: 20141201071133) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
+    t.boolean  "receive_emails",         default: false
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
