@@ -19,7 +19,7 @@ class EmailTemplatesController < ApplicationController
         @users = User.where(receive_emails: true)
         unless @subject.empty? || @content.empty? 
             @users.each do | user | 
-                AdminMailer.send_user_email(user, @subject, @content)
+                AdminMailer.send_user_email(user, @subject, @content).deliver
             end
 
             flash[:success] = "Sent email to #{@users.size} users."
