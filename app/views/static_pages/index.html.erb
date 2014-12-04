@@ -35,6 +35,9 @@
 <ul class="small-block-grid-1 medium-block-grid-2 large-block-grid-3">
   <% @entries.each_with_index do | entry, i | %>
   <li>
+    <a href="#" data-reveal-id="static-<%= entry.id %>-modal" class="button tiny expand">
+      <i class="fa fa-edit"></i>&emsp;Edit Text
+    </a>
     <div class="text-center"><%= image_tag "static_pages/panel#{i + 1}.jpg" %></div>
     <h4 class="text-center"><%= entry.title %></h4>
     <p><%= entry.text %></p>
@@ -43,5 +46,5 @@
 </ul>
 
 <% @entries.each do | entry | %>
-  <%= render 'static_texts/edit' %>
+  <%= render :partial => 'static_texts/edit', :locals => { :entry => entry } %>
 <% end %>
