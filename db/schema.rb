@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141201071133) do
+ActiveRecord::Schema.define(version: 20141204011629) do
 
   create_table "ckeditor_assets", force: true do |t|
     t.string   "data_file_name",               null: false
@@ -32,7 +32,7 @@ ActiveRecord::Schema.define(version: 20141201071133) do
   create_table "email_templates", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "content"
+    t.text     "content"
     t.string   "email_type"
     t.string   "subject"
   end
