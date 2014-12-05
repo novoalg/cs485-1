@@ -26,17 +26,17 @@
 
 <div class="row text-center">
   <div class="small-12 columns">
-    <% if role_edit? %>
-    <a href="#" data-reveal-id="static-<%= @description.id %>-modal" class="button expand tiny">
-      <i class="fa fa-edit"></i>&emsp;Edit Text
-    </a>
-    <% end %>
-    <h2><%= @description.title %></h2>
-    <p><%= @description.text %></p>
+    <div class="panel">
+      <% if role_edit? %>
+      <a href="#" data-reveal-id="static-<%= @description.id %>-modal" class="button expand tiny">
+        <i class="fa fa-edit"></i>&emsp;Edit Text
+      </a>
+      <% end %>
+      <h2><%= @description.title %></h2>
+      <p><%= @description.text %></p>
+    </div>
   </div>
 </div>
-
-<hr />
 
 <div class="row" data-equalizer>
   <div class="small-12 columns">
