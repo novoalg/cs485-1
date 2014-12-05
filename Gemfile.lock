@@ -88,8 +88,10 @@ GEM
     jbuilder (2.2.5)
       activesupport (>= 3.0.0, < 5)
       multi_json (~> 1.2)
-    jquery-datatables-rails (2.2.3)
+    jquery-datatables-rails (3.1.1)
+      actionpack (>= 3.1)
       jquery-rails
+      railties (>= 3.1)
       sass-rails
     jquery-rails (3.1.2)
       railties (>= 3.0, < 5.0)
@@ -210,7 +212,7 @@ DEPENDENCIES
   font-awesome-rails (~> 4.2.0)
   foundation-rails (= 5.4.3.0)
   jbuilder (~> 2.0)
-  jquery-datatables-rails (~> 2.2.3)
+  jquery-datatables-rails (~> 3.1.1)
   jquery-rails
   meta-tags
   mysql2
