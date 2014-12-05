@@ -4,9 +4,15 @@
         <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
     </head>
     <body>
+        <div style="text-align: center;"><%= image_tag "#{root_url}/logo.png", id: "logo" %></div>
+
+        <hr/>
+
         <%= raw @content %>
 
         <hr />
+
+        <small>Connect with us on <%= link_to "Facebook", "https://www.facebook.com/pages/Silver-and-Stones/736466763108245" %></small>
         <small>Don't want to receive more emails from us? <%= link_to "Unsubscribe.", unsubscribe_url(@user.access_token) %></small>
     </body>
 </html>
