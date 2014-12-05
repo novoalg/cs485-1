@@ -27,45 +27,47 @@
 
 <div class="row">
   <div class="small-12 columns">
-    <table id="users-table">
-      <thead>
-        <tr>
-          <th>Email</th>
-          <th>Role Slider</th>
-          <th width="130">Role ID</th>
-          <th width="130">Update</th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @users.each do |user| %>
-        <tr>
-          <td><%= link_to user.email, user %></td>
-          <% unless user.role_id > current_user.role_id || user.id == current_user.id %>
-            <%= form_for user do |form| %>
+    <div class="panel">
+      <table id="users-table">
+        <thead>
+          <tr>
+            <th>Email</th>
+            <th>Role Slider</th>
+            <th width="130">Role ID</th>
+            <th width="130">Update</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @users.each do |user| %>
+          <tr>
+            <td><%= link_to user.email, user %></td>
+            <% unless user.role_id > current_user.role_id || user.id == current_user.id %>
+              <%= form_for user do |form| %>
+                <td>
+                  <div class="range-slider" data-slider data-options="start: 1; end: <%= current_user.role_id %>; initial: <%= user.role_id %>; display_selector: #slider-output-<%= user.id %>;">
+                    <span class="range-slider-handle" role="slider" tabindex="0"></span>
+                    <span class="range-slider-active-segment"></span> 
+                    <%= form.hidden_field :role_id %>
+                  </div>
+                </td>
+                <td class="text-center"><h3 id="slider-output-<%= user.id %>"></h3></td>
+                <td><%= form.submit "Update Role" %></td>
+              <% end %>
+            <% else %>
               <td>
-                <div class="range-slider" data-slider data-options="start: 1; end: <%= current_user.role_id %>; initial: <%= user.role_id %>; display_selector: #slider-output-<%= user.id %>;">
+                <div class="range-slider disabled" data-slider data-options="start: 1; end: 5; initial: <%= user.role_id %>">
                   <span class="range-slider-handle" role="slider" tabindex="0"></span>
                   <span class="range-slider-active-segment"></span> 
-                  <%= form.hidden_field :role_id %>
+                  <input type="hidden">
                 </div>
               </td>
-              <td class="text-center"><h3 id="slider-output-<%= user.id %>"></h3></td>
-              <td><%= form.submit "Update Role" %></td>
+              <td class="text-center"><h3><%= user.role_id %></h3></td>
+              <td></td>
             <% end %>
-          <% else %>
-            <td>
-              <div class="range-slider disabled" data-slider data-options="start: 1; end: 5; initial: <%= user.role_id %>">
-                <span class="range-slider-handle" role="slider" tabindex="0"></span>
-                <span class="range-slider-active-segment"></span> 
-                <input type="hidden">
-              </div>
-            </td>
-            <td class="text-center"><h3><%= user.role_id %></h3></td>
-            <td></td>
+          </tr>
           <% end %>
-        </tr>
-        <% end %>
-      </tbody>
-    </table>
+        </tbody>
+      </table>
+    </div>
   </div>
 </div>

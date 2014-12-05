@@ -1,18 +1,20 @@
 <div class="row text-center">
   <div class="small-12 columns">
-    <h1><i class="fa fa-envelope"></i>&emsp;Sending a new email</h1>
-    <p>This email will be sent to any user that has opted into the mailing list.</p>
-    <hr />
-    <%= form_for @mass_email, :url => mass_email_path, :html => { :method => :put } do | f | %>
-      <%= f.label :subject %> 
-      <%= f.text_field :subject %>
-
-      <%= f.label :content, "Body" %>
-      <%= f.cktext_area :content %>
-
+    <div class="panel">
+      <h1><i class="fa fa-envelope"></i>&emsp;Sending a new email</h1>
+      <p>This email will be sent to any user that has opted into the mailing list.</p>
       <hr />
+      <%= form_for @mass_email, :url => mass_email_path, :html => { :method => :put } do | f | %>
+        <%= f.label :subject %> 
+        <%= f.text_field :subject %>
 
-      <%= f.submit "Send Email", class: "button expand" %>
-    <% end %>
+        <%= f.label :content, "Body" %>
+        <%= f.cktext_area :content %>
+
+        <hr />
+
+        <%= f.submit "Send Email", class: "button expand" %>
+      <% end %>
+    </div>
   </div>
 </div>
