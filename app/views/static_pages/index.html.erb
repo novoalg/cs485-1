@@ -39,10 +39,11 @@
 <hr />
 
 <div class="row" data-equalizer>
+  <div class="small-12 columns">
   <ul class="small-block-grid-1 medium-block-grid-2 large-block-grid-3">
     <% @entries.each_with_index do | entry, i | %>
     <li>
-      <div class="panel soft" data-equalizer-watch>
+      <div class="panel" data-equalizer-watch>
         <div class="text-center"><%= image_tag "static_pages/panel#{i + 1}.jpg" %></div>
         <% if role_edit? %>
           <a href="#" data-reveal-id="static-<%= entry.id %>-modal" class="button tiny expand">
@@ -55,6 +56,7 @@
     </li>
     <% end %>
   </ul>
+  </div>
 </div>
 
 <% if role_edit? %>
