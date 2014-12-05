@@ -1,15 +1,16 @@
 <footer class="row">
   <div class="small-12 columns">
-    <hr />
-    <div class="row text-center">
-      <div class="small-6 small-centered columns">
-        <i class="fa fa-copyright"></i>&nbsp;Silver &amp; Stones Gallery
-        <%if Time.now.year == 2014 %> 
-          2014
-        <% else %>
-          <%= "2014 - #{Time.now.year}" %>
-        <% end %> 
-        &emsp;
+    <div class="panel">
+      <div class="row text-center">
+        <div class="small-6 small-centered columns">
+          <i class="fa fa-copyright"></i>&nbsp;Silver &amp; Stones Gallery
+          <%if Time.now.year == 2014 %> 
+            2014
+          <% else %>
+            <%= "2014 - #{Time.now.year}" %>
+          <% end %> 
+          &emsp;
+        </div>
       </div>
     </div>
   </div>
