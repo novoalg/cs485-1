@@ -20,6 +20,7 @@ gem 'devise'
 gem 'ckeditor'
 gem 'jquery-datatables-rails', '~> 3.1.1'
 gem 'meta-tags'
+gem 'kaminari'
 
 # Testing!
 group :test do

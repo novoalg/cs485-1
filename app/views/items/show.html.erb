@@ -1,9 +1,13 @@
 <div class="row">
   <hr>
-  <div class="small-12 medium-6 columns">
-    <a href="#" data-reveal-id="picture-modal">
-      <%= image_tag @item.picture.url(:original) %>
-    </a>
+  <div class="small-12 medium-6 columns text-center">
+    <div class="panel">
+      <a href="#" data-reveal-id="picture-modal">
+        <%= image_tag @item.picture.url(:medium) %>
+        <hr />
+        <h5><i class="fa fa-search-plus"></i>&emsp;Click to enlarge</h5>
+      </a>
+    </div>
   </div>
   <div class="small-12 medium-6 columns">
     <h1><%= @item.name %></h1>
@@ -19,7 +23,7 @@
 <div id="picture-modal" class="reveal-modal" data-reveal>
   <%= link_to @item.picture.url(:original), :target => "_blank" do %>
     <div class="text-center">
-    <%= image_tag @item.picture.url(:original) %>
+      <%= image_tag @item.picture.url(:original) %>
     </div>
   <% end %>
   <a class="close-reveal-modal">&#215;</a>

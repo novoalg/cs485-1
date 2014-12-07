@@ -1,4 +1,7 @@
 class Item < ActiveRecord::Base
+
+    paginates_per 12
+
     belongs_to :item_category
     validates_presence_of :name
 

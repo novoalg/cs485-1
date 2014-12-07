@@ -7,7 +7,7 @@ class InventoryController < ApplicationController
   end
 
   def shop
-    @item_categories = ItemCategory.order(:name)
+    @items = ItemCategory.find(params[:id]).order(:name).page params[:page]
   end
 
 end
