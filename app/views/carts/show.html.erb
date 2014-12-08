@@ -59,13 +59,12 @@
             <td class="text-center bigger"><strong>Subtotal</strong></td>
             <td class="text-center bigger"><%= number_to_currency(@subtotal) %></td>
           </tr>
-        </td>
+        </tbody>
       </table>
-
       <%= link_to checkout_path, class: "button" do %>
         <i class="fa fa-check"></i>&emsp;Check Out
       <% end %>
-    </tbody>
+    </div>
   </div>
 </div>
 
