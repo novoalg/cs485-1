@@ -4,6 +4,10 @@ module ApplicationHelper
         content_for :title, page_title.to_s
     end
 
+    def carted_items
+      current_user.carted_items.sum(:quantity)
+    end
+
     def role_none?
       user_signed_in? && current_user.role_id == 1
     end
