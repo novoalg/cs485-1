@@ -35,5 +35,6 @@ Rails.application.routes.draw do
   match '/add_to_cart', to: 'carts#add_item', via: 'post'
   match '/remove_from_cart/:id', to: 'carts#destroy', via: 'delete'
   match '/update_cart', to: 'carts#update_cart', via: 'post'
+  match '/checkout', to: 'carts#checkout', via: 'get'
   
 end

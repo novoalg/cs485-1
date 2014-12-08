@@ -43,6 +43,10 @@
             <% end %>
           </tbody>
         </table>
+        
+        <%= link_to checkout_path, class: "button" do %>
+          <i class="fa fa-check"></i>&emsp;Check Out
+        <% end %>
       <% else %>
         <p>There are no items in your cart.</p>
       <% end %>
