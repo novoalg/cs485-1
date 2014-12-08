@@ -10,30 +10,39 @@
   <div class="small-12 columns">
     <div class="panel">
       <% if current_user.carted_items.size > 0 %>
-      <table>
-        <thead>
-          <tr>
-            <th>Item</th>
-            <th width="150">Quantity</th>
-            <th width="200">Price</th>
-            <th width="150">Remove</th>
-          </tr>
-        </thead>
-        <tbody>
-          <% current_user.carted_items.each do | entry | %>
+        <table>
+          <thead>
             <tr>
-              <td><%= entry.item.name %></td>
-              <td><%= entry.quantity %></td>
-              <td><%= number_to_currency(entry.quantity * entry.item.price) %></td>
-              <td>
-                <%= link_to "/remove_from_cart/#{entry.id}", method: :delete do %>
-                  <i class="fa fa-times"></i>&emsp;Remove
-                <% end %>
-              </td>
+              <th>Item</th>
+              <th width="150">Quantity</th>
+              <th width="200">Price</th>
+              <th width="150">Remove</th>
             </tr>
-          <% end %>
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            <% current_user.carted_items.each do | entry | %>
+              <%= form_tag '/update_cart' do %>
+                <tr>
+                  <td>
+                    <%= link_to entry.item do %>
+                      <%= entry.item.name %>
+                    <% end %>
+                  </td>
+                  <td>
+                    <%= select_tag :quantity, options_for_select(1..entry.item.in_stock, entry.quantity), onchange: "this.form.submit();" %>
+                    <%= hidden_field_tag :id, entry.id %>
+                  </td>
+                  <td><%= number_to_currency(entry.quantity * entry.item.price) %></td>
+                  <td>
+                    <%= link_to "/remove_from_cart/#{entry.id}", method: :delete do %>
+                      <i class="fa fa-times"></i>&emsp;Remove
+                    <% end %>
+                  </td>
+                </tr>
+              <% end %>
+            <% end %>
+          </tbody>
+        </table>
       <% else %>
         <p>There are no items in your cart.</p>
       <% end %>

@@ -19,6 +19,10 @@ class InventoryController < ApplicationController
     @item_categories = ItemCategory.order(:name)
     @category = ItemCategory.find(category)
     @items = @category.items.active.page params[:page]
+
+    unless user_signed_in? 
+      flash.now[:warning] = "Only registered users may check out. #{ view_context.link_to 'Make an account!', new_user_registration_path }".html_safe
+    end
   end
 
   def change_category

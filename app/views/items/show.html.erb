@@ -16,10 +16,16 @@
     <div class="panel">
       <h2><%= number_to_currency(@item.price) %></h2>
       <p>Currently in stock: <%= @item.in_stock %><p>
-      <%= form_for @carted_item, url: add_to_cart_path do | f | %>
-        <%= f.hidden_field :item_id, value: @item.id %>
-        <%= f.select :quantity, 1..@item.in_stock %>
-        <%= f.submit "Add to Cart", class: "button expand" %>
+      <% if user_signed_in? %>
+        <% unless @item.in_stock <= 0 %>
+          <%= form_for @carted_item, url: add_to_cart_path do | f | %>
+            <%= f.hidden_field :item_id, value: @item.id %>
+            <%= f.select :quantity, 1..@item.in_stock %>
+            <%= f.submit "Add to Cart", class: "button expand" %>
+          <% end %>
+        <% end %>
+      <% else %>
+        <p>Only registered users may add to carts. It's free to sign up, so <%= link_to "make an account!", new_user_registration_path %></p>
       <% end %>
     </div>
   </div>
