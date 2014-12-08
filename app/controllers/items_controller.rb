@@ -58,6 +58,9 @@ class ItemsController < ApplicationController
 
   # DELETE /items/1
   def destroy
+    CartedItem.where(item_id: @item.id).each do | carted | 
+      carted.destroy
+    end
     @item.destroy_item
     @item.save(:validate => false)
     respond_to do |format|
@@ -69,20 +72,23 @@ class ItemsController < ApplicationController
   def toggle_activeness
     item = Item.find(params[:id])
     if item.active?
-        item.active = false
+      item.active = false
+      CartedItem.where(item_id: params[:id]).each do | carted |
+        carted.destroy
+      end
     else
-        item.active = true
+      item.active = true
     end
     if item.save(:validate=>false)
-        respond_to do |format|
-            format.html { redirect_to items_path, :success => "Item was #{item.active? ? "activated" : "deactivated"}" }
-            format.json { head :no_content }
-        end
+      respond_to do |format|
+        format.html { redirect_to items_path, :success => "Item was #{item.active? ? "activated" : "deactivated"}" }
+        format.json { head :no_content }
+      end
     else
-        respond_to do |format|
-            format.html { redirect_to items_path, :error => "An error has occured." }
-            format.json { head :no_content }
-        end
+      respond_to do |format|
+        format.html { redirect_to items_path, :error => "An error has occured." }
+        format.json { head :no_content }
+      end
     end
   end
 
