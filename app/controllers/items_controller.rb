@@ -95,11 +95,21 @@ class ItemsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_item
-      @item = Item.find(params[:id])
+      if Item.exists?(id: params[:id])
+        @item = Item.find(params[:id])
+        if @item.is_deleted
+          flash[:alert] = "The item you requested is marked as deleted."
+          redirect_to root_path
+        end
+      else
+        flash[:alert] = "Could not find an item with that ID."
+        redirect_to root_path
+      end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def item_params
       params.require(:item).permit!
     end
+
 end
