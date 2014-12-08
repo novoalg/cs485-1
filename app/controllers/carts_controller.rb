@@ -1,6 +1,7 @@
 class CartsController < ApplicationController
 
   before_filter :check_login
+  before_filter :check_full, only: [:checkout, :process_cart]
 
   def show
     @subtotal = current_user.carted_items.collect { | x | (x.quantity * x.item.price) }.inject { |sum, x| sum + x.to_f }
@@ -68,6 +69,13 @@ class CartsController < ApplicationController
       unless user_signed_in?
         flash[:warning] = "You must log in before accessing that page."
         redirect_to root_path
+      end
+    end
+
+    def check_full
+      unless current_user.carted_items.size > 0
+        flash[:warning] = "You must have items in the cart in order to be able to check out!"
+        redirect_to cart_path
       end
     end
 end
