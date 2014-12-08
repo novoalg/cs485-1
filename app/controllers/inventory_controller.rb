@@ -18,7 +18,7 @@ class InventoryController < ApplicationController
 
     @item_categories = ItemCategory.order(:name)
     @category = ItemCategory.find(category)
-    @items = @category.items.page params[:page]
+    @items = @category.items.active.page params[:page]
   end
 
   def change_category
