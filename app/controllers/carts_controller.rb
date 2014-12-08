@@ -26,12 +26,17 @@ class CartsController < ApplicationController
   end
 
   def update_cart
-    if CartedItem.find(update_params[:id]).update(quantity: update_params[:quantity])
-      flash[:success] = "Changed quantity successfully."
+    if (CartedItem.exists?(id: update_params[:id])) && (current_user.id == CartedItem.find(update_params[:id]).user.id)
+      if CartedItem.find(update_params[:id]).update(quantity: update_params[:quantity])
+        flash[:success] = "Changed quantity successfully."
+      else
+        flash[:alert] = "An error has occurred. Please try again."
+      end
+      redirect_to cart_path
     else
-      flash[:alert] = "An error has occurred. Please try again."
+      flash[:alert] = "You can't update items that aren't in your own cart."
+      redirect_to cart_path
     end
-    redirect_to cart_path
   end
 
   def destroy 
