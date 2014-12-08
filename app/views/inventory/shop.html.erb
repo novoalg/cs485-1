@@ -22,11 +22,13 @@
     <ul class="medium-block-grid-2 large-block-grid-3">
       <% @items.each do | item | %>
         <li>
+          <%= link_to item do %>
           <ul class="pricing-table">
             <li class="price" data-equalizer-watch><%= image_tag item.picture.url(:small) %></li>
             <li class="title"><%= item.name %></li>
             <li class="price"><%= number_to_currency(item.price) %></li>
           </ul>
+          <% end %>
         </li>
       <% end %>
     </ul>
