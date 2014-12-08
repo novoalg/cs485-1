@@ -3,6 +3,7 @@ class CartsController < ApplicationController
   before_filter :check_login
 
   def show
+    @subtotal = current_user.carted_items.collect { | x | (x.quantity * x.item.price) }.inject { |sum, x| sum + x.to_f }
   end
 
   def add_item
