@@ -2,6 +2,7 @@ class CartsController < ApplicationController
 
   before_filter :check_login
   before_filter :check_full, only: [:checkout, :process_cart]
+  before_filter :check_stock, only: [:show, :update_cart, :checkout, :process_cart]
 
   def show
     @subtotal = current_user.carted_items.collect { | x | (x.quantity * x.item.price) }.inject { |sum, x| sum + x.to_f }
@@ -76,6 +77,24 @@ class CartsController < ApplicationController
       unless current_user.carted_items.size > 0
         flash[:warning] = "You must have items in the cart in order to be able to check out!"
         redirect_to cart_path
+      end
+    end
+
+    def check_stock 
+      changed = false
+      CartedItem.where(user_id: current_user.id).each do | entry |
+        if entry.quantity > entry.item.in_stock 
+          changed = true
+          entry.update_attributes(quantity: entry.item.in_stock)
+        end
+
+        if entry.quantity <= 0
+          entry.destroy
+        end
+      end
+
+      if changed
+        flash[:warning] = "Please review your cart, as quantities have been changed to reflect current stock."
       end
     end
 end

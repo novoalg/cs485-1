@@ -31,7 +31,7 @@
         <tbody>
           <tr style="font-size: 50px !important;">
             <td class="text-center bigger"><strong>Subtotal</strong></td>
-            <td class="text-center bigger"><%= @subtotal.nil? ? 1number_to_currency(0) : number_to_currency(@subtotal) %></td>
+            <td class="text-center bigger"><%= @subtotal.nil? ? number_to_currency(0) : number_to_currency(@subtotal) %></td>
           </tr>
         </tbody>
       </table>

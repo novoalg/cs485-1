@@ -38,12 +38,12 @@
 
   <% unless user_signed_in? %>
     <%= link_to new_user_session_path, class: "item", id: "login" do %>
-      <i class="fa fa-sign-in"></i><label class="show-for-medium-up">Login</label>
+      <i class="fa fa-sign-in"></i><label class="show-for-medium-up">Log In</label>
     <% end %>
   <% else %>
       <%= link_to destroy_user_session_path, :method => :delete, class: "item", id: "logout" do %>
         <i class="fa fa-sign-out"></i>
-        <label class="show-for-medium-up">Logout</label>
+        <label class="show-for-medium-up">Log Out</label>
       <% end %>
   <% end %>
 </div>
