@@ -2,7 +2,7 @@ class CartsController < ApplicationController
 
   before_filter :check_login
   before_filter :check_full, only: [:checkout, :process_cart]
-  before_filter :check_stock, only: [:show, :update_cart, :checkout, :process_cart]
+  before_filter :check_stock, only: [:show, :update_cart, :checkout, :check_stock]
 
   def show
     @subtotal = current_user.carted_items.collect { | x | (x.quantity * x.item.price) }.inject { |sum, x| sum + x.to_f }
@@ -54,6 +54,20 @@ class CartsController < ApplicationController
   end
 
   def process_cart
+    @cart = current_user.carted_items
+
+    Item.transaction do 
+      check_stock
+      @cart.each do | entry | 
+        entry.item.update_attributes(in_stock: entry.item.in_stock - entry.quantity)
+      end
+
+      @cart.each do | entry |
+        entry.destroy
+      end 
+    end
+
+    flash[:success] = "Your order has been reserved. Thank you!"
     redirect_to root_path
   end
 

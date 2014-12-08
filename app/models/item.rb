@@ -26,5 +26,5 @@ class Item < ActiveRecord::Base
   def destroy_item
     self.is_deleted = true
   end
-  
+
 end
