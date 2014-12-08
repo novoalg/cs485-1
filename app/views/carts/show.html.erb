@@ -57,12 +57,14 @@
         <tbody>
           <tr style="font-size: 50px !important;">
             <td class="text-center bigger"><strong>Subtotal</strong></td>
-            <td class="text-center bigger"><%= number_to_currency(@subtotal) %></td>
+            <td class="text-center bigger"><%= @subtotal.nil? ? number_to_currency(0) : number_to_currency(@subtotal) %></td>
           </tr>
         </tbody>
       </table>
-      <%= link_to checkout_path, class: "button" do %>
-        <i class="fa fa-check"></i>&emsp;Check Out
+      <% if current_user.carted_items.size > 0 %>
+        <%= link_to checkout_path, class: "button" do %>
+          <i class="fa fa-check"></i>&emsp;Check Out
+        <% end %>
       <% end %>
     </div>
   </div>
