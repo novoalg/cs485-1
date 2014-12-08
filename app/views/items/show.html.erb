@@ -15,8 +15,12 @@
     </div>
     <div class="panel">
       <h2><%= number_to_currency(@item.price) %></h2>
-      <h6 class="subheader">Currently in stock: <%= @item.in_stock %></h6>
-      <a href="#" class="small button">Reserve</a>
+      <p>Currently in stock: <%= @item.in_stock %><p>
+      <%= form_for @carted_item, url: add_to_cart_path do | f | %>
+        <%= f.hidden_field :item_id, value: @item.id %>
+        <%= f.select :quantity, 1..@item.in_stock %>
+        <%= f.submit "Add to Cart", class: "button expand" %>
+      <% end %>
     </div>
   </div>
 </div>

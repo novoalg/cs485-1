@@ -1,0 +1,36 @@
+<div class="row text-center">
+  <div class="small-12 columns">
+    <div class="panel">
+      <h1>My Cart</h1>
+    </div>
+  </div>
+</div>
+
+<div class="row text-center">
+  <div class="small-12 columns">
+    <div class="panel">
+      <% if current_user.carted_items.size > 0 %>
+      <table>
+        <thead>
+          <tr>
+            <th>Item</th>
+            <th width="150">Quantity</th>
+            <th width="150">Remove</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% current_user.carted_items.each do | entry | %>
+            <tr>
+              <td><%= entry.item.name %></td>
+              <td><%= entry.quantity %></td>
+              <td><i class="fa fa-times"></i>&emsp;Remove</td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+      <% else %>
+        <p>There are no items in your cart.</p>
+      <% end %>
+    </div>
+  </div>
+</div>

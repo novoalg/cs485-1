@@ -11,7 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141204185734) do
+ActiveRecord::Schema.define(version: 20141208042507) do
+
+  create_table "carted_items", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "item_id"
+    t.integer  "quantity"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "ckeditor_assets", force: true do |t|
     t.string   "data_file_name",               null: false

@@ -13,6 +13,7 @@ class ItemsController < ApplicationController
 
   # GET /items/1
   def show
+    @carted_item = CartedItem.new
   end
 
   # GET /items/new

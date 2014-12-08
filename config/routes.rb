@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'carts/index'
+
   root 'static_pages#index'
 
   mount Ckeditor::Engine => '/ckeditor'
@@ -28,4 +30,7 @@ Rails.application.routes.draw do
   resources :galleries
   resources :static_texts, only: [:edit, :update]
   resource :headline, only: [:edit, :update]
+
+  resource :cart
+  match '/add_to_cart', to: 'carts#add_item', via: 'post'
 end
