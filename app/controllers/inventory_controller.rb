@@ -21,4 +21,8 @@ class InventoryController < ApplicationController
     @items = @category.items.page params[:page]
   end
 
+  def change_category
+    redirect_to shop_path(category: params[:item_category][:category_id])
+  end
+
 end

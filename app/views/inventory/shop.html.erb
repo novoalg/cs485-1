@@ -1,9 +1,11 @@
 <div class="row" data-equalizer>
   <div class="large-3 small-12 columns text-center">
     <div class="panel" data-equalizer-watch>
-      <%= label_tag "Category" %>
-      <%= collection_select(:item_category, :category_id, @item_categories, :id, :name, { :selected => @category.id }) %>
-      <%= submit_tag "Change", class: "button tiny expand" %>
+      <%= form_tag('/shop') do %>
+        <%= label_tag "Category" %>
+        <%= collection_select(:item_category, :category_id, @item_categories, :id, :name, { :selected => @category.id }) %>
+        <%= submit_tag "Change", class: "button tiny expand" %>
+      <% end %>
     </div>
   </div> 
 
@@ -25,12 +27,19 @@
             <%= image_tag item.picture.url(:medium) %>
             <hr />
             <p><%= item.name %></p>
-
           </div>
           <% end %>
         </li>
       <% end %>
     </ul>
-    <%= paginate @items %>
   </div>
+</div>
+
+<div class="row text-center">
+  <div class="small-12 columns">
+    <div class="panel">
+      <%= page_entries_info @items %>
+      <%= paginate @items %>
+    </div>
+  </div> 
 </div>

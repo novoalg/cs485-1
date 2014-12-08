@@ -23,6 +23,7 @@ Rails.application.routes.draw do
   match '/contact_us',  to: 'static_pages#contact_us', via: 'post'
   match '/inventory', to: 'inventory#index', via: 'get'
   match '/shop', to: 'inventory#shop', via: 'get'
+  match '/shop', to: 'inventory#change_category', via: 'post'
 
   resources :galleries
   resources :static_texts, only: [:edit, :update]
