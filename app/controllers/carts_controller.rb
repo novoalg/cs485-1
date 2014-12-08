@@ -3,7 +3,12 @@ class CartsController < ApplicationController
   end
 
   def add_item
-    @item = current_user.carted_items.build(cart_params)
+    unless current_user.carted_items.exists? item_id: cart_params[:item_id]
+      @item = current_user.carted_items.build(cart_params)
+    else 
+      @item = current_user.carted_items.where(item_id: cart_params[:item_id]).first
+      @item.quantity = @item.quantity + cart_params[:quantity].to_i
+    end
     if @item.save
       flash[:success] = "Added to cart."
       redirect_to shop_path
