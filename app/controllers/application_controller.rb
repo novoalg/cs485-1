@@ -46,4 +46,9 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def report_rollback
+    flash[:alert] = "There was a problem that prevented you from checking out. Please try again."
+    redirect_to cart_path
+  end
+
 end

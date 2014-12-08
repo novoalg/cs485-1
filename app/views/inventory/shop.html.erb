@@ -26,6 +26,7 @@
             <li class="price" data-equalizer-watch><%= image_tag item.picture.url(:small) %></li>
             <li class="title"><%= item.name %></li>
             <li class="price"><%= number_to_currency(item.price) %></li>
+            <li class="bullet-item"><%= item.in_stock %> in stock</li>
           </ul>
           <% end %>
         </li>

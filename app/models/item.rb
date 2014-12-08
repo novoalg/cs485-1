@@ -27,4 +27,5 @@ class Item < ActiveRecord::Base
     self.is_deleted = true
   end
 
+  after_rollback :report_rollback
 end

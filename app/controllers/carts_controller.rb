@@ -59,16 +59,18 @@ class CartsController < ApplicationController
     Item.transaction do 
       check_stock
       @cart.each do | entry | 
-        entry.item.update_attributes(in_stock: entry.item.in_stock - entry.quantity)
+        entry.item.in_stock = entry.item.in_stock - entry.quantity 
+        entry.item.save
       end
 
       @cart.each do | entry |
         entry.destroy
       end 
+
     end
 
     flash[:success] = "Your order has been reserved. Thank you!"
-    redirect_to root_path
+    redirect_to shop_path
   end
 
   private
@@ -111,4 +113,5 @@ class CartsController < ApplicationController
         flash[:warning] = "Please review your cart, as quantities have been changed to reflect current stock."
       end
     end
+
 end
