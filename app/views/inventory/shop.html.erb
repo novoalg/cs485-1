@@ -17,8 +17,20 @@
 
 <div class="row">
   <div class="small-12 columns">
-    <div class="panel">
+    <ul class="medium-block-grid-2 large-block-grid-3">
+      <% @items.each do | item | %>
+        <li>
+          <%= link_to item do %>
+          <div class="panel text-center">
+            <%= image_tag item.picture.url(:medium) %>
+            <hr />
+            <p><%= item.name %></p>
 
-    </div>
+          </div>
+          <% end %>
+        </li>
+      <% end %>
+    </ul>
+    <%= paginate @items %>
   </div>
 </div>

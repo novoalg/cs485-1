@@ -1,6 +1,5 @@
 class ItemsController < ApplicationController
   before_action :set_item, only: [:show, :edit, :update, :destroy]
-  before_filter :role_one, :only => [:show]
   before_filter :role_two, :only => [:index]
   before_filter :role_three, :only => [:edit, :update]
   before_filter :role_four, :only => [:new, :create, :toggle_activeness]
