@@ -3,8 +3,7 @@
     <div class="panel" data-equalizer-watch>
       <%= form_tag('/shop') do %>
         <%= label_tag "Category" %>
-        <%= collection_select(:item_category, :category_id, @item_categories, :id, :name, { :selected => @category.id }) %>
-        <%= submit_tag "Change", class: "button tiny expand" %>
+        <%= collection_select(:item_category, :category_id, @item_categories, :id, :name, { :selected => @category.id }, onchange: "this.form.submit();") %>
       <% end %>
     </div>
   </div> 

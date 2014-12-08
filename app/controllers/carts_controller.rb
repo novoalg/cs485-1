@@ -47,6 +47,8 @@ class CartsController < ApplicationController
   end
 
   def checkout
+    @cart = current_user.carted_items
+    @subtotal = current_user.carted_items.collect { | x | (x.quantity * x.item.price) }.inject { |sum, x| sum + x.to_f }
   end
 
   private
