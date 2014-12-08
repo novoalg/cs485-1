@@ -78,7 +78,16 @@ class ItemCategoriesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_item_category
-      @item_category = ItemCategory.find(params[:id])
+      if ItemCategory.exists?(id: params[:id])
+        @item_category = ItemCategory.find(params[:id])
+        if @item_category.is_deleted
+          flash[:alert] = "The category you requested is marked as deleted."
+          redirect_to root_path
+        end
+      else
+        flash[:alert] = "Could not find a category with that ID."
+        redirect_to root_path
+      end    
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
