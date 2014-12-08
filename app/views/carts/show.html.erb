@@ -23,7 +23,11 @@
             <tr>
               <td><%= entry.item.name %></td>
               <td><%= entry.quantity %></td>
-              <td><i class="fa fa-times"></i>&emsp;Remove</td>
+              <td>
+                <%= link_to "/remove_from_cart/#{entry.id}", method: :delete do %>
+                  <i class="fa fa-times"></i>&emsp;Remove
+                <% end %>
+              </td>
             </tr>
           <% end %>
         </tbody>

@@ -33,4 +33,5 @@ Rails.application.routes.draw do
 
   resource :cart
   match '/add_to_cart', to: 'carts#add_item', via: 'post'
+  match '/remove_from_cart/:id', to: 'carts#destroy', via: 'delete'
 end

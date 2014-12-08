@@ -13,6 +13,12 @@ class CartsController < ApplicationController
     end
   end
 
+  def destroy 
+    CartedItem.find(params[:id]).destroy
+    flash[:success] = "Item removed from cart."
+    redirect_to cart_path
+  end
+
   private
 
     def cart_params
