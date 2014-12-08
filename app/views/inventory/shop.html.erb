@@ -1,19 +1,24 @@
-<div class="row">
- 
-<div class="large-4 small-12 columns">
-  <img src="http://placehold.it/500x500&amp;text=Logo">
-  <div class="hide-for-small panel">
-    <h3>Header</h3>
-    <h5 class="subheader">Risus ligula, aliquam nec fermentum vitae, sollicitudin eget urna. Donec dignissim nibh fermentum odio ornare sagittis.</h5>
-  </div>
-
-  <a href="#">
-    <div class="panel callout radius">
-      <h6>99&nbsp; items in your cart</h6>
+<div class="row" data-equalizer>
+  <div class="large-3 small-12 columns text-center">
+    <div class="panel" data-equalizer-watch>
+      <%= label_tag "Category" %>
+      <%= collection_select(:item_category, :category_id, @item_categories, :id, :name, { :selected => @category.id }) %>
+      <%= submit_tag "Change", class: "button tiny expand" %>
     </div>
-  </a>
-</div> 
+  </div> 
 
-<div class="large-8 columns">
-   
+  <div class="large-9 small-12 columns">
+    <div class="panel text-center" data-equalizer-watch>
+      <h2><%= @category.name %></h2>
+      <p><%= @category.description %></p>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="small-12 columns">
+    <div class="panel">
+
+    </div>
+  </div>
 </div>

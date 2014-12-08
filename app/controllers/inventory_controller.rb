@@ -7,7 +7,18 @@ class InventoryController < ApplicationController
   end
 
   def shop
-    @items = ItemCategory.find(params[:id]).order(:name).page params[:page]
+    if (params.has_key? :category) && (ItemCategory.exists?(id: params[:category]))
+      category = params[:category]
+    elsif ItemCategory.all.size 
+      category = ItemCategory.first.id
+    else 
+      flash[:warning] = "There was an error. Please try again."
+      redirect_to root_path
+    end
+
+    @item_categories = ItemCategory.order(:name)
+    @category = ItemCategory.find(category)
+    @items = @category.items
   end
 
 end
