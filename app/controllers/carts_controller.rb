@@ -51,8 +51,11 @@ class CartsController < ApplicationController
     @subtotal = current_user.carted_items.collect { | x | (x.quantity * x.item.price) }.inject { |sum, x| sum + x.to_f }
   end
 
-  private
+  def process_cart
+    redirect_to root_path
+  end
 
+  private
     def cart_params
       params.require(:carted_item).permit(:quantity, :item_id)
     end

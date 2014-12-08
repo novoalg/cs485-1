@@ -1,6 +1,7 @@
-<div class="row">
+<div class="row text-center">
   <div class="small-12 columns">
     <div class="panel">
+      <h1>Cart Contents</h1>
       <table>
         <thead>
           <tr>
@@ -37,8 +38,8 @@
       <p>By clicking "Reserve," you understand that the items will be held until such time as (1) payment has been received and (2) a delivery method or pickup method can be arranged. A receipt will be sent to both you and Silver &amp; Stones Gallery to confirm the reservation.</p>
       <p>In order to best serve you, we ask that you arrange payment and receipt method by giving us a call at (715) 839-8197 or by stopping in.</p>
 
-      <%= link_to "http://google.com", class: "button expand" do %>
-        <i class="fa fa-check"></i>&emsp;Reserve Order
+      <%= form_tag process_cart_path do %>
+        <%= submit_tag "Reserve Order", class: "button expand" %>
       <% end %>
     </div>
   </div>

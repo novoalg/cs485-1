@@ -61,10 +61,16 @@ class ItemCategoriesController < ApplicationController
 
   # DELETE /item_categories/1
   def destroy
-    @item_category.delete_category = true
+    @item_category.update_attributes(active: false, is_deleted: true)
+    @item_category.items.each do | item |
+      item.update_attributes(active: false, is_deleted: true)
+      CartedItem.where(item_id: item.id).each do | entry | 
+        entry.destroy
+      end
+    end
     @item_category.save(:validate => false)
     respond_to do |format|
-      format.html { redirect_to item_categories_url, notice: 'Item category was successfully destroyed.' }
+      format.html { redirect_to item_categories_url, notice: 'Item category was successfully deleted.' }
       format.json { head :no_content }
     end
   end
