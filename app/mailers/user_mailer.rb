@@ -6,4 +6,8 @@ class UserMailer < ActionMailer::Base
     @template = EmailTemplate.find(1)
     mail(to: @user.email, subject: @template.subject)
   end
+
+  def order_receipt(order)
+    @order = order
+  end
 end
