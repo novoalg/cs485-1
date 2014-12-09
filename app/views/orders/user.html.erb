@@ -2,6 +2,7 @@
   <div class="small-12 columns">
     <div class="panel">
       <h1>My Orders</h1>
+      <h4><%= current_user.email %></h4>
       <table id="all-orders">
         <thead>
           <tr>
@@ -13,7 +14,7 @@
         <tbody>
           <% @orders.each do | order | %>
             <tr>
-              <td><%= link_to order.id, order %></td>
+              <td><strong><%= link_to order.id, order %></strong></td>
               <td><%= number_to_currency(order.subtotal) %></td>
               <td><%= order.created_at.in_time_zone("Central Time (US & Canada)").to_formatted_s(:long) %></td>
             </tr>

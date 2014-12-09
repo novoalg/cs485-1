@@ -14,7 +14,7 @@
         <tbody>
           <% @orders.each do | order | %>
             <tr>
-              <td><%= link_to order.id, order %></td>
+              <td><strong><%= link_to order.id, order %></strong></td>
               <td><%= number_to_currency(order.subtotal) %></td>
               <td><%= link_to order.user.email, order.user %></td>
               <td><%= order.created_at.in_time_zone("Central Time (US & Canada)").to_formatted_s(:long) %></td>

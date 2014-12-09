@@ -1,6 +1,9 @@
 $(document).ready(function() {
-    $('#all-orders').dataTable();
+    $('#all-orders').dataTable( {
+		"order": [[ 0, "desc" ]]
+    } );
+    
     $('#one-order').dataTable( {
-		"paging": false, 
+		"order": [[ 0, "desc" ]]
     } );
 } );

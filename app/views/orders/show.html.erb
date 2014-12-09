@@ -2,6 +2,33 @@
   <div class="small-12 columns">
     <div class="panel">
       <h1>Order #<%= @order.id %></h1>
+      <p>Placed by <%= @order.user.email %></p>
+
+      <div class="small-9 columns small-centered">
+        <table>
+          <tr style="font-size: 50px !important;">
+            <td class="bigger text-center" width="225"><strong>Subtotal</strong></td>
+            <td class="bigger"><%= number_to_currency(@order.subtotal) %></td>
+          </tr>
+          <tr style="font-size: 50px !important;">
+            <td class="bigger text-center" width="225"><strong>Name</strong></td>
+            <td class="bigger"><%= @order.user.full_name %></td>
+          </tr>
+          <tr style="font-size: 50px !important;">
+            <td class="bigger text-center" width="225"><strong>Address</strong></td>
+            <td class="bigger"><%= @order.user.address %></td>
+          </tr>
+          <tr style="font-size: 50px !important;">
+            <td class="bigger text-center" width="225"><strong>Home Phone</strong></td>
+            <td class="bigger"><%= @order.user.home_phone %></td>
+          </tr>
+          <tr style="font-size: 50px !important;">
+            <td class="bigger text-center" width="225"><strong>Work Phone</strong></td>
+            <td class="bigger"><%= @order.user.work_phone %></td>
+          </tr>
+        </table>
+      </div>
+
       <table id="one-order">
         <thead>
           <tr>
