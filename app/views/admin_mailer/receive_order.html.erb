@@ -8,6 +8,7 @@
         <h3>We've received an order from <%= @order.user.full_name %>!</h3>
         <h4>Order number: <%= @order.id %></h4>
         <h4>Order date: <%= @order.created_at.in_time_zone("Central Time (US & Canada)").to_formatted_s(:long) %></h4>
+        <h4><a href="http://silverandstones.gallery/orders/<%= order.id %>"><h4>Click Here To View The Order</h4></a></h4>
 
         <hr />
 
