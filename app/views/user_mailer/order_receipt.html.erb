@@ -14,6 +14,11 @@
         <br />
         <h1>Items</h1>
         <table style="border: 1px solid black;" cellspacing="1" cellpadding="1">
+            <tr>
+                <td width="300" style="border-left: 1px solid black; border-right: 1px solid black;">Item</td>
+                <td width="150" style="border-left: 1px solid black; border-right: 1px solid black;">Quantity</td>
+                <td width="200" style="border-left: 1px solid black; border-right: 1px solid black;">Price</td>
+            </tr>
             <% @order.order_items.each do | item | %>
                 <tr>
                     <td width="300" style="border-left: 1px solid black; border-right: 1px solid black;"><%= item.item.name %></td>
@@ -22,6 +27,10 @@
                 </tr>
             <% end %>
         </table>
+
+        <h1>Subtotal: <%= number_to_currency(@order.subtotal) %></h1>
+
+        <hr />
         
         <h1>User Info</h1>
         <h3>Name: <%= @order.user.full_name %></h3>
