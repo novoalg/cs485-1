@@ -14,4 +14,9 @@ class AdminMailer < ActionMailer::Base
     mail(to: "support@silverandstones.gallery", subject: "[Contact Us] #{params[:subject]}", reply_to: "#{params[:email]}")
   end
 
+  def receive_order(order)
+    @order = order
+    mail(to: "support@silverandstones.gallery", subject: "[Order #{@order.id}] Receipt")
+  end
+
 end

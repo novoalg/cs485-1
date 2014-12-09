@@ -75,6 +75,7 @@ class CartsController < ApplicationController
       end
 
       UserMailer.order_receipt(order).deliver
+      AdminMailer.receive_order(order).deliver
       
       @cart.each do | entry |
         entry.destroy

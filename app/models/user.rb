@@ -25,6 +25,10 @@ class User < ActiveRecord::Base
     UserMailer.welcome_email(self).deliver
   end
 
+  def full_name
+    "#{self.first_name} #{self.last_name}"
+  end
+
   # Access token for a user
   def access_token
     User.create_access_token(self)
