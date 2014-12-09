@@ -1,5 +1,7 @@
 class Gallery < ActiveRecord::Base
   
+  paginates_per 9
+
   validates_presence_of :text
   validates_presence_of :picture
 

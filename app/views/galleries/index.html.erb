@@ -61,6 +61,15 @@
     </li>
   <% end %>
   </ul>
+
+  <div class="row text-center">
+    <div class="small-12 columns">
+      <div class="panel">
+        <%= page_entries_info @galleries %>
+        <%= paginate @galleries %>
+      </div>
+    </div> 
+  </div>
 <% else %>
   <div class="row text-center">
     <div class="small-12 columns">
