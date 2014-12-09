@@ -4,6 +4,10 @@
       <h1>Order #<%= @order.id %></h1>
       <p>Placed by <%= @order.user.email %></p>
 
+      <%= link_to @order, method: :delete, data: { confirm: 'Are you sure you want to cancel this order?' }, class: "button alert" do %>
+        <i class="fa fa-exclamation-circle "></i>&emsp;Cancel Order
+      <% end %>
+
       <div class="small-9 columns small-centered">
         <table>
           <tr style="font-size: 50px !important;">

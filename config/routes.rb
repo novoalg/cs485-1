@@ -42,7 +42,7 @@ Rails.application.routes.draw do
   match '/checkout', to: 'carts#checkout', via: 'get'
   match '/process_cart', to: 'carts#process_cart', via: 'post'
 
-  resources :orders, only: [:index, :show]
+  resources :orders, only: [:index, :show, :destroy]
   match '/my_orders', to: 'orders#user', via: 'get'
   
 end
