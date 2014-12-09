@@ -6,6 +6,7 @@ class User < ActiveRecord::Base
   after_create :send_email
 
   has_many :carted_items
+  has_many :orders
 
   VALID_USERNAME_REGEX = /\A[a-z0-9\-]*\z/i
   belongs_to :role
