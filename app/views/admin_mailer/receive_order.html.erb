@@ -12,12 +12,12 @@
         <hr />
 
         <h1>Items</h1>
-        <table style="border: 1px solid black;">
+        <table style="border: 1px solid black;" cellspacing="1" cellpadding="1">
             <% @order.order_items.each do | item | %>
                 <tr>
-                    <td width="300"><%= item.item.name %></td>
-                    <td width="150"><%= item.quantity %></td>
-                    <td width="200"><%= number_to_currency(item.quantity * item.price_per_unit) %></td>
+                    <td width="300" style="border-left: 1px solid black; border-right: 1px solid black;"><%= item.item.name %></td>
+                    <td width="150" style="border-left: 1px solid black; border-right: 1px solid black;"><%= item.quantity %></td>
+                    <td width="200" style="border-left: 1px solid black; border-right: 1px solid black;"><%= number_to_currency(item.quantity * item.price_per_unit) %></td>
                 </tr>
             <% end %>
         </table>
