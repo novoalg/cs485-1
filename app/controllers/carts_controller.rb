@@ -64,14 +64,17 @@ class CartsController < ApplicationController
       end
 
       order = current_user.orders.build
-      text = @cart.collect { | x | "#{x.quantity}x #{x.item.name}&nbsp;#{number_to_currency(x.item.price * x.quantity)}&emsp;&emsp;(#{x.quantity}x&nbsp;#{number_to_currency(x.item.price)})" }
-      text = text.join("<br />")
-      order.text = text
       order.save
 
       @cart.each do | entry |
+        order_item = order.order_items.build
+        order_item.item_id = entry.item.id
+        order_item.quantity = entry.quantity
+        order_item.price_per_unit = entry.item.price
+        order_item.save
+
         entry.destroy
-      end 
+      end
     end
 
     flash[:success] = "Your order has been reserved. Thank you!"

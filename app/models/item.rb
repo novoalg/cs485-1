@@ -3,6 +3,7 @@ class Item < ActiveRecord::Base
   paginates_per 6
 
   has_many :carted_items
+  has_many :order_items
 
   belongs_to :item_category
   validates_presence_of :name

@@ -6,6 +6,7 @@ class CreateOrderItems < ActiveRecord::Migration
       t.belongs_to :order
       
       t.integer :quantity
+      t.decimal :price_per_unit, :precision => 8, :scale => 2
 
       t.timestamps
     end

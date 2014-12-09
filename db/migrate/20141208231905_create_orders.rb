@@ -3,7 +3,6 @@ class CreateOrders < ActiveRecord::Migration
     create_table :orders do |t|
 
       t.belongs_to :user   
-      t.text :text    
 
       t.timestamps
     end
