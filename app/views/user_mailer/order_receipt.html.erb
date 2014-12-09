@@ -13,15 +13,21 @@
         <h4>Order date: <%= @order.created_at.in_time_zone("Central Time (US & Canada)").to_formatted_s(:long) %></h4>
         <br />
         <h1>Items</h1>
-        <table>
+        <table cellspacing="0" cellpadding="0" border="0">
             <% @order.order_items.each do | item | %>
                 <tr>
-                    <td><%= item.item.name %></td>
-                    <td><%= item.quantity %></td>
-                    <td><%= number_to_currency(item.quantity * item.price_per_unit) %></td>
+                    <td width="500"><%= item.item.name %></td>
+                    <td width="150"><%= item.quantity %></td>
+                    <td width="200"><%= number_to_currency(item.quantity * item.price_per_unit) %></td>
                 </tr>
             <% end %>
         </table>
+        
+        <h1>User Info</h1>
+        <h3>Name: <%= @order.user.full_name %></h3>
+        <h3>Address: <%= @order.user.address %></h3>
+        <h3>Home Phone: <%= @order.user.home_phone %></h3>
+        <h3>Work Phone: <%= @order.user.work_phone %></h3>
         
         <p>Please contact us to ensure delivery and payment method.</p>
         <p>You can stop in, or reach us via one of the following methods:</p>
