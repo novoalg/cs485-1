@@ -3,6 +3,7 @@ class Order < ActiveRecord::Base
   belongs_to :user
 
   def subtotal 
-    self.order_items.inject { | sum, x | sum + (x.price_per_unit * x.quantity) }
+    mix = self.order_items.collect { | item | item.price_per_unit * item.quantity }
+    mix.inject { | sum, x | sum + x }
   end
 end
