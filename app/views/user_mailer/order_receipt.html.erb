@@ -9,10 +9,20 @@
         <h1>Hello!</h1>
         <p>Here is your receipt from your order with Silver &amp; Stones Gallery.</p>
         <hr />
-        <h4>Order date: </h4>
+        <h4>Order number: <%= @order.id %></h4>
+        <h4>Order date: <%= @order.created_at.in_time_zone("Central Time (US & Canada)").to_formatted_s(:long) %></h4>
+        <br />
+        <h1>Items</h1>
         <table>
-
+            <% @order.order_items.each do | item | %>
+                <tr>
+                    <td><%= item.item.name %></td>
+                    <td><%= item.quantity %></td>
+                    <td><%= number_to_currency(item.quantity * item.price_per_unit) %></td>
+                </tr>
+            <% end %>
         </table>
+        
         <p>Please contact us to ensure delivery and payment method.</p>
         <p>You can stop in, or reach us via one of the following methods:</p>
         <p>Phone: (715) 839-8197</p>

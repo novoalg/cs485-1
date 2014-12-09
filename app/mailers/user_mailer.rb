@@ -9,5 +9,6 @@ class UserMailer < ActionMailer::Base
 
   def order_receipt(order)
     @order = order
+    mail(to: @order.user.email, subject: "Your Recept from Silver & Stones Gallery [Order ##{@order.id}]")
   end
 end

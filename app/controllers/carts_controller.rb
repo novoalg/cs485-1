@@ -72,7 +72,11 @@ class CartsController < ApplicationController
         order_item.quantity = entry.quantity
         order_item.price_per_unit = entry.item.price
         order_item.save
+      end
 
+      UserMailer.order_receipt(order).deliver
+      
+      @cart.each do | entry |
         entry.destroy
       end
     end
