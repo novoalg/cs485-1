@@ -18,12 +18,12 @@
 <% end %>
 
 <% unless @galleries.empty? %>
-  <ul class="small-block-grid-1 medium-block-grid-2 large-block-grid-3">
+  <ul class="small-block-grid-1 medium-block-grid-2 large-block-grid-3" data-equalizer>
   <% @galleries.each do | gallery | %>
     <li>
     <div class="row">
       <div class="small-12 columns">
-        <div class="panel">
+        <div class="panel" data-equalizer-watch>
           <% if role_delete? %>
             <div class="row">
               <div class="small-6 columns">
