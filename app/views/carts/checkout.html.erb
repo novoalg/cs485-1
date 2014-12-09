@@ -13,7 +13,7 @@
         <tbody>
           <% @cart.each do | entry | %>
             <tr>
-              <td><%= entry.item.name %></td>
+              <td><%= link_to entry.item.name, entry.item %></td>
               <td><%= entry.quantity %></td>
               <td><%= number_to_currency(entry.quantity * entry.item.price) %></td>
             </tr>

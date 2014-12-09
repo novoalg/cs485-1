@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  get 'orders/index'
+
+  get 'orders/user'
+
   get 'carts/index'
 
   root 'static_pages#index'
@@ -37,5 +41,8 @@ Rails.application.routes.draw do
   match '/update_cart', to: 'carts#update_cart', via: 'post'
   match '/checkout', to: 'carts#checkout', via: 'get'
   match '/process_cart', to: 'carts#process_cart', via: 'post'
+
+  resources :orders, only: [:index, :show]
+  match '/my_orders', to: 'orders#user', via: 'get'
   
 end

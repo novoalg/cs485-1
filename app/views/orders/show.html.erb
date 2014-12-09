@@ -1,0 +1,27 @@
+<div class="row text-center">
+  <div class="small-12 columns">
+    <div class="panel">
+      <h1>Order #<%= @order.id %></h1>
+      <table id="one-order">
+        <thead>
+          <tr>
+            <th>Item</th>
+            <th width="200">Quantity</th>
+            <th width="200">Cost</th>
+            <th width="300">Price Per Unit</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @order.order_items.each do | item | %>
+            <tr>
+              <td><%= link_to item.item.name, item.item %></td>
+              <td><%= item.quantity %></td>
+              <td><%= number_to_currency(item.quantity * item.price_per_unit) %></td>
+              <td><%= number_to_currency(item.price_per_unit) %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
