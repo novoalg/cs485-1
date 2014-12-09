@@ -1,10 +1,9 @@
 class ItemsController < ApplicationController
   before_action :set_item, only: [:show, :edit, :update, :destroy]
-  before_filter :role_zero, :only => [:show]
-  before_filter :role_one, :only => [:index]
-  before_filter :role_two, :only => [:edit, :update]
-  before_filter :role_three, :only => [:new, :create, :toggle_activeness]
-  before_filter :role_four, :only => [:destroy]
+  before_filter :role_two, :only => [:index]
+  before_filter :role_three, :only => [:edit, :update]
+  before_filter :role_four, :only => [:new, :create, :toggle_activeness]
+  before_filter :role_five, :only => [:destroy]
 
   # GET /items
   def index
@@ -14,6 +13,7 @@ class ItemsController < ApplicationController
 
   # GET /items/1
   def show
+    @carted_item = CartedItem.new
   end
 
   # GET /items/new
@@ -58,6 +58,9 @@ class ItemsController < ApplicationController
 
   # DELETE /items/1
   def destroy
+    CartedItem.where(item_id: @item.id).each do | carted | 
+      carted.destroy
+    end
     @item.destroy_item
     @item.save(:validate => false)
     respond_to do |format|
@@ -69,31 +72,44 @@ class ItemsController < ApplicationController
   def toggle_activeness
     item = Item.find(params[:id])
     if item.active?
-        item.active = false
+      item.active = false
+      CartedItem.where(item_id: params[:id]).each do | carted |
+        carted.destroy
+      end
     else
-        item.active = true
+      item.active = true
     end
     if item.save(:validate=>false)
-        respond_to do |format|
-            format.html { redirect_to items_path, :success => "Item was #{item.active? ? "activated" : "deactivated"}" }
-            format.json { head :no_content }
-        end
+      respond_to do |format|
+        format.html { redirect_to items_path, :success => "Item was #{item.active? ? "activated" : "deactivated"}" }
+        format.json { head :no_content }
+      end
     else
-        respond_to do |format|
-            format.html { redirect_to items_path, :error => "An error has occured." }
-            format.json { head :no_content }
-        end
+      respond_to do |format|
+        format.html { redirect_to items_path, :error => "An error has occured." }
+        format.json { head :no_content }
+      end
     end
   end
 
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_item
-      @item = Item.find(params[:id])
+      if Item.exists?(id: params[:id])
+        @item = Item.find(params[:id])
+        if @item.is_deleted
+          flash[:alert] = "The item you requested is marked as deleted."
+          redirect_to root_path
+        end
+      else
+        flash[:alert] = "Could not find an item with that ID."
+        redirect_to root_path
+      end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def item_params
       params.require(:item).permit!
     end
+
 end

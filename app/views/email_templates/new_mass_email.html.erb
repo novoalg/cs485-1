@@ -1,27 +1,20 @@
-<div class="row">
-    <h1 align="center">Mass Email</h1>
-    <div class="large-6 columns">
-    <h3>Select emails to be sent to</h3>
-    <%= form_tag mass_email_path, :method => :put, :as => "email" do %>
+<div class="row text-center">
+  <div class="small-12 columns">
+    <div class="panel">
+      <h1><i class="fa fa-envelope"></i>&emsp;Sending a new email</h1>
+      <p>This email will be sent to any user that has opted into the mailing list.</p>
+      <hr />
+      <%= form_for @mass_email, :url => mass_email_path, :html => { :method => :put } do | f | %>
+        <%= f.label :subject %> 
+        <%= f.text_field :subject %>
 
-        <% @users.each do |user| %>
-            <p>
-            <%= check_box_tag "mass_email[user_#{user.id}]", user.id %>
-            <%= label_tag user.email %>
-            </p>
-        <% end %>
-        <%= submit_tag "Submit" %>
-    <% end %>
+        <%= f.label :content, "Body" %>
+        <%= f.cktext_area :content %>
+
+        <hr />
+
+        <%= f.submit "Send Email", class: "button expand" %>
+      <% end %>
     </div>
-    <div class="large-6 columns">
-        <h3>Email being sent</h3>
-        <div class="template_box">
-            <p>
-            <b>Subject:</b> <%= @template.subject %>
-            </p>
-            <p>
-            <b>Body:</b> <%= raw @template.content %>
-            </p>
-        </div>
-    </div>
+  </div>
 </div>

@@ -4,13 +4,6 @@ class ApplicationController < ActionController::Base
 
   protect_from_forgery with: :exception
 
-  def role_zero
-    unless (user_signed_in? && current_user.role_id >= 0)
-      flash[:alert] = "You don't have permission to the page you tried to access."
-      redirect_to root_path
-    end
-  end
-
   def role_one
     unless (user_signed_in? && current_user.role_id >= 1)
       flash[:alert] = "You don't have permission to the page you tried to access."
@@ -26,14 +19,21 @@ class ApplicationController < ActionController::Base
   end
 
   def role_three
-    unless (user_signed_in? && current_user.role_id >= 3) 
+    unless (user_signed_in? && current_user.role_id >= 3)
       flash[:alert] = "You don't have permission to the page you tried to access."
       redirect_to root_path
     end
   end
 
   def role_four
-    unless (user_signed_in? && current_user.role_id == 4)
+    unless (user_signed_in? && current_user.role_id >= 4) 
+      flash[:alert] = "You don't have permission to the page you tried to access."
+      redirect_to root_path
+    end
+  end
+
+  def role_five
+    unless (user_signed_in? && current_user.role_id == 5)
       flash[:alert] = "You don't have permission to the page you tried to access."
       redirect_to root_path
     end
@@ -44,6 +44,11 @@ class ApplicationController < ActionController::Base
       flash[:alert] = "You don't have permission to the page you tried to access."
       redirect_to root_path
     end
+  end
+
+  def report_rollback
+    flash[:alert] = "There was a problem that prevented you from checking out. Please try again."
+    redirect_to cart_path
   end
 
 end

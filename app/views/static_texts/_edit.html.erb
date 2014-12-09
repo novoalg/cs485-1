@@ -1,0 +1,12 @@
+<div class="reveal-modal text-center" id="static-<%= entry.id %>-modal" data-reveal>
+  <%= form_for entry do | f | %>
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+
+    <%= f.label :text %>
+    <%= f.text_area :text, rows: 4 %>
+    
+    <%= f.submit "Update", class: "text-center button" %>
+    <a class="close-reveal-modal">&#215;</a>
+  <% end %>
+</div>

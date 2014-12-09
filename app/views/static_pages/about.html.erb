@@ -1,5 +1,5 @@
-<% title "About Us" %>
-
+<% content_for :title, "About Us" %>
+<% description "A short history of Silver & Stones Gallery." %>
 <div class="row">
   <div class="large-12 columns">
     <%= image_tag "static_pages/storefront.jpg", id: "about-us-img" %>
@@ -7,33 +7,45 @@
   </div>
 </div>
  
-<div class="row">
-  <div class="large-4 columns">
+<div class="row" data-equalizer>
+  <div class="large-4 columns" data-equalizer-watch>
     <%= image_tag "static_pages/logo_instore.jpg" %>
   </div>
-  <div class="large-8 columns">
-    <h4>Local and proud</h4>
-    <div class="row">
-      <div class="small-12 columns" id="history">
-        <p>We're locally and family owned, so we don't have to compromize on quality. There are few better places to live than Eau Claire. The area is vibrant and full of creative people! The creative attitude drives us, and we are proud to offer a sampling of the region's finest works!</p>
+  <div class="large-8 columns" >
+    <div class="panel" data-equalizer-watch>
+      <% if role_edit? %>
+        <a href="#" data-reveal-id="static-<%= @first.id %>-modal" class="button expand tiny">
+          <i class="fa fa-edit"></i>&emsp;Edit Text
+        </a>
+      <% end %>
+      <h4><%= @first.title %></h4>
+      <div class="row">
+        <div class="small-12 columns" id="history">
+          <p><%= @first.text %></p>
+        </div>
       </div>
     </div>
   </div>
 </div>
 
-<div class="row">
-  <div class="small-12 columns">
-    <hr />
+<div class="row" data-equalizer>
+  <div class="large-8 columns" >
+    <div class="panel" data-equalizer-watch>
+      <% if role_edit? %>
+        <a href="#" data-reveal-id="static-<%= @second.id %>-modal" class="button expand tiny">
+          <i class="fa fa-edit"></i>&emsp;Edit Text
+        </a>
+      <% end %>
+      <h4><%= @second.title %></h4>
+      <p><%= @second.text %></p>
+    </div>
   </div>
-</div>
- 
-<div class="row">
-  <div class="large-8 columns">
-    <h4>Our Passion</h4>
-    <p>Bacon ipsum dolor sit amet nulla ham qui sint exercitation eiusmod commodo, chuck duis velit. Aute in reprehenderit, dolore aliqua non est magna in labore pig pork biltong. Eiusmod swine spare ribs reprehenderit culpa. Boudin aliqua adipisicing rump corned beef.</p>
-    <p>Pork drumstick turkey fugiat. Tri-tip elit turducken pork chop in. Swine short ribs meatball irure bacon nulla pork belly cupidatat meatloaf cow. Nulla corned beef sunt ball tip, qui bresaola enim jowl. Capicola short ribs minim salami nulla nostrud pastrami.</p>
-  </div>
-  <div class="large-4 columns">
+  <div class="large-4 columns" data-equalizer-watch>
     <%= image_tag "static_pages/about_us.jpg" %>
   </div>
 </div>
+
+<% if role_edit? %>
+  <%= render :partial => 'static_texts/edit', :locals => { :entry => @first } %>
+  <%= render :partial => 'static_texts/edit', :locals => { :entry => @second } %>
+<% end %>

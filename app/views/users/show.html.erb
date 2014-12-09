@@ -62,7 +62,7 @@
           <i class="fa fa-edit"></i>&emsp;Edit Profile
         <% end %>
       </li>
-      <% if current_user.role_id > 3 %>      
+      <% if role_delete? %>      
       <li>
         <%= link_to @user, method: :delete, data: { confirm: "You sure?" }, class: "button alert expand", id: "delete-user" do %>
           <i class="fa fa-trash"></i>&emsp;Delete Account

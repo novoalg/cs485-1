@@ -1,9 +1,22 @@
 class AdminMailer < ActionMailer::Base
-  default from: "from@example.com"
+  default from: "Silver & Stones Gallery <support@silverandstones.gallery>"
 
-  def send_user_email(user)
+  def send_user_email(user, subject, content)
+    @content = content
     @user = user
-    @template = EmailTemplate.find(2)
-    mail(to: user.email, subject: @template.subject)
+    mail(to: user.email, subject: subject)
   end
+
+  def receive_contact(params)
+    @name = params[:name]
+    @email = params[:email]
+    @content = params[:message]
+    mail(to: "support@silverandstones.gallery", subject: "[Contact Us] #{params[:subject]}", reply_to: "#{params[:email]}")
+  end
+
+  def receive_order(order)
+    @order = order
+    mail(to: "support@silverandstones.gallery", subject: "[Order #{@order.id}] Receipt")
+  end
+
 end

@@ -5,28 +5,19 @@
 <%= form_for @user do |form| %>
 <div class="row text-center">
   <div class="small-12 columns">
-    <div class="row">
-      <div class="small-12 columns">
-        <%= form.label :email %>
-        <%= form.text_field :email %>
+    <div class="panel">
+      <div class="row">
+        <div class="small-12 medium-8 medium-centered columns">
+          <%= form.label :email %>
+          <%= form.text_field :email %>
+
+          <%= form.check_box :receive_emails %>
+          <%= form.label :receive_emails, "Receive emails from Silver & Stones" %>
+        </div>
       </div>
     </div>
 
-    <div class="row text-center">
-      <div class="small-12 columns">
-        <hr />
-        <em>Need to change your password or close your account?</em>
-        <br />
-        <br />
-        <%= link_to edit_user_registration_path, class: "button" do %>
-          <i class="fa fa-lock"></i>&emsp;Manage Account
-        <% end %>
-        <hr />
-      </div>
-    </div>
-
-    <fieldset>
-      <legend>Contact Information</legend>
+    <div class="panel">
       <div class="row">
         <div class="small-6 columns">
           <%= form.label :first_name %>
@@ -49,7 +40,22 @@
           <%= form.text_field :address %>
         </div>
       </div>
-    </fieldset>
+    </div>
+
+
+    <div class="row text-center">
+      <div class="small-12 columns">
+        <div class="panel">
+          <em>Need to change your password or close your account?</em>
+          <br />
+          <br />
+          <%= link_to edit_user_registration_path, class: "button" do %>
+            <i class="fa fa-lock"></i>&emsp;Manage Account
+          <% end %>
+        </div>
+        <hr />
+      </div>
+    </div>
 
     <%= form.submit "Submit", class: "button expand", id: "submit" %>
   </div>

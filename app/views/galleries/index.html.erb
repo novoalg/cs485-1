@@ -1,0 +1,85 @@
+<div class="row text-center">
+  <div class="small-12 columns">
+    <div class="panel">
+      <h1>Galleries</h1>
+      <p>Galleries are showcases of sections of our store. If you see something you like, <%= link_to "let us know!", contact_path %> If it's still in stock, it could be yours! Click to get a better look at each picture.</p>
+    </div>
+  </div>
+</div>
+
+<% if role_add? %>
+  <div class="row text-center">
+    <div class="small-12 columns">
+      <%= link_to new_gallery_path, class: "button large" do %>
+        <i class="fa fa-plus"></i>&emsp;New Gallery Entry
+      <% end %>
+    </div>
+  </div>
+<% end %>
+
+<% unless @galleries.empty? %>
+  <ul class="small-block-grid-1 medium-block-grid-2 large-block-grid-3">
+  <% @galleries.each do | gallery | %>
+    <li>
+    <div class="row">
+      <div class="small-12 columns">
+        <div class="panel">
+          <% if role_delete? %>
+            <div class="row">
+              <div class="small-6 columns">
+                <%= link_to edit_gallery_path(gallery), class: "button expand" do %>
+                  <i class="fa fa-edit"></i>&emsp;Edit
+                <% end %>
+              </div>
+              <div class="small-6 columns">
+                <%= link_to gallery, method: :delete, data: { confirm: 'Are you sure you want to delete this gallery entry?' }, class: "button expand alert" do %>
+                  <i class="fa fa-times"></i>&emsp;Delete
+                <% end %>
+              </div>
+            </div>
+          <% elsif role_edit? %>
+            <div class="row">
+              <div class="small-12 columns">
+                <%= link_to edit_gallery_path(gallery), class: "button expand" do %>
+                  <i class="fa fa-edit"></i>&emsp;Edit
+                <% end %>
+              </div>
+            </div>
+          <% end %>
+          <div class="row text-center">
+            <div class="small-12 columns">
+              <a href="#" data-reveal-id="gallery-<%= gallery.id %>-modal">
+                <%= image_tag gallery.picture.url(:thumb) %>
+              </a>
+            </div>
+          </div>
+          <hr />
+          <%= gallery.text %>
+        </div>
+      </div>
+    </div>
+    </li>
+  <% end %>
+  </ul>
+<% else %>
+  <div class="row text-center">
+    <div class="small-12 columns">
+      <div class="panel">
+        <h3>There are no gallery entries at this time.</h3>
+      </div>
+    </div>
+  </div>
+<% end %>
+
+<% unless @galleries.empty? %>
+  <% @galleries.each do | gallery | %>
+    <div id="gallery-<%= gallery.id %>-modal" class="reveal-modal" data-reveal>
+      <%= link_to gallery.picture.url(:original), :target => "_blank" do %>
+        <div class="text-center">
+        <%= image_tag gallery.picture.url(:large) %>
+        </div>
+      <% end %>
+      <a class="close-reveal-modal">&#215;</a>
+    </div>
+  <% end %>
+<% end %>

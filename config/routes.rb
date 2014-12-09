@@ -1,77 +1,41 @@
 Rails.application.routes.draw do
 
+  get 'carts/index'
+
+  root 'static_pages#index'
+
   mount Ckeditor::Engine => '/ckeditor'
-  devise_for :users
-
+  devise_for :users, :controllers => { registrations: 'registrations' }
   resources :item_categories
-
   resources :items
   match '/toggle_activeness/:id', to: 'items#toggle_activeness', via: 'get'
 
   get 'static_pages/index'
 
-  # The priority is based upon order of creation: first created -> highest priority.
-  # See how all your routes lay out with "rake routes".
-
-  # You can have the root of your site routed with "root"
-
   resources :users
   put '/set_role/:id', to: 'users#set_role', as: 'set_role'
+  match '/users/unsubscribe/:signature' => 'users#unsubscribe', as: 'unsubscribe', via: 'get'
+
   resources :email_templates, :only => [:index, :edit, :update]
   get '/mass_email', to: 'email_templates#new_mass_email', as: 'new_mass_email'
   put '/mass_email', to: 'email_templates#mass_email', as: 'mass_email'
+  
   match '/about',     to: 'static_pages#about', via: 'get'
   match '/contact',   to: 'static_pages#contact', via: 'get'
+  match '/contact_us',  to: 'static_pages#contact_us', via: 'post'
   match '/inventory', to: 'inventory#index', via: 'get'
-  root 'static_pages#index'
+  match '/shop', to: 'inventory#shop', via: 'get'
+  match '/shop', to: 'inventory#change_category', via: 'post'
 
+  resources :galleries
+  resources :static_texts, only: [:edit, :update]
+  resource :headline, only: [:edit, :update]
 
-  # Example of regular route:
-  #   get 'products/:id' => 'catalog#view'
-
-  # Example of named route that can be invoked with purchase_url(id: product.id)
-  #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
-
-  # Example resource route (maps HTTP verbs to controller actions automatically):
-  #   resources :products
-
-  # Example resource route with options:
-  #   resources :products do
-  #     member do
-  #       get 'short'
-  #       post 'toggle'
-  #     end
-  #
-  #     collection do
-  #       get 'sold'
-  #     end
-  #   end
-
-  # Example resource route with sub-resources:
-  #   resources :products do
-  #     resources :comments, :sales
-  #     resource :seller
-  #   end
-
-  # Example resource route with more complex sub-resources:
-  #   resources :products do
-  #     resources :comments
-  #     resources :sales do
-  #       get 'recent', on: :collection
-  #     end
-  #   end
-
-  # Example resource route with concerns:
-  #   concern :toggleable do
-  #     post 'toggle'
-  #   end
-  #   resources :posts, concerns: :toggleable
-  #   resources :photos, concerns: :toggleable
-
-  # Example resource route within a namespace:
-  #   namespace :admin do
-  #     # Directs /admin/products/* to Admin::ProductsController
-  #     # (app/controllers/admin/products_controller.rb)
-  #     resources :products
-  #   end
+  resource :cart
+  match '/add_to_cart', to: 'carts#add_item', via: 'post'
+  match '/remove_from_cart/:id', to: 'carts#destroy', via: 'delete'
+  match '/update_cart', to: 'carts#update_cart', via: 'post'
+  match '/checkout', to: 'carts#checkout', via: 'get'
+  match '/process_cart', to: 'carts#process_cart', via: 'post'
+  
 end

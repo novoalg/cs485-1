@@ -10,47 +10,51 @@
 
   <div class="row text-center">
     <div class="small-12 medium-8 columns medium-centered">
-      <%= f.label :email %>
-      <%= f.email_field :email, autofocus: true %>
+      <div class="panel">
+        <%= f.label :email %>
+        <%= f.email_field :email, autofocus: true %>
 
-      <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-        <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-      <% end %>
+        <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+          <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+        <% end %>
 
-      <div class="row">
-        <div class="small-12 medium-6 columns">
-          <%= f.label :password, "New Password" %>
-          <%= f.password_field :password, autocomplete: "off" %>
+        <div class="row">
+          <div class="small-12 medium-6 columns">
+            <%= f.label :password, "New Password" %>
+            <%= f.password_field :password, autocomplete: "off" %>
+          </div>
+
+          <div class="small-12 medium-6 columns">
+            <%= f.label :password_confirmation, "Confirm New Password" %>
+            <%= f.password_field :password_confirmation, autocomplete: "off" %>
+          </div>
         </div>
 
-        <div class="small-12 medium-6 columns">
-          <%= f.label :password_confirmation, "Confirm New Password" %>
-          <%= f.password_field :password_confirmation, autocomplete: "off" %>
+        <div class="row">
+          <div class"small-12 columns">
+             <em>Leave these blank if you don't want to change your password.</em>
+          </div>
         </div>
+
+        <hr />
+
+        <%= f.label :current_password %> <em>Please enter your current password to confirm your changes.</em>
+        <%= f.password_field :current_password, autocomplete: "off" %>
+
+        <%= f.submit "Update", class: "button expand" %>
+        <hr />
       </div>
-
-      <div class="row">
-        <div class"small-12 columns">
-           <em>Leave these blank if you don't want to change your password.</em>
-        </div>
-      </div>
-
-      <hr />
-
-      <%= f.label :current_password %> <em>Please enter your current password to confirm your changes.</em>
-      <%= f.password_field :current_password, autocomplete: "off" %>
-
-      <%= f.submit "Update", class: "button expand" %>
-      <hr />
     </div>
   </div>
 <% end %>
 
 <div class="row text-center">
   <div class="small-8 columns small-centered">
-    <h3>Cancel my account</h3>
-    <p>Unhappy?</p> 
-    <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: "small button alert", id: "cancel-account" %>
+    <div class="panel">
+      <h3>Cancel my account</h3>
+      <p>Unhappy?</p> 
+      <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: "small button alert", id: "cancel-account" %>
+    </div>
   </div>
   <%= link_to "Back", :back %>
 </div>

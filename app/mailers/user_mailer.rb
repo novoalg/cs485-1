@@ -1,9 +1,14 @@
 class UserMailer < ActionMailer::Base
-  default from: "from@example.com"
+  default from: "Silver & Stones Gallery <support@silverandstones.gallery>"
 
   def welcome_email(user)
     @user = user
     @template = EmailTemplate.find(1)
-    mail(to: @user, subject: @template.subject)
+    mail(to: @user.email, subject: @template.subject)
+  end
+
+  def order_receipt(order)
+    @order = order
+    mail(to: @order.user.email, subject: "Your Recept from Silver & Stones Gallery [Order ##{@order.id}]")
   end
 end

@@ -1,88 +1,90 @@
-<h1>Active Item List</h1>
+<div class="panel">
+  <h1>Active Item List</h1>
 
-<table id="active-items">
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Price</th>
-      <th>Stock</th>
-      <th>Edit</th>
-      <th>Deactivate</th>
-    </tr>
-  </thead>
+  <table id="active-items">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Stock</th>
+        <th>Edit</th>
+        <th>Deactivate</th>
+      </tr>
+    </thead>
 
-  <tbody>
-    <% @active_items.each do |item| %>
-    <tr>
-      <td>
-        <%= link_to item do %>
-          <%= item.name %>
-        <% end %>
-      </td>
-      <td><%= item.price %></td>
-      <td><%= item.in_stock %></td>
-      <td>
-        <%= link_to edit_item_path(item) do %>
-          <i class="fa fa-edit"></i> 
-          <label class="show-for-medium-up">Edit</label>
-        <% end %>
-      </td>
-      <td>
-        <%= link_to controller: "items", :action => "toggle_activeness", :id => item do %>
-          <i class="fa fa-power-off"></i> 
-          <label class="show-for-medium-up">Deactivate</label>
-        <% end %>
-      </td>
-    </tr>
-    <% end %>
-  </tbody>
-</table>
+    <tbody>
+      <% @active_items.each do |item| %>
+      <tr>
+        <td>
+          <%= link_to item do %>
+            <%= item.name %>
+          <% end %>
+        </td>
+        <td><%= number_to_currency(item.price) %></td>
+        <td><%= item.in_stock %></td>
+        <td>
+          <%= link_to edit_item_path(item) do %>
+            <i class="fa fa-edit"></i> 
+            <label class="show-for-medium-up">Edit</label>
+          <% end %>
+        </td>
+        <td>
+          <%= link_to controller: "items", :action => "toggle_activeness", :id => item do %>
+            <i class="fa fa-power-off"></i> 
+            <label class="show-for-medium-up">Deactivate</label>
+          <% end %>
+        </td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
 
-<br>
+<div class="panel">
+  <h1>Inactive Item List</h1>
 
-<h1>Inactive Item List</h1>
+  <table id="inactive-items">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Stock</th>
+        <th>Edit</th>
+        <th>Activate</th>
+        <th>Destroy</th>
+      </tr>
+    </thead>
 
-<table id="inactive-items">
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Price</th>
-      <th>Stock</th>
-      <th>Edit</th>
-      <th>Activate</th>
-      <th>Destroy</th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @inactive_items.each do |item| %>
-    <tr>
-      <td>
-        <%= link_to item do %>
-          <%= item.name %>
-        <% end %>
-      </td>
-      <td><%= item.price %></td>
-      <td><%= item.in_stock %></td>
-      <td>
-        <%= link_to edit_item_path(item) do %>
-          <i class="fa fa-edit"></i> 
-          <label class="show-for-medium-up">Edit</label>
-        <% end %>
-      </td>
-      <td>
-        <%= link_to controller: "items", :action => "toggle_activeness", :id => item do %>
-          <i class="fa fa-check"></i> 
-          <label class="show-for-medium-up">Activate</label>
-        <% end %>
-      </td>
-      <td>
-        <%= link_to item, method: :delete, data: { confirm: 'Are you sure you want to delete this item?' } do %>
-          <i class="fa fa-trash">  </i>
-          <label class="show-for-medium-up">Destroy</label>
-        <% end %>
-      </td>
-    </tr>
-    <% end %>
-  </tbody>
-</table>
+    <tbody>
+      <% @inactive_items.each do |item| %>
+      <tr>
+        <td>
+          <%= link_to item do %>
+            <%= item.name %>
+          <% end %>
+        </td>
+        <td><%= item.price %></td>
+        <td><%= item.in_stock %></td>
+        <td>
+          <%= link_to edit_item_path(item) do %>
+            <i class="fa fa-edit"></i> 
+            <label class="show-for-medium-up">Edit</label>
+          <% end %>
+        </td>
+        <td>
+          <%= link_to controller: "items", :action => "toggle_activeness", :id => item do %>
+            <i class="fa fa-check"></i> 
+            <label class="show-for-medium-up">Activate</label>
+          <% end %>
+        </td>
+        <td>
+          <%= link_to item, method: :delete, data: { confirm: 'Are you sure you want to delete this item?' } do %>
+            <i class="fa fa-trash">  </i>
+            <label class="show-for-medium-up">Destroy</label>
+          <% end %>
+        </td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
