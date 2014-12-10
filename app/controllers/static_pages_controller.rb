@@ -3,6 +3,7 @@ class StaticPagesController < ApplicationController
     @headline = Headline.first
     @description = StaticText.first
     @entries = StaticText.find([2, 3, 4, 5, 6, 7])
+    @sliders = SliderImage.all
   end
 
   def about

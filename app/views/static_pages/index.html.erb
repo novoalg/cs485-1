@@ -2,25 +2,26 @@
 <% description "Silver & Stones Gallery is a perfect place to shop for special gifts or treasures from your home." %>
 
 <% if @headline.active %>
-<div class="row text-center">
-  <div class="small-12 columns">
-    <div data-alert class="alert-box breaking">
-      <%= raw @headline.text %>
+  <div class="row text-center">
+    <div class="small-12 columns">
+      <div data-alert class="alert-box breaking">
+        <%= raw @headline.text %>
+      </div>
     </div>
   </div>
-</div>
 <% end %>
 
-<div class="row">
-  <div class="small-12 columns">
-    <ul id="welcome-slider">
-      <li><%= image_tag "static_pages/storefront.jpg" %></li>
-      <% for i in 1..5 do %>
-        <li><%= image_tag "static_pages/store#{i}.jpg" %></li>
-      <% end %>
-    </ul>
+<% unless @sliders.empty? %>
+  <div class="row">
+    <div class="small-12 columns">
+      <ul id="welcome-slider">
+        <% @sliders.each do | image | %>
+          <li><%= image_tag image.picture.url(:large), alt: image.caption %></li>
+        <% end %>
+      </ul>
+    </div>
   </div>
-</div>
+<% end %>
 
 <hr/>
 

@@ -34,6 +34,7 @@ Rails.application.routes.draw do
   resources :galleries
   resources :static_texts, only: [:edit, :update]
   resource :headline, only: [:edit, :update]
+  resources :slider_images, only: [:index, :new, :create, :edit, :update, :destroy]
 
   resource :cart
   match '/add_to_cart', to: 'carts#add_item', via: 'post'

@@ -1,0 +1,55 @@
+<div class="row text-center">
+  <div class="small-12">
+    <div class="panel">
+      <h1>All Slider Images</h1>
+      
+      <%= link_to new_slider_image_path, class: "button" do %>
+        <i class="fa fa-plus"></i>&emsp;Add Slider
+      <% end %>
+
+      <table id="all-sliders">
+        <thead>
+          <tr>
+            <th width="120">ID</th>
+            <th>Caption</th>
+            <th width="120">Edit</th>
+            <th width="120">Delete</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @sliders.each do |slider| %>
+            <tr>
+              <td>
+                <a href="#" data-reveal-id="slider-<%= slider.id %>-modal">
+                  <i class="fa fa-picture-o"></i>&emsp;<%= slider.id %>
+                </a>
+              </td>
+              <td><%= slider.caption %></td>
+              <td>
+                <%= link_to edit_slider_image_path slider do %>
+                  <i class="fa fa-edit"></i>&emsp;Edit
+                <% end %>
+              </td>
+              <td>
+                <%= link_to slider, method: :delete, data: { confirm: 'Are you sure you want to delete this slider image?' } do %>
+                  <i class="fa fa-times"></i>&emsp;Delete
+                <% end %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<% @sliders.each do | slider | %>
+  <div id="slider-<%= slider.id %>-modal" class="reveal-modal" data-reveal>
+    <%= link_to slider.picture.url(:original), :target => "_blank" do %>
+      <div class="text-center">
+      <%= image_tag slider.picture.url(:large) %>
+      </div>
+    <% end %>
+    <a class="close-reveal-modal">&#215;</a>
+  </div>
+<% end %>
