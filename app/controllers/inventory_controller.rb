@@ -9,7 +9,7 @@ class InventoryController < ApplicationController
   def shop
     if (params.has_key? :category) && (ItemCategory.exists?(id: params[:category]))
       category = params[:category]
-    elsif ItemCategory.all.size 
+    elsif ItemCategory.all.size > 0 
       category = ItemCategory.first.id
     else 
       flash[:warning] = "There was an error. Please try again."
