@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  get 'page_sections/edit'
+
+  get 'page_sections/new'
+
   get 'orders/index'
 
   get 'orders/user'
@@ -32,8 +36,10 @@ Rails.application.routes.draw do
   match '/shop', to: 'inventory#change_category', via: 'post'
 
   resources :galleries
-  resources :static_texts, only: [:edit, :update]
+  resources :page_sections, only: [:edit, :update]
   resource :headline, only: [:edit, :update]
+  resources :slider_images, except: [:show]
+  resources :homepage_panels, except: [:show, :index]
 
   resource :cart
   match '/add_to_cart', to: 'carts#add_item', via: 'post'

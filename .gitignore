@@ -32,3 +32,4 @@ bower.json
 
 # Ignore precompiled assets
 /public/assets
+/public/ckeditor_assets

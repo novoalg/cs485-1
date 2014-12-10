@@ -1,17 +1,19 @@
 class StaticPagesController < ApplicationController
   def index
     @headline = Headline.first
-    @description = StaticText.first
-    @entries = StaticText.find([2, 3, 4, 5, 6, 7])
+    @sliders = SliderImage.all
+    @panels = HomepagePanel.all
+    @description = PageSection.where(page: "static_pages/index", section: "description").first
   end
 
   def about
-    @first = StaticText.find(8)
-    @second = StaticText.find(9)
+    @header = PageSection.where(page: "static_pages/about", section: "header").first
+    @first = PageSection.where(page: "static_pages/about", section: "first box").first
+    @second = PageSection.where(page: "static_pages/about", section: "second box").first
   end
 
   def contact
-    @blurb = StaticText.find(10)
+    @blurb = PageSection.where(page: "static_pages/contact", section: "blurb").first
   end
 
   def contact_us
