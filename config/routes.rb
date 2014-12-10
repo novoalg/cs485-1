@@ -44,5 +44,6 @@ Rails.application.routes.draw do
 
   resources :orders, only: [:index, :show, :destroy]
   match '/my_orders', to: 'orders#user', via: 'get'
+  match '/mark_completed', to: 'orders#mark_completed', via: 'post'
   
 end

@@ -4,8 +4,27 @@
       <h1>Order #<%= @order.id %></h1>
       <p>Placed by <%= @order.user.email %></p>
 
-      <%= link_to @order, method: :delete, data: { confirm: 'Are you sure you want to cancel this order?' }, class: "button alert" do %>
-        <i class="fa fa-exclamation-circle "></i>&emsp;Cancel Order
+      <ul class="button-group">
+        <% if role_edit? && !@order.completed %>
+          <li>
+            <%= form_tag '/mark_completed' do %>
+              <%= hidden_field_tag :id, @order.id %>
+              <%= submit_tag "Complete Order", class: "button success" %> 
+            <% end %>
+          </li>
+        <% end %>
+
+        <% unless @order.completed %>
+          <li>
+            <%= link_to @order, method: :delete, data: { confirm: 'Are you sure you want to cancel this order?' }, class: "button alert" do %>
+              <i class="fa fa-exclamation-circle "></i>&emsp;Cancel Order
+            <% end %>
+          </li>
+        <% end %>
+      </ul>
+
+      <% if role_read? && @order.completed %>
+        <h4>Completed on <%= @order.updated_at.in_time_zone("Central Time (US & Canada)").to_formatted_s(:long) %></h4>
       <% end %>
 
       <div class="small-9 columns small-centered">

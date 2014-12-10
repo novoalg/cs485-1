@@ -1,7 +1,8 @@
 class OrdersController < ApplicationController
 
   before_filter :check_login 
-  before_filter :check_employee, only: [:index]
+  before_filter :check_employee, only: [:index, :mark_completed]
+  before_filter :role_three, only: [:mark_completed]
   before_filter :check_user, only: [:show, :destroy]
 
   def index
@@ -31,12 +32,24 @@ class OrdersController < ApplicationController
 
       @order.destroy
 
-      flash[:success] = "Your order has been canceled."
+      flash[:success] = "Order ##{@order.id} has been canceled."
     else 
       flash[:alert] = "No order with that ID exists."
     end 
 
     redirect_to my_orders_path
+  end
+
+  def mark_completed
+    if Order.exists?(id: params[:id])
+      @order = Order.find(params[:id])
+      @order.update_attributes(completed: true)
+      flash[:success] = "Order has been completed."
+    else 
+      flash[:alert] = "No order with that ID exists."
+    end
+
+    redirect_to orders_path
   end
 
   private

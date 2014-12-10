@@ -1,14 +1,15 @@
 <div class="row text-center">
   <div class="small-12 columns">
     <div class="panel">
-      <h1>My Orders</h1>
+      <h1>All Orders</h1>
       <table id="all-orders">
         <thead>
           <tr>
-            <th width="150">Order #</th>
-            <th width="200">Price</th>
-            <th>User</th>
+            <th width="120">Order #</th>
+            <th width="140">Price</th>
+            <th width="300">User</th>
             <th>Placed On</th>
+            <th width="130">Complete?</th>
           </tr>
         </thead>
         <tbody>
@@ -18,6 +19,7 @@
               <td><%= number_to_currency(order.subtotal) %></td>
               <td><%= link_to order.user.email, order.user %></td>
               <td><%= order.created_at.in_time_zone("Central Time (US & Canada)").to_formatted_s(:long) %></td>
+              <td><%= order.completed ? "Yes" : "No" %></td>
             </tr>
           <% end %>
         </tbody>

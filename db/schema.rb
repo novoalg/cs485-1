@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141208234918) do
+ActiveRecord::Schema.define(version: 20141209215123) do
 
   create_table "carted_items", force: true do |t|
     t.integer  "user_id"
@@ -102,6 +102,7 @@ ActiveRecord::Schema.define(version: 20141208234918) do
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "completed",  default: false
   end
 
   create_table "roles", force: true do |t|
