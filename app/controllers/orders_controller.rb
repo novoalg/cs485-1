@@ -55,7 +55,7 @@ class OrdersController < ApplicationController
       @order.update_attributes(completed: true)
       flash[:success] = "Order has been completed."
 
-      UserMailer.send_completed(order).deliver
+      UserMailer.send_completed(@order).deliver
 
     else 
       flash[:alert] = "No order with that ID exists."
