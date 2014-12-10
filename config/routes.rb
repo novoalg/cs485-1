@@ -21,7 +21,7 @@ Rails.application.routes.draw do
   get 'static_pages/index'
 
   resources :users
-  put '/set_role/:id', to: 'users#set_role', as: 'set_role'
+  put '/users/set_role/:id', to: 'users#set_role', as: 'set_role'
   match '/users/unsubscribe/:signature' => 'users#unsubscribe', as: 'unsubscribe', via: 'get'
 
   resources :email_templates, :only => [:index, :edit, :update]
