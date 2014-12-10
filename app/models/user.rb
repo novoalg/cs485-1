@@ -5,6 +5,9 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
   after_create :send_email
 
+  has_many :carted_items
+  has_many :orders
+
   VALID_USERNAME_REGEX = /\A[a-z0-9\-]*\z/i
   belongs_to :role
 
@@ -20,6 +23,10 @@ class User < ActiveRecord::Base
 
   def send_email
     UserMailer.welcome_email(self).deliver
+  end
+
+  def full_name
+    "#{self.first_name} #{self.last_name}"
   end
 
   # Access token for a user

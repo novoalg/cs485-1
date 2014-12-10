@@ -61,10 +61,16 @@ class ItemCategoriesController < ApplicationController
 
   # DELETE /item_categories/1
   def destroy
-    @item_category.delete_category = true
+    @item_category.update_attributes(active: false, is_deleted: true)
+    @item_category.items.each do | item |
+      item.update_attributes(active: false, is_deleted: true)
+      CartedItem.where(item_id: item.id).each do | entry | 
+        entry.destroy
+      end
+    end
     @item_category.save(:validate => false)
     respond_to do |format|
-      format.html { redirect_to item_categories_url, notice: 'Item category was successfully destroyed.' }
+      format.html { redirect_to item_categories_url, notice: 'Item category was successfully deleted.' }
       format.json { head :no_content }
     end
   end
@@ -72,7 +78,16 @@ class ItemCategoriesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_item_category
-      @item_category = ItemCategory.find(params[:id])
+      if ItemCategory.exists?(id: params[:id])
+        @item_category = ItemCategory.find(params[:id])
+        if @item_category.is_deleted
+          flash[:alert] = "The category you requested is marked as deleted."
+          redirect_to root_path
+        end
+      else
+        flash[:alert] = "Could not find a category with that ID."
+        redirect_to root_path
+      end    
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

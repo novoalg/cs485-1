@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+    </head>
+    <body>
+        
+        <h3>We've received an order from <%= @order.user.full_name %>!</h3>
+        <h4>Order number: <%= @order.id %></h4>
+        <h4>Order date: <%= @order.created_at.in_time_zone("Central Time (US & Canada)").to_formatted_s(:long) %></h4>
+        <h4><a href="http://silverandstones.gallery/orders/<%= @order.id %>"><h4>Click Here To View The Order</h4></a></h4>
+
+        <hr />
+
+        <h1>Items</h1>
+        <table style="border: 1px solid black;" cellspacing="1" cellpadding="1">
+            <tr style="border-bottom: 1px solid black;">
+                <td width="300" style="border-left: 1px solid black; border-right: 1px solid black; border-top: 1px solid black; border-bottom: 1px solid black;">Item</td>
+                <td width="150" style="border-left: 1px solid black; border-right: 1px solid black; border-top: 1px solid black; border-bottom: 1px solid black;">Quantity</td>
+                <td width="200" style="border-left: 1px solid black; border-right: 1px solid black; border-top: 1px solid black; border-bottom: 1px solid black;">Price</td>
+            </tr>
+            <% @order.order_items.each do | item | %>
+                <tr style="border-bottom: 1px solid black;">
+                    <td width="300" style="border-left: 1px solid black; border-right: 1px solid black; border-top: 1px solid black; border-bottom: 1px solid black;"><%= item.item.name %></td>
+                    <td width="150" style="border-left: 1px solid black; border-right: 1px solid black; border-top: 1px solid black; border-bottom: 1px solid black;"><%= item.quantity %></td>
+                    <td width="200" style="border-left: 1px solid black; border-right: 1px solid black; border-top: 1px solid black; border-bottom: 1px solid black;"><%= number_to_currency(item.quantity * item.price_per_unit) %></td>
+                </tr>
+            <% end %>
+        </table>
+
+        <h1>Subtotal: <%= number_to_currency(@order.subtotal) %></h1>
+
+        <hr />
+
+        <h1>User Info</h1>
+        <h3>Name: <%= @order.user.full_name %></h3>
+        <h3>Address: <%= @order.user.address %></h3>
+        <h3>Home Phone: <%= @order.user.home_phone %></h3>
+        <h3>Work Phone: <%= @order.user.work_phone %></h3>
+
+        <p>Please expect to be contacted by this user to arrange delivery/pickup and payment options.</p>
+    </body>
+
+</html>

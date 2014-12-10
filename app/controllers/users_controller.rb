@@ -49,7 +49,7 @@ class UsersController < ApplicationController
   def unsubscribe
     if user = User.read_access_token(params[:signature])
       user.update_attribute :receive_emails, false
-      render text: "You have been unsubscribed."
+      render text: "You have been unsubscribed. We're sorry to see you go, but won't bother you again unless you want us to!"
     else
       render text: "Invalid Link"
     end

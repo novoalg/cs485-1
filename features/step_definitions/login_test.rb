@@ -11,7 +11,7 @@ Given(/^I am logged out$/) do
 end
 
 When(/^I click the login link$/) do
-  click_link "Login"
+  click_link "Log In"
 end
 
 Then(/^I should see the login page$/) do

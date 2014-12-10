@@ -89,6 +89,33 @@
           </li>
         <% end %>
 
+        <% if role_read? %>
+          <li class="has-dropdown">
+            <%= link_to orders_path do %>
+              <i class="fa fa-file-text"></i>&emsp;Orders
+            <% end %>
+            <ul class="dropdown">
+              <li>
+                <%= link_to my_orders_path do %>
+                  <i class="fa fa-file-text"></i>&emsp;My Orders
+                <% end %>
+              </li>
+            </ul>
+          </li>
+        <% else %>
+          <li>
+            <%= link_to my_orders_path do %>
+              <i class="fa fa-file-text"></i>&emsp;My Orders
+            <% end %>
+          </li>
+        <% end %>
+
+        <li>
+          <%= link_to cart_path do %>
+            <i class="fa fa-shopping-cart"></i>&emsp;Cart (<%= carted_items %>)
+          <% end %>
+        </li>
+
         <li class="has-dropdown">
           <%= link_to edit_user_path current_user do %>
             <i class="fa fa-gear"></i>&emsp;Edit Profile

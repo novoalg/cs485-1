@@ -12,36 +12,40 @@
   <% end %>
   <div class="row text-center">
     <div class="small-12 medium-4 columns">
-      <%= image_tag @item.picture.url(:medium) %>
-      <%= f.label :picture %>
-      <%= f.file_field :picture, class: "button expand" %>
+      <div class="panel">
+        <%= image_tag @item.picture.url(:medium) %>
+        <%= f.label :picture %>
+        <%= f.file_field :picture, class: "button expand" %>
+      </div>
     </div>
     <div class="small-12 medium-8 columns">
-      <%= f.label "Category" %>
-      <%= f.collection_select :item_category_id, ItemCategory.active, :id, :name %>
+      <div class="panel">
+        <%= f.label "Category" %>
+        <%= f.collection_select :item_category_id, ItemCategory.active, :id, :name %>
 
-      <%= f.label :name %>
-      <%= f.text_field :name %>
-      
-      <%= f.label :description %>
-      <%= f.text_area :description, rows: 5 %>
+        <%= f.label :name %>
+        <%= f.text_field :name %>
+        
+        <%= f.label :description %>
+        <%= f.text_area :description, rows: 5 %>
 
-      <%= f.label :price %>
-      <%= f.number_field :price, :in => 0.00..100000000.0, :step => 0.01 %>
+        <%= f.label :price %>
+        <%= f.number_field :price, :in => 0.00..100000000.0, :step => 0.01 %>
 
-      <%= f.label :in_stock, "Stock" %>
-      <%= f.number_field :in_stock, :in => 0..100000000, :step => 1 %>
+        <%= f.label :in_stock, "Stock" %>
+        <%= f.number_field :in_stock, :in => 0..100000000, :step => 1 %>
 
-      <label>Active</label>
-      <div class="switch">
-        <%= f.check_box :active, :check_value => true, :unchecked_value => false, :checked => true %>
-        <%= f.label :active %>
-      </div>
+        <label>Active</label>
+        <div class="switch">
+          <%= f.check_box :active, :check_value => true, :unchecked_value => false, :checked => true %>
+          <%= f.label :active %>
+        </div>
 
-      <hr />
+        <hr />
 
-      <div class="actions">
-          <%= f.submit class: "button expand" %>
+        <div class="actions">
+            <%= f.submit class: "button expand" %>
+        </div>
       </div>
     </div>
   </div>

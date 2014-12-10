@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
 
+  get 'orders/index'
+
+  get 'orders/user'
+
+  get 'carts/index'
+
   root 'static_pages#index'
 
   mount Ckeditor::Engine => '/ckeditor'
@@ -22,8 +28,22 @@ Rails.application.routes.draw do
   match '/contact',   to: 'static_pages#contact', via: 'get'
   match '/contact_us',  to: 'static_pages#contact_us', via: 'post'
   match '/inventory', to: 'inventory#index', via: 'get'
+  match '/shop', to: 'inventory#shop', via: 'get'
+  match '/shop', to: 'inventory#change_category', via: 'post'
 
   resources :galleries
   resources :static_texts, only: [:edit, :update]
   resource :headline, only: [:edit, :update]
+
+  resource :cart
+  match '/add_to_cart', to: 'carts#add_item', via: 'post'
+  match '/remove_from_cart/:id', to: 'carts#destroy', via: 'delete'
+  match '/update_cart', to: 'carts#update_cart', via: 'post'
+  match '/checkout', to: 'carts#checkout', via: 'get'
+  match '/process_cart', to: 'carts#process_cart', via: 'post'
+
+  resources :orders, only: [:index, :show, :destroy]
+  match '/my_orders', to: 'orders#user', via: 'get'
+  match '/mark_completed', to: 'orders#mark_completed', via: 'post'
+  
 end

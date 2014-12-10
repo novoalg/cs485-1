@@ -18,9 +18,9 @@ gem 'font-awesome-rails', '~> 4.2.0'
 gem "paperclip", "~> 4.2"
 gem 'devise'
 gem 'ckeditor'
-gem 'jquery-datatables-rails', '~> 2.2.3'
-
+gem 'jquery-datatables-rails', '~> 3.1.1'
 gem 'meta-tags'
+gem 'kaminari'
 
 # Testing!
 group :test do

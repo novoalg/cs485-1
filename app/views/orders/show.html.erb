@@ -1,0 +1,77 @@
+<div class="row text-center">
+  <div class="small-12 columns">
+    <div class="panel">
+      <h1>Order #<%= @order.id %></h1>
+      <p>Placed by <%= @order.user.email %></p>
+
+      <ul class="button-group">
+        <% if role_edit? && !@order.completed %>
+          <li>
+            <%= form_tag '/mark_completed' do %>
+              <%= hidden_field_tag :id, @order.id %>
+              <%= submit_tag "Complete Order", class: "button success" %> 
+            <% end %>
+          </li>
+        <% end %>
+
+        <% unless @order.completed %>
+          <li>
+            <%= link_to @order, method: :delete, data: { confirm: 'Are you sure you want to cancel this order?' }, class: "button alert" do %>
+              <i class="fa fa-exclamation-circle "></i>&emsp;Cancel Order
+            <% end %>
+          </li>
+        <% end %>
+      </ul>
+
+      <% if role_read? && @order.completed %>
+        <h4>Completed on <%= @order.updated_at.in_time_zone("Central Time (US & Canada)").to_formatted_s(:long) %></h4>
+      <% end %>
+
+      <div class="small-9 columns small-centered">
+        <table>
+          <tr style="font-size: 50px !important;">
+            <td class="bigger text-center" width="225"><strong>Subtotal</strong></td>
+            <td class="bigger"><%= number_to_currency(@order.subtotal) %></td>
+          </tr>
+          <tr style="font-size: 50px !important;">
+            <td class="bigger text-center" width="225"><strong>Name</strong></td>
+            <td class="bigger"><%= @order.user.full_name %></td>
+          </tr>
+          <tr style="font-size: 50px !important;">
+            <td class="bigger text-center" width="225"><strong>Address</strong></td>
+            <td class="bigger"><%= @order.user.address %></td>
+          </tr>
+          <tr style="font-size: 50px !important;">
+            <td class="bigger text-center" width="225"><strong>Home Phone</strong></td>
+            <td class="bigger"><%= @order.user.home_phone %></td>
+          </tr>
+          <tr style="font-size: 50px !important;">
+            <td class="bigger text-center" width="225"><strong>Work Phone</strong></td>
+            <td class="bigger"><%= @order.user.work_phone %></td>
+          </tr>
+        </table>
+      </div>
+
+      <table id="one-order">
+        <thead>
+          <tr>
+            <th>Item</th>
+            <th width="200">Quantity</th>
+            <th width="200">Cost</th>
+            <th width="300">Price Per Unit</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @order.order_items.each do | item | %>
+            <tr>
+              <td><%= link_to item.item.name, item.item %></td>
+              <td><%= item.quantity %></td>
+              <td><%= number_to_currency(item.quantity * item.price_per_unit) %></td>
+              <td><%= number_to_currency(item.price_per_unit) %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

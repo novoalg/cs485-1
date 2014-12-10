@@ -30,8 +30,8 @@ When(/^I sign up with dummy user details$/) do
   fill_in "Password", :with => "newpassword"
   fill_in "Password confirmation", :with => "newpassword"
   click_button "Sign Up"
-  click_link "Logout"
-  click_link "Login"
+  click_link "Log Out"
+  click_link "Log In"
   sign_in("example#{sr}@uwec.edu", "newpassword")
 end
 

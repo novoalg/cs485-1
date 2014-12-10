@@ -1,0 +1,45 @@
+<div class="row" data-equalizer>
+  <div class="large-3 small-12 columns text-center">
+    <div class="panel" data-equalizer-watch>
+      <%= form_tag('/shop') do %>
+        <%= label_tag "Category" %>
+        <%= collection_select(:item_category, :category_id, @item_categories, :id, :name, { :selected => @category.id }, onchange: "this.form.submit();") %>
+      <% end %>
+    </div>
+  </div> 
+
+  <div class="large-9 small-12 columns">
+    <div class="panel text-center" data-equalizer-watch>
+      <h2><%= @category.name %></h2>
+      <p><%= @category.description %></p>
+    </div>
+  </div>
+</div>
+
+<div class="row" data-equalizer>
+  <div class="small-12 columns">
+    <ul class="medium-block-grid-2 large-block-grid-3">
+      <% @items.each do | item | %>
+        <li>
+          <%= link_to item do %>
+          <ul class="pricing-table">
+            <li class="price" data-equalizer-watch><%= image_tag item.picture.url(:small) %></li>
+            <li class="title"><%= item.name %></li>
+            <li class="price"><%= number_to_currency(item.price) %></li>
+            <li class="bullet-item"><%= item.in_stock %> in stock</li>
+          </ul>
+          <% end %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>
+
+<div class="row text-center">
+  <div class="small-12 columns">
+    <div class="panel">
+      <%= page_entries_info @items %>
+      <%= paginate @items %>
+    </div>
+  </div> 
+</div>

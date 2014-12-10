@@ -5,45 +5,45 @@
 </div>
 
 <% @item_categories.each do | category | %>
-  <div class="row text-center">
-    <div class="small-12 columns">
-      <div class="panel">
-        <h3><%= category.name %></h3>
+<div class="row text-center">
+  <div class="small-12 columns">
+    <div class="panel">
+      <h3><%= category.name %></h3>
 
-        <table>
-          <thead>
-            <tr>
-              <th>Name</th>
-              <th width="125">Price</th>
-              <th width="100">In Stock</th>
-              <th width="100">Active?</th>
-              <th width="100">Edit</th>
-              <th width="125">Deactivate</th>
-            </tr>
-          </thead>
-          <tbody>
-          <% category.items.each do | item | %>
-            <tr>
-              <td><%= link_to item.name, item %></td>
-              <td>$<%= item.price %></td>
-              <td><%= item.in_stock %></td>
-              <td><%= item.active? ? "Yes" : "No" %></td>
-              <td>
-                <%= link_to edit_item_path item do %>
-                  <i class="fa fa-edit"></i>&emsp;Edit
-                <% end %>
-              </td>
-              <td>
-                <%= link_to controller: "items", :action => "toggle_activeness", :id => item do %>
-                  <i class="fa fa-power-off"></i>&emsp;Deactivate
-                <% end %>
-              </td>
-            </tr>
-          <% end %>
-          </tbody>
-        </table>
+      <table class="inventory-table">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th width="125">Price</th>
+            <th width="100">In Stock</th>
+            <th width="100">Active?</th>
+            <th width="100">Edit</th>
+            <th width="135">Deactivate</th>
+          </tr>
+        </thead>
+        <tbody>
+        <% category.items.each do | item | %>
+          <tr>
+            <td><%= link_to item.name, item %></td>
+            <td>$<%= item.price %></td>
+            <td><%= item.in_stock %></td>
+            <td><%= item.active? ? "Yes" : "No" %></td>
+            <td>
+              <%= link_to edit_item_path item do %>
+                <i class="fa fa-edit"></i>&emsp;Edit
+              <% end %>
+            </td>
+            <td>
+              <%= link_to controller: "items", :action => "toggle_activeness", :id => item do %>
+                <i class="fa fa-power-off"></i>&emsp;Deactivate
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+        </tbody>
+      </table>
 
-      </div>
     </div>
   </div>
+</div>
 <% end %>

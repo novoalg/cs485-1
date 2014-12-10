@@ -11,7 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141204185734) do
+ActiveRecord::Schema.define(version: 20141209215123) do
+
+  create_table "carted_items", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "item_id"
+    t.integer  "quantity"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "ckeditor_assets", force: true do |t|
     t.string   "data_file_name",               null: false
@@ -79,6 +87,22 @@ ActiveRecord::Schema.define(version: 20141204185734) do
     t.string   "picture_content_type"
     t.integer  "picture_file_size"
     t.datetime "picture_updated_at"
+  end
+
+  create_table "order_items", force: true do |t|
+    t.integer  "item_id"
+    t.integer  "order_id"
+    t.integer  "quantity"
+    t.decimal  "price_per_unit", precision: 8, scale: 2
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "orders", force: true do |t|
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.boolean  "completed",  default: false
   end
 
   create_table "roles", force: true do |t|

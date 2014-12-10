@@ -1,8 +1,9 @@
 <div class="row text-center">
   <div class="small-12 columns">
-    <h1>Galleries</h1>
-    <p>Galleries are showcases of sections of our store. If you see something you like, <%= link_to "let us know!", contact_path %> If it's still in stock, it could be yours! Click to get a better look at each picture.</p>
-    <hr />
+    <div class="panel">
+      <h1>Galleries</h1>
+      <p>Galleries are showcases of sections of our store. If you see something you like, <%= link_to "let us know!", contact_path %> If it's still in stock, it could be yours! Click to get a better look at each picture.</p>
+    </div>
   </div>
 </div>
 
@@ -17,12 +18,12 @@
 <% end %>
 
 <% unless @galleries.empty? %>
-  <ul class="small-block-grid-1 medium-block-grid-2 large-block-grid-3">
+  <ul class="small-block-grid-1 medium-block-grid-2 large-block-grid-3" data-equalizer>
   <% @galleries.each do | gallery | %>
     <li>
     <div class="row">
       <div class="small-12 columns">
-        <div class="panel">
+        <div class="panel" data-equalizer-watch>
           <% if role_delete? %>
             <div class="row">
               <div class="small-6 columns">
@@ -60,6 +61,15 @@
     </li>
   <% end %>
   </ul>
+
+  <div class="row text-center">
+    <div class="small-12 columns">
+      <div class="panel">
+        <%= page_entries_info @galleries %>
+        <%= paginate @galleries %>
+      </div>
+    </div> 
+  </div>
 <% else %>
   <div class="row text-center">
     <div class="small-12 columns">

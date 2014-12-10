@@ -6,4 +6,19 @@ class UserMailer < ActionMailer::Base
     @template = EmailTemplate.find(1)
     mail(to: @user.email, subject: @template.subject)
   end
+
+  def order_receipt(order)
+    @order = order
+    mail(to: @order.user.email, subject: "Your Recept from Silver & Stones Gallery [Order ##{@order.id}]")
+  end
+
+  def send_cancellation(order)
+    @order = order
+    mail(to: @order.user.email, subject: "Your order has been canceled [Order ##{@order.id}]")
+  end
+
+  def send_completed(order)
+    @order = order
+    mail(to: @order.user.email, subject: "Your order has been completed [Order ##{@order.id}]")
+  end
 end

@@ -1,24 +1,32 @@
 class Item < ActiveRecord::Base
-    belongs_to :item_category
-    validates_presence_of :name
 
-    validate :description, :allow_blank => true
+  paginates_per 6
 
-    validates_presence_of :price
-    validates_inclusion_of :price, :in => 0.00..100000000.00
+  has_many :carted_items
+  has_many :order_items
 
-    validates_presence_of :in_stock
-    validates_inclusion_of :in_stock, :in => 0..100000000
+  belongs_to :item_category
+  validates_presence_of :name
 
-    validates_presence_of :item_category_id
+  validate :description, :allow_blank => true
 
-    has_attached_file :picture, :styles => { :medium => "500x500>", :small => "300x300>", :thumb => "100x100>" }, :default_url => "missing/missing_:style.jpg"
-    validates_attachment_content_type :picture, :content_type => /\Aimage\/.*\Z/
+  validates_presence_of :price
+  validates_inclusion_of :price, :in => 0.00..100000000.00
 
-    scope :active, -> { where(:active => true, :is_deleted => false) }
-    scope :inactive, -> { where(:active => false, :is_deleted => false) }
+  validates_presence_of :in_stock
+  validates_inclusion_of :in_stock, :in => 0..100000000
 
-    def destroy_item
-        self.is_deleted = true
-    end
+  validates_presence_of :item_category_id
+
+  has_attached_file :picture, :styles => { :medium => "500x500>", :small => "300x300#", :thumb => "100x100#" }, :default_url => "missing/missing_:style.jpg"
+  validates_attachment_content_type :picture, :content_type => /\Aimage\/.*\Z/
+
+  scope :active, -> { where(:active => true, :is_deleted => false) }
+  scope :inactive, -> { where(:active => false, :is_deleted => false) }
+
+  def destroy_item
+    self.is_deleted = true
+  end
+
+  after_rollback :report_rollback
 end

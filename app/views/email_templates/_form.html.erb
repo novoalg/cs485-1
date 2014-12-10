@@ -1,5 +1,5 @@
 <%= form_for @template do |form| %>
-
+  <div class="panel">
     <%= form.label :subject %>
     <%= form.text_field :subject%>
 
@@ -7,5 +7,5 @@
     <%= form.cktext_area :content %>
 
     <%= form.submit "Update", class: "button expand" %>
-
+  </div>
 <% end %>   
