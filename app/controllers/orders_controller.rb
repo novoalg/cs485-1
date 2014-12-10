@@ -25,17 +25,23 @@ class OrdersController < ApplicationController
   def destroy 
     if Order.exists?(id: params[:id])
       @order = Order.find(params[:id])
-      @order.order_items.each do | item | 
-        item.item.update_attributes(in_stock: item.item.in_stock + item.quantity)
-        item.destroy
+
+      if @order.completed 
+        flash[:warning] = "You cannot cancel an order that has been completed."
+        redirect_to my_orders_path
+      else
+        @order.order_items.each do | item | 
+          item.item.update_attributes(in_stock: item.item.in_stock + item.quantity)
+          item.destroy
+        end
+
+        AdminMailer.receive_cancellation(@order).deliver
+        UserMailer.send_cancellation(@order).deliver
+
+        @order.destroy
+
+        flash[:success] = "Order ##{@order.id} has been canceled."
       end
-
-      AdminMailer.receive_cancellation(@order).deliver
-      UserMailer.send_cancellation(@order).deliver
-
-      @order.destroy
-
-      flash[:success] = "Order ##{@order.id} has been canceled."
     else 
       flash[:alert] = "No order with that ID exists."
     end 
@@ -48,6 +54,9 @@ class OrdersController < ApplicationController
       @order = Order.find(params[:id])
       @order.update_attributes(completed: true)
       flash[:success] = "Order has been completed."
+
+      UserMailer.send_completed(order).deliver
+
     else 
       flash[:alert] = "No order with that ID exists."
     end

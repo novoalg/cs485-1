@@ -16,4 +16,9 @@ class UserMailer < ActionMailer::Base
     @order = order
     mail(to: @order.user.email, subject: "Your order has been canceled [Order ##{@order.id}]")
   end
+
+  def send_completed(order)
+    @order = order
+    mail(to: @order.user.email, subject: "Your order has been completed [Order ##{@order.id}]")
+  end
 end
