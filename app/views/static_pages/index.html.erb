@@ -11,6 +11,12 @@
   </div>
 <% end %>
 
+<% if role_read? %>
+  <%= link_to slider_images_path, class: "button small expand" do %>
+    <i class="fa fa-pencil"></i>&emsp;Manage Slider Images
+  <% end %>
+<% end %>
+
 <% unless @sliders.empty? %>
   <div class="row">
     <div class="small-12 columns">

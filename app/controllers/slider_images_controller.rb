@@ -1,6 +1,10 @@
 class SliderImagesController < ApplicationController
 
   before_action :set_slider, only: [:edit, :update, :destroy]
+  before_filter :role_two
+  before_filter :role_three, only: [:edit, :update]
+  before_filter :role_four, only: [:new, :create]
+  before_filter :role_five, only: [:delete]
 
   def index
     @sliders = SliderImage.all

@@ -3,8 +3,10 @@
     <div class="panel">
       <h1>All Slider Images</h1>
       
-      <%= link_to new_slider_image_path, class: "button" do %>
-        <i class="fa fa-plus"></i>&emsp;Add Slider
+      <% if role_add? %>
+        <%= link_to new_slider_image_path, class: "button" do %>
+          <i class="fa fa-plus"></i>&emsp;Add Slider
+        <% end %>
       <% end %>
 
       <table id="all-sliders">
@@ -12,8 +14,12 @@
           <tr>
             <th width="120">ID</th>
             <th>Caption</th>
-            <th width="120">Edit</th>
-            <th width="120">Delete</th>
+            <% if role_edit? %>
+              <th width="120">Edit</th>
+            <% end %>
+            <% if role_delete? %>
+              <th width="120">Delete</th>
+            <% end %>
           </tr>
         </thead>
         <tbody>
@@ -25,16 +31,20 @@
                 </a>
               </td>
               <td><%= slider.caption %></td>
-              <td>
-                <%= link_to edit_slider_image_path slider do %>
-                  <i class="fa fa-edit"></i>&emsp;Edit
-                <% end %>
-              </td>
+              <% if role_edit? %>
+                <td>
+                  <%= link_to edit_slider_image_path slider do %>
+                    <i class="fa fa-edit"></i>&emsp;Edit
+                  <% end %>
+                </td>
+              <% end %>
+              <% if role_delete? %>
               <td>
                 <%= link_to slider, method: :delete, data: { confirm: 'Are you sure you want to delete this slider image?' } do %>
                   <i class="fa fa-times"></i>&emsp;Delete
                 <% end %>
               </td>
+              <% end %>
             </tr>
           <% end %>
         </tbody>
