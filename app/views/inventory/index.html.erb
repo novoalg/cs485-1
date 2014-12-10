@@ -17,8 +17,12 @@
             <th width="125">Price</th>
             <th width="100">In Stock</th>
             <th width="100">Active?</th>
-            <th width="100">Edit</th>
-            <th width="135">Deactivate</th>
+            <% if role_edit? %>
+              <th width="100">Edit</th>
+            <% end %>
+            <% if role_delete? %>
+              <th width="135">Deactivate</th>
+            <% end %>
           </tr>
         </thead>
         <tbody>
@@ -28,16 +32,20 @@
             <td>$<%= item.price %></td>
             <td><%= item.in_stock %></td>
             <td><%= item.active? ? "Yes" : "No" %></td>
-            <td>
-              <%= link_to edit_item_path item do %>
-                <i class="fa fa-edit"></i>&emsp;Edit
-              <% end %>
-            </td>
-            <td>
-              <%= link_to controller: "items", :action => "toggle_activeness", :id => item do %>
-                <i class="fa fa-power-off"></i>&emsp;Deactivate
-              <% end %>
-            </td>
+            <% if role_edit? %>
+              <td>
+                <%= link_to edit_item_path item do %>
+                  <i class="fa fa-edit"></i>&emsp;Edit
+                <% end %>
+              </td>
+            <% end %>
+            <% if role_delete? %>
+              <td>
+                <%= link_to controller: "items", :action => "toggle_activeness", :id => item do %>
+                  <i class="fa fa-power-off"></i>&emsp;Deactivate
+                <% end %>
+              </td>
+            <% end %>
           </tr>
         <% end %>
         </tbody>
