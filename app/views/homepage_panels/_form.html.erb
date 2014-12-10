@@ -1,0 +1,46 @@
+<div class="row text-center">
+  <div class="small-12 columns">
+    <div class="panel">
+
+      <%= form_for @panel do | f | %>
+        <% if @panel.errors.any? %>
+          <div id="error_explanation">
+            <h2><%= pluralize(@panel.errors.count, "error") %> prohibited this panel from being saved:</h2>
+
+            <ul>
+            <% @panel.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+            </ul>
+          </div>
+        <% end %>
+
+        <div class="row">
+          <div class="small-12 columns">
+            <%= f.label :title %>
+            <%= f.text_field :title %>
+
+            <%= f.label :text %>
+            <%= f.text_area :text %>
+
+            
+            <%= f.label :picture %>
+            <%= image_tag @panel.picture.url(:medium) %>
+            <hr />
+            <%= f.file_field :picture, class: "button expand" %>
+          </div>
+        </div>
+
+        <hr />
+        
+        <div class="row">
+          <div class="small-12 columns">
+            <%= f.submit "Save Panel", class: "button expand" %>
+          </div>
+        </div>
+
+      <% end %>
+
+    </div>
+  </div>
+</div>

@@ -11,12 +11,6 @@
   </div>
 <% end %>
 
-<% if role_read? %>
-  <%= link_to slider_images_path, class: "button small expand" do %>
-    <i class="fa fa-pencil"></i>&emsp;Manage Slider Images
-  <% end %>
-<% end %>
-
 <% unless @sliders.empty? %>
   <div class="row">
     <div class="small-12 columns">
@@ -27,6 +21,13 @@
       </ul>
     </div>
   </div>
+<% end %>
+
+<% if role_read? %>
+  <br />
+  <%= link_to slider_images_path, class: "button expand" do %>
+    <i class="fa fa-pencil"></i>&emsp;Manage Slider Images
+  <% end %>
 <% end %>
 
 <hr/>
@@ -47,28 +48,41 @@
 
 <div class="row" data-equalizer>
   <div class="small-12 columns">
-  <ul class="small-block-grid-1 medium-block-grid-2 large-block-grid-3">
-    <% @entries.each_with_index do | entry, i | %>
-    <li>
-      <div class="panel" data-equalizer-watch>
-        <div class="text-center"><%= image_tag "static_pages/panel#{i + 1}.jpg" %></div>
-        <% if role_edit? %>
-          <a href="#" data-reveal-id="static-<%= entry.id %>-modal" class="button tiny expand">
-            <i class="fa fa-edit"></i>&emsp;Edit Text
-          </a>
-        <% end %>
-        <h4 class="text-center"><%= entry.title %></h4>
-        <p><%= entry.text %></p>
-      </div>
-    </li>
-    <% end %>
-  </ul>
+    <ul class="small-block-grid-1 medium-block-grid-2 large-block-grid-3">
+      <% @panels.each do | panel | %>
+        <li>
+          <div class="panel" data-equalizer-watch>
+            <% if role_edit? %>
+              <%if role_delete? %>
+                <div class="row">
+                  <div class="small-6 columns">
+                    <%= link_to edit_homepage_panel_path(panel), class: "button expand" do %>
+                      <i class="fa fa-edit"></i>&emsp;Edit
+                    <% end %>
+                  </div>
+                  <div class="small-6 columns">
+                    <%= link_to panel, method: :delete, data: { confirm: 'Are you sure you want to delete this panel?' }, class: "button expand alert" do %>
+                      <i class="fa fa-times"></i>&emsp;Delete
+                    <% end %>
+                  </div>
+                </div>
+              <% else %>
+                <div class="row">
+                  <div class="small-12 columns">
+                    <%= link_to edit_homepage_panel_path(panel), class: "button expand" do %>
+                      <i class="fa fa-edit"></i>&emsp;Edit
+                    <% end %>
+                  </div>
+                </div>
+              <% end %>
+            <% end %>
+            <%= image_tag panel.picture.url(:medium) %>
+            <hr />
+            <h3><%= panel.title %></h3>
+            <p><%= panel.text %></p>
+          </div>
+        </li>
+      <% end %>    
+    </ul>
   </div>
 </div>
-
-<% if role_edit? %>
-  <%= render :partial => 'static_texts/edit', :locals => { :entry => @description } %>
-  <% @entries.each do | entry | %>
-    <%= render :partial => 'static_texts/edit', :locals => { :entry => entry } %>
-  <% end %>
-<% end %>
