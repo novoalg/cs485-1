@@ -11,4 +11,9 @@ class UserMailer < ActionMailer::Base
     @order = order
     mail(to: @order.user.email, subject: "Your Recept from Silver & Stones Gallery [Order ##{@order.id}]")
   end
+
+  def send_cancellation(order)
+    @order = order
+    mail(to: @order.user.email, subject: "Your order has been canceled [Order ##{@order.id}]")
+  end
 end

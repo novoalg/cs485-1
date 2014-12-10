@@ -30,6 +30,9 @@ class OrdersController < ApplicationController
         item.destroy
       end
 
+      AdminMailer.receive_cancellation(@order).deliver
+      UserMailer.send_cancellation(@order).deliver
+
       @order.destroy
 
       flash[:success] = "Order ##{@order.id} has been canceled."
