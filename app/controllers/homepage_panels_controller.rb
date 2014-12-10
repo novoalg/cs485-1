@@ -1,10 +1,10 @@
 class HomepagePanelsController < ApplicationController
 
   before_action :set_panel, only: [:edit, :update, :destroy]
-
-  def index
-    @panels = HomepagePanel.all
-  end
+  before_filter :role_two
+  before_filter :role_three, only: [:edit, :update]
+  before_filter :role_four, only: [:new, :create]
+  before_filter :role_five, only: [:delete]
 
   def new
     @panel = HomepagePanel.new

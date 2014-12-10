@@ -25,9 +25,11 @@
 
 <% if role_read? %>
   <br />
-  <%= link_to slider_images_path, class: "button expand" do %>
-    <i class="fa fa-pencil"></i>&emsp;Manage Slider Images
-  <% end %>
+  <div class="text-center">
+    <%= link_to slider_images_path, class: "button" do %>
+      <i class="fa fa-pencil"></i>&emsp;Manage Slider Images
+    <% end %>
+  </div>
 <% end %>
 
 <hr/>
@@ -48,6 +50,13 @@
 
 <div class="row" data-equalizer>
   <div class="small-12 columns">
+    <div class="text-center">
+      <% if role_add? %>
+        <%= link_to new_homepage_panel_path, class: "button" do %>
+          <i class="fa fa-plus"></i>&emsp;Add Info Panel
+        <% end %>
+      <% end %>
+    </div>
     <ul class="small-block-grid-1 medium-block-grid-2 large-block-grid-3">
       <% @panels.each do | panel | %>
         <li>
@@ -76,7 +85,9 @@
                 </div>
               <% end %>
             <% end %>
-            <%= image_tag panel.picture.url(:medium) %>
+            <a href="#" data-reveal-id="panel-<%= panel.id %>-modal">
+              <%= image_tag panel.picture.url(:medium) %>
+            </a>
             <hr />
             <h3><%= panel.title %></h3>
             <p><%= panel.text %></p>
@@ -86,3 +97,15 @@
     </ul>
   </div>
 </div>
+
+
+<% @panels.each do | panel | %>
+  <div id="panel-<%= panel.id %>-modal" class="reveal-modal" data-reveal>
+    <%= link_to panel.picture.url(:original), :target => "_blank" do %>
+      <div class="text-center">
+        <%= image_tag panel.picture.url(:large) %>
+      </div>
+    <% end %>
+    <a class="close-reveal-modal">&#215;</a>
+  </div>
+<% end %>
