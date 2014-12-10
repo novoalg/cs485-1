@@ -1,4 +1,7 @@
 class PageSectionsController < ApplicationController
+
+  before_action :role_three
+
   def edit
     @section = PageSection.find(params[:id])
   end

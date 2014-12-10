@@ -12,11 +12,13 @@
         <%= f.label :text %>
         <%= f.text_area :text, rows: 8 %>
 
-        <%= f.label :picture %>
-        <%= image_tag @section.picture.url(:large) %>
-        <hr />
-        <%= f.file_field :picture, class: "button expand" %>
-
+        <!-- This is not a good way to do it, but it goes... -->
+        <% unless @section.section == "description" || @section.section == "blurb" %>
+          <%= f.label :picture %>
+          <%= image_tag @section.picture.url(:large) %>
+          <hr />
+          <%= f.file_field :picture, class: "button expand" %>
+        <% end %>
         <hr />
         <%= f.submit "Update Section", class: "button expand" %>
 

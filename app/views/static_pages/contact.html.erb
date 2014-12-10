@@ -5,9 +5,9 @@
   <div class="small-12 large-7 columns">
     <div class="panel">
       <% if role_edit? %>
-        <a href="#" data-reveal-id="static-<%= @blurb.id %>-modal" class="button expand tiny">
-          <i class="fa fa-edit"></i>&emsp;Edit Text
-        </a>
+        <%= link_to edit_page_section_path(@blurb), class: "button expand" do %>
+          <i class="fa fa-edit"></i>&emsp;Edit Greeting
+        <% end %>
       <% end %>
       <h3><%= @blurb.title %></h3>
       <p><%= @blurb.text %></p>

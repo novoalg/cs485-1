@@ -37,6 +37,11 @@
 <div class="row text-center">
   <div class="small-12 columns">
     <div class="panel">
+      <% if role_edit? %>
+        <%= link_to edit_page_section_path(@description), class: "button expand" do %>
+          <i class="fa fa-edit"></i>&emsp;Edit Description
+        <% end %>
+      <% end %>
       <h2><%= @description.title %></h2>
       <p><%= @description.text %></p>
     </div>
