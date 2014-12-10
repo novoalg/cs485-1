@@ -12,6 +12,7 @@
         <h4>Order number: <%= @order.id %></h4>
         <h4>Order date: <%= @order.created_at.in_time_zone("Central Time (US & Canada)").to_formatted_s(:long) %></h4>
         <h4>Cancellation date: <%= @order.updated_at.in_time_zone("Central Time (US & Canada)").to_formatted_s(:long) %></h4>
+        <h4>User: <%= @order.user.full_name %> <%= "<#{@order.user.email}>" %></h4>
         <br />
         <h1>Canceled Items</h1>
         <table style="border: 1px solid black;" cellspacing="1" cellpadding="1">
