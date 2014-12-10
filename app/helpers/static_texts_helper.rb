@@ -1,2 +1,0 @@
-module StaticTextsHelper
-end

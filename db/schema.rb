@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141210065552) do
+ActiveRecord::Schema.define(version: 20141210075306) do
 
   create_table "carted_items", force: true do |t|
     t.integer  "user_id"
@@ -116,6 +116,19 @@ ActiveRecord::Schema.define(version: 20141210065552) do
     t.boolean  "completed",  default: false
   end
 
+  create_table "page_sections", force: true do |t|
+    t.string   "title"
+    t.text     "text"
+    t.string   "page"
+    t.string   "section"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "picture_file_name"
+    t.string   "picture_content_type"
+    t.integer  "picture_file_size"
+    t.datetime "picture_updated_at"
+  end
+
   create_table "roles", force: true do |t|
     t.string   "name"
     t.string   "description"
@@ -131,15 +144,6 @@ ActiveRecord::Schema.define(version: 20141210065552) do
     t.string   "picture_content_type"
     t.integer  "picture_file_size"
     t.datetime "picture_updated_at"
-  end
-
-  create_table "static_texts", force: true do |t|
-    t.string   "page"
-    t.string   "location"
-    t.text     "text"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.text     "title"
   end
 
   create_table "users", force: true do |t|
