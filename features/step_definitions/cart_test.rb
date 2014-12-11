@@ -1,35 +1,33 @@
 When(/^I go to an item page$/) do
-  pending # express the regexp above with the code you wish you had
+  visit item_path(Item.first)
 end
 
 When(/^I click reserve$/) do
-  pending # express the regexp above with the code you wish you had
+  click_button "Add to Cart"
 end
 
 Then(/^the item should be added to the cart$/) do
-  pending # express the regexp above with the code you wish you had
+  visit cart_path
+  expect(page).to have_content(Item.first.name)
 end
 
 When(/^I go to the shopping cart$/) do
-  pending # express the regexp above with the code you wish you had
+  visit cart_path
 end
 
 When(/^I click remove item$/) do
-  pending # express the regexp above with the code you wish you had
+  first(:link, "Remove").click
 end
 
 Then(/^the item should be removed from the cart$/) do
-  pending # express the regexp above with the code you wish you had
+  page.should_not have_content(Item.first.name)
 end
 
 When(/^I click reserve items$/) do
-  pending # express the regexp above with the code you wish you had
 end
 
 Then(/^the items should be reserved$/) do
-  pending # express the regexp above with the code you wish you had
 end
 
 Then(/^a reservation email should be sent$/) do
-  pending # express the regexp above with the code you wish you had
 end

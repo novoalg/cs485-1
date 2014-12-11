@@ -1,5 +1,5 @@
 When(/^I click the edit text button above the site description$/) do
-  click "Edit Description"
+  click_link "Edit Description"
 end
 
 When(/^I enter new content$/) do

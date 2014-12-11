@@ -16,11 +16,3 @@ Scenario: Edit Image to Gallery
     And I enter a description
     And I click the update gallery button
   Then the image should be added to the gallery
-
-@javascript
-Scenario: Remove Image from Gallery
-  Given I am logged in as an admin
-  When I go to the gallery page
-    And I click delete entry
-    And I click the cofirm button
-  Then the image should be deleted from the gallery
