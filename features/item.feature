@@ -2,6 +2,7 @@ Feature: More Items
 
 Scenario: Create an Item
 	Given I am logged in as an admin
+		And there is at least one item category
 	When I go to the new item page
 		And I fill in some details
 		And I click Create Item

@@ -1,5 +1,5 @@
 When(/^I click the edit text button above the site description$/) do
-  click_button "Edit Text"
+  click "Edit Description"
 end
 
 When(/^I enter new content$/) do
@@ -16,7 +16,7 @@ Then(/^the site description should be updated$/) do
 end
 
 When(/^I click the edit text button above Our Passion$/) do
-  click_button "Edit Text"
+  first(:link, "Edit Section").click
 end
 
 When(/^I enter a new title$/) do

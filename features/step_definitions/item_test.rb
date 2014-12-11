@@ -2,6 +2,12 @@ When(/^I go to the new item page$/) do
   visit new_item_path
 end
 
+Given(/^there is at least one item category$/) do
+  unless ItemCategory.all.size > 0
+    ItemCategory.create(:name => "Test")
+  end
+end
+
 When(/^I fill in some details$/) do
   @sr = SecureRandom.hex
   fill_in "Name", :with => "Test#{@sr}"

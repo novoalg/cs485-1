@@ -4,7 +4,7 @@ When(/^I go to the gallery page$/) do
 end
 
 When(/^I click new entry$/) do
-  click_button "New Gallery Entry"
+  click "New Gallery Entry"
 end
 
 When(/^I enter a description$/) do
@@ -28,7 +28,7 @@ Then(/^the image should be added to the gallery$/) do
 end
 
 When(/^I click edit entry$/) do
-  click_button "Edit"
+  first(:link, "Edit").click
 end
 
 When(/^I click the update gallery button$/) do
@@ -36,7 +36,7 @@ When(/^I click the update gallery button$/) do
 end
 
 When(/^I click delete entry$/) do
-  click_button "Delete"
+  first(:link, "Delete").click
 end
 
 When(/^I click the cofirm button$/) do
