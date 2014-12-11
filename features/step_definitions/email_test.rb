@@ -3,7 +3,7 @@ When(/^I click the email link on the header$/) do
 end
 
 When(/^I click Send Email$/) do
-  click "Send a New Email"
+  click_link "Send a new email"
 end
 
 When(/^I fill in subject and content$/) do
