@@ -59,7 +59,3 @@ end
 # The :transaction strategy is faster, but might give you threading problems.
 # See https://github.com/cucumber/cucumber-rails/blob/master/features/choose_javascript_database_strategy.feature
 Cucumber::Rails::Database.javascript_strategy = :truncation
-
-Before do 
-  User.create(email: Rails.application.secrets.admin_email, password: Rails.application.secrets.admin_pass, password_confirmation: Rails.application.secrets.admin_pass, role_id: 4)
-end
