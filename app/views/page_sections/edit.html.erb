@@ -1,0 +1,28 @@
+<div class="row">
+  <div class="small-12 columns">
+    <div class="panel text-center">
+
+      <h1>Editing a Page Section</h1>
+
+      <%= form_for @section do | f | %>
+
+        <%= f.label :title %>
+        <%= f.text_field :title %>
+
+        <%= f.label :text %>
+        <%= f.text_area :text, rows: 8 %>
+
+        <!-- This is not a good way to do it, but it goes... -->
+        <% unless @section.section == "description" || @section.section == "blurb" %>
+          <%= f.label :picture %>
+          <%= image_tag @section.picture.url(:large) %>
+          <hr />
+          <%= f.file_field :picture, class: "button expand" %>
+        <% end %>
+        <hr />
+        <%= f.submit "Update Section", class: "button expand" %>
+
+      <% end %>
+    </div>
+  </div>
+</div>

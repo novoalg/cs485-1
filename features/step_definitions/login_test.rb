@@ -1,5 +1,4 @@
 Given(/^I am logged in as an admin$/) do
-  puts current_user
   step "I am logged in"
   User.find(current_user.id).update(role_id: 4)
 end
@@ -11,7 +10,7 @@ Given(/^I am logged out$/) do
 end
 
 When(/^I click the login link$/) do
-  click_link "Login"
+  click_link "Log In"
 end
 
 Then(/^I should see the login page$/) do

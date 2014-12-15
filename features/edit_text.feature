@@ -10,7 +10,7 @@ Scenario: Edit Site Description
 
 Scenario: Edit About Us
   Given I am logged in as an admin
-  When I go to the about us page
+  When I click the about us link
     And I click the edit text button above Our Passion
     And I enter a new title
     And I enter new content

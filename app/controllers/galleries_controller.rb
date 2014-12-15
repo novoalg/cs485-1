@@ -8,7 +8,7 @@ class GalleriesController < ApplicationController
   before_filter :role_five, only: [:destroy]
 
   def index
-    @galleries = Gallery.all 
+    @galleries = Gallery.all.page params[:page]
   end
 
   def new 

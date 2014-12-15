@@ -1,0 +1,26 @@
+<div class="row text-center">
+  <div class="small-12 columns">
+    <div class="panel">
+      <h1>My Orders</h1>
+      <h4><%= current_user.email %></h4>
+      <table id="all-orders">
+        <thead>
+          <tr>
+            <th width="150">Order #</th>
+            <th width="200">Price</th>
+            <th>Placed On</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @orders.each do | order | %>
+            <tr>
+              <td><strong><%= link_to order.id, order %></strong></td>
+              <td><%= number_to_currency(order.subtotal) %></td>
+              <td><%= order.created_at.in_time_zone("Central Time (US & Canada)").to_formatted_s(:long) %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

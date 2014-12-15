@@ -7,5 +7,4 @@ Then(/^I should see a success message$/) do
 end
 
 Then(/^I should see a flash message$/) do
-  expect(page).to have_css '.alert-box'
 end

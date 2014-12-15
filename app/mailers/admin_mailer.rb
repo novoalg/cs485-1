@@ -16,7 +16,12 @@ class AdminMailer < ActionMailer::Base
 
   def receive_order(order)
     @order = order
-    mail(to: "support@silverandstones.gallery", subject: "[Order #{@order.id}] Receipt")
+    mail(to: "support@silverandstones.gallery", subject: "[Order ##{@order.id}] Receipt")
+  end
+
+  def receive_cancellation(order)
+    @order = order
+    mail(to: "support@silverandstones.gallery", subject: "[Order ##{@order.id}] Cancellation")
   end
 
 end

@@ -27,3 +27,9 @@ $(function(){
 		}
 	});  
 });
+
+$(":submit").click(function(){
+	$(this).addClass("disabled");
+	$(this).toggleClass("alert");
+	$(this).val("Please wait...");
+});

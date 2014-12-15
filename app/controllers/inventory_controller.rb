@@ -7,21 +7,28 @@ class InventoryController < ApplicationController
   end
 
   def shop
-    if (params.has_key? :category) && (ItemCategory.exists?(id: params[:category]))
-      category = params[:category]
-    elsif ItemCategory.all.size 
-      category = ItemCategory.first.id
+
+    unless (params.has_key? :category) 
+      if ItemCategory.all.size > 0 
+        category = ItemCategory.first.id
+      else 
+        category = nil
+      end
     else 
-      flash[:warning] = "There was an error. Please try again."
-      redirect_to root_path
+      category = params[:category]
     end
 
-    @item_categories = ItemCategory.order(:name)
-    @category = ItemCategory.find(category)
-    @items = @category.items.active.page params[:page]
+    unless category.nil? 
+      @item_categories = ItemCategory.order(:name)
+      @category = ItemCategory.find(category)
+      @items = @category.items.active.page params[:page]
 
-    unless user_signed_in? 
-      flash.now[:warning] = "Only registered users may check out. #{ view_context.link_to 'Make an account!', new_user_registration_path }".html_safe
+      unless user_signed_in? 
+        flash.now[:warning] = "Only registered users may check out. #{ view_context.link_to 'Make an account!', new_user_registration_path }".html_safe
+      end
+    else 
+      flash[:warning] = "There are no categories."
+      redirect_to root_path
     end
   end
 

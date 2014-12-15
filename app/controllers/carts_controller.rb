@@ -83,7 +83,7 @@ class CartsController < ApplicationController
     end
 
     flash[:success] = "Your order has been reserved. Thank you!"
-    redirect_to shop_path
+    redirect_to Order.last
   end
 
   private

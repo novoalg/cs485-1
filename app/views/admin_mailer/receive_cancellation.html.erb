@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+    </head>
+    <body>
+      <div style="text-align: center;"><%= image_tag "http://silverandstones.gallery/assets/logo.png", style: "max-width: 450px;" %></div>
+        <hr />
+        <h1>Order Cancellation Notice</h1>
+        <p>Order #<%= @order.id %> has been canceled. Please return the reserved items to stock. The website has been updated to reflect this change.</p>
+        <hr />
+        <h4>Order number: <%= @order.id %></h4>
+        <h4>Order date: <%= @order.created_at.in_time_zone("Central Time (US & Canada)").to_formatted_s(:long) %></h4>
+        <h4>Cancellation date: <%= @order.updated_at.in_time_zone("Central Time (US & Canada)").to_formatted_s(:long) %></h4>
+        <h4>User: <%= @order.user.full_name %> <%= "<#{@order.user.email}>" %></h4>
+        <br />
+        <h1>Canceled Items</h1>
+        <table style="border: 1px solid black;" cellspacing="1" cellpadding="1">
+            <tr>
+                <td width="300" style="border-left: 1px solid black; border-right: 1px solid black; border-top: 1px solid black; border-bottom: 1px solid black;">Item</td>
+                <td width="150" style="border-left: 1px solid black; border-right: 1px solid black; border-top: 1px solid black; border-bottom: 1px solid black;">Quantity</td>
+                <td width="200" style="border-left: 1px solid black; border-right: 1px solid black; border-top: 1px solid black; border-bottom: 1px solid black;">Price</td>
+            </tr>
+            <% @order.order_items.each do | item | %>
+                <tr>
+                    <td width="300" style="border-left: 1px solid black; border-right: 1px solid black; border-top: 1px solid black; border-bottom: 1px solid black;"><%= item.item.name %></td>
+                    <td width="150" style="border-left: 1px solid black; border-right: 1px solid black; border-top: 1px solid black; border-bottom: 1px solid black;"><%= item.quantity %></td>
+                    <td width="200" style="border-left: 1px solid black; border-right: 1px solid black; border-top: 1px solid black; border-bottom: 1px solid black;"><%= number_to_currency(item.quantity * item.price_per_unit) %></td>
+                </tr>
+            <% end %>
+        </table>
+
+        <h1>Subtotal: <%= number_to_currency(@order.subtotal) %></h1>
+    </body>
+
+</html>

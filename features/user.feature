@@ -26,13 +26,3 @@ Scenario: Edit User
         And I change my name
         And I click the submit button
     Then I should see the updated user details
-
-@javascript
-Scenario: Delete User
-    Given I am logged out
-    When I go to the new user page
-        And I sign up with dummy user details
-    Given I am on the password edit page
-    When I click the cancel account button
-    Then I should see the home page
-        And the user should no longer exist

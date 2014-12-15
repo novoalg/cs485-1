@@ -13,7 +13,7 @@
         <tbody>
           <% @cart.each do | entry | %>
             <tr>
-              <td><%= entry.item.name %></td>
+              <td><%= link_to entry.item.name, entry.item %></td>
               <td><%= entry.quantity %></td>
               <td><%= number_to_currency(entry.quantity * entry.item.price) %></td>
             </tr>
@@ -25,8 +25,34 @@
 </div>
 
 <div class="row">
-  <div class="small-12 medium-8 medium-centered columns">
+  <div class="small-12 columns">
     <div class="panel text-center">
+
+      <%= link_to edit_user_path(current_user), class: "button" do %>
+        <i class="fa fa-edit"></i>&emsp;Edit User Details
+      <% end %>
+
+      <table>
+        <tbody>
+          <tr style="font-size: 50px !important;">
+            <td width="200" class="bigger"><strong>Name</strong></td>
+            <td class="bigger"><%= current_user.full_name %></td>
+          </tr>
+          <tr style="font-size: 50px !important;">
+            <td width="200" class="bigger"><strong>Address</strong></td>
+            <td class="bigger"><%= current_user.address %></td>
+          </tr>
+          <tr style="font-size: 50px !important;">
+            <td width="200" class="bigger"><strong>Home Phone</strong></td>
+            <td class="bigger"><%= current_user.home_phone %></td>
+          </tr>
+          <tr style="font-size: 50px !important;">
+            <td width="200" class="bigger"><strong>Work Phone</strong></td>
+            <td class="bigger"><%= current_user.work_phone %></td>
+          </tr>
+        </tbody>
+      </table>
+
       <table>
         <tbody>
           <tr style="font-size: 50px !important;">
@@ -35,8 +61,9 @@
           </tr>
         </tbody>
       </table>
+      <h1>Please Read!</h1>
       <p>By clicking "Reserve," you understand that the items will be held until such time as (1) payment has been received and (2) a delivery method or pickup method can be arranged. A receipt will be sent to both you and Silver &amp; Stones Gallery to confirm the reservation.</p>
-      <p>In order to best serve you, we ask that you arrange payment and receipt method by giving us a call at (715) 839-8197 or by stopping in.</p>
+      <p>In order to best serve you, we ask that you arrange payment and receipt method by giving us a call at (715) 839-8197 or by stopping in. <strong>We do not accept payment via this website at this time.</strong></p>
       <p>Also, double check that your address and name are correct in your profile as they will be used to process the order.</p>
       <%= form_tag process_cart_path do %>
         <%= submit_tag "Reserve Order", class: "button expand" %>

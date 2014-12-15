@@ -27,5 +27,5 @@ group :test do
   gem "cucumber-rails", :require => false 
   gem "watir-webdriver"
   gem 'rspec'
-  gem 'database_cleaner'
+  # gem 'database_cleaner'
 end

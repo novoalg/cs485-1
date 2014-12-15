@@ -1,5 +1,13 @@
 Rails.application.routes.draw do
 
+  get 'page_sections/edit'
+
+  get 'page_sections/new'
+
+  get 'orders/index'
+
+  get 'orders/user'
+
   get 'carts/index'
 
   root 'static_pages#index'
@@ -13,7 +21,7 @@ Rails.application.routes.draw do
   get 'static_pages/index'
 
   resources :users
-  put '/set_role/:id', to: 'users#set_role', as: 'set_role'
+  put '/users/set_role/:id', to: 'users#set_role', as: 'set_role'
   match '/users/unsubscribe/:signature' => 'users#unsubscribe', as: 'unsubscribe', via: 'get'
 
   resources :email_templates, :only => [:index, :edit, :update]
@@ -28,8 +36,10 @@ Rails.application.routes.draw do
   match '/shop', to: 'inventory#change_category', via: 'post'
 
   resources :galleries
-  resources :static_texts, only: [:edit, :update]
+  resources :page_sections, only: [:edit, :update]
   resource :headline, only: [:edit, :update]
+  resources :slider_images, except: [:show]
+  resources :homepage_panels, except: [:show, :index]
 
   resource :cart
   match '/add_to_cart', to: 'carts#add_item', via: 'post'
@@ -37,5 +47,9 @@ Rails.application.routes.draw do
   match '/update_cart', to: 'carts#update_cart', via: 'post'
   match '/checkout', to: 'carts#checkout', via: 'get'
   match '/process_cart', to: 'carts#process_cart', via: 'post'
+
+  resources :orders, only: [:index, :show, :destroy]
+  match '/my_orders', to: 'orders#user', via: 'get'
+  match '/mark_completed', to: 'orders#mark_completed', via: 'post'
   
 end
